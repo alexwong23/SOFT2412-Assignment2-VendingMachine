@@ -2,7 +2,7 @@ package VendingMachine.Food;
 
 public class Chocolate implements Food{
     private Type type;
-    private String brand;
+    private String name;
     private double price;
     private int quantity;
 
@@ -17,7 +17,7 @@ public class Chocolate implements Food{
 
     @Override
     public String getName() {
-        return this.brand;
+        return this.name;
     }
 
     @Override
