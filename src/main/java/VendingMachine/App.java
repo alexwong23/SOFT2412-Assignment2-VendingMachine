@@ -5,6 +5,7 @@ package VendingMachine;
 
 import VendingMachine.config.VendingMachineConfig;
 import VendingMachine.model.VendingMachine;
+import VendingMachine.view.CustomerInterface;
 
 public class App {
     public String getGreeting() {
@@ -12,11 +13,11 @@ public class App {
     }
 
     public static void main(String[] args) {
-        VendingMachineConfig vendingConfig = ConfigReader.read(null);
+        VendingMachineConfig vendingConfig = ConfigReader.read("src/main/resources/config.json");
 
-        VendingMachine vendingMachine = new VendingMachine();
+        VendingMachine vendingMachine = new VendingMachine(vendingConfig);
 
-
-        System.out.println(new App().getGreeting());
+        // Customer user interface
+        new CustomerInterface(vendingMachine);
     }
 }

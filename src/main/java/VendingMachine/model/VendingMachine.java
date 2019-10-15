@@ -10,7 +10,10 @@ public class VendingMachine {
     Inventory inventory;
 
     public VendingMachine(VendingMachineConfig config) {
+        inventory = new Inventory(config.getFoodConfigs());
+    }
 
-        inventory = new Inventory(/* Pass in food items here */);
+    public ArrayList<Food> getAllFood() {
+        return inventory.getAllFood();
     }
 }

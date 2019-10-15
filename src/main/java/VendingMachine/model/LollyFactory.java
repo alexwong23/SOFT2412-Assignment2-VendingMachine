@@ -2,7 +2,7 @@ package VendingMachine.model;
 
 public class LollyFactory implements FoodFactory {
     @Override
-    public Food makeFood() {
-        return new Lolly();
+    public Food makeFood(String name) {
+        return new Lolly(name);
     }
 }
