@@ -1,9 +1,9 @@
 package VendingMachine.model;
 
-public class Drink implements Food {
+public class Lolly implements Food {
 
     @Override
     public FoodEnum getType() {
-        return FoodEnum.DRINK;
+        return FoodEnum.LOLLY;
     }
 }
