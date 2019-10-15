@@ -1,0 +1,22 @@
+{
+  "Food": [
+    {"type": "Chip", "name": "original", "price": 5.0,"quantity": 10},
+    {"type": "Chip", "name": "chicken", "price": 5.0,"quantity": 5},
+    {"type": "Chip", "name": "BBQ", "price": 5.0,"quantity": 7},
+    {"type": "Chip", "name": "sweet chillies", "price": 5.0,"quantity": 6},
+
+    {"type": "Chocolate", "name": "M&M", "price": 5.0,"quantity": 12},
+    {"type": "Chocolate", "name": "bounty", "price": 5.0,"quantity": 4},
+    {"type": "Chocolate", "name": "mars", "price": 5.0,"quantity": 11},
+    {"type": "Chocolate", "name": "sneakers", "price": 5.0,"quantity": 7},
+
+    {"type": "Drink", "name": "water", "price": 5.0,"quantity": 5},
+    {"type": "Drink", "name": "soft drink", "price": 5.0,"quantity": 8},
+    {"type": "Drink", "name": "juice", "price": 5.0,"quantity": 9},
+
+    {"type": "Lolly", "name": "sour worms", "price": 5.0,"quantity": 2},
+    {"type": "Lolly", "name": "jellybeans", "price": 5.0,"quantity": 0},
+    {"type": "Lolly", "name": "little bears", "price": 5.0,"quantity": 12},
+    {"type": "Lolly", "name": "part mix", "price": 5.0,"quantity": 1}
+  ]
+}

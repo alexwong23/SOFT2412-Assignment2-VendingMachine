@@ -16,7 +16,7 @@ public class Chocolate implements Food{
     }
 
     @Override
-    public String getBrand() {
+    public String getName() {
         return this.brand;
     }
 

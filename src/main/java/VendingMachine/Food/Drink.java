@@ -6,13 +6,17 @@ public class Drink implements Food{
     private double price;
     private int quantity;
 
+    public Drink(){
+
+    }
+
     @Override
     public Type getType() {
         return this.type;
     }
 
     @Override
-    public String getBrand() {
+    public String getName() {
         return this.brand;
     }
 

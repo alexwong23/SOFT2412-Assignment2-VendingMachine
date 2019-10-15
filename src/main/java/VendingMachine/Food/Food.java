@@ -2,7 +2,7 @@ package VendingMachine.Food;
 
 public interface Food {
     Type getType();
-    String getBrand();
+    String getName();
     double getPrice();
     int getQuantity();
     void setQuantity(int num);
