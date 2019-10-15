@@ -1,4 +1,4 @@
 package VendingMachine.view;
 
-public interface Customer {
+public interface UserView {
 }
