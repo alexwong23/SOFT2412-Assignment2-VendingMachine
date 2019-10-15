@@ -3,12 +3,20 @@
  */
 package VendingMachine;
 
+import VendingMachine.config.VendingMachineConfig;
+import VendingMachine.model.VendingMachine;
+
 public class App {
     public String getGreeting() {
         return "Hello world.";
     }
 
     public static void main(String[] args) {
+        VendingMachineConfig vendingConfig = ConfigReader.read(null);
+
+        VendingMachine vendingMachine = new VendingMachine();
+
+
         System.out.println(new App().getGreeting());
     }
 }
