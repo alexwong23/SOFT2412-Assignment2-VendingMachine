@@ -16,4 +16,9 @@ public class VendingMachine {
     public ArrayList<Food> getAllFood() {
         return inventory.getAllFood();
     }
+
+    /* This should only be called by the StaffInterface class. User's in my opinion should only interact with this Vending machine instance */
+    public Inventory getInventory() {
+        return inventory;
+    }
 }
