@@ -1,12 +1,11 @@
 {
   "food": [
-    { "name": "Pepsi", "type": "drink" },
-    { "name": "Sprite", "type": "drink" },
-    { "name": "Coke", "type": "drink" },
-    { "name": "Orange Juice", "type": "drink" },
-    { "name": "Orange Juice", "type": "drink" },
-    { "name": "Red Rock Deli", "type": "chips" },
-    { "name": "Mars", "type": "chocolate" },
-    { "name": "Jelly Beans", "type": "lolly" }
+    { "name": "Pepsi", "type": "drink", "price": 5.0,"quantity": 10 },
+    { "name": "Sprite", "type": "drink", "price": 5.0,"quantity": 10 },
+    { "name": "Coke", "type": "drink", "price": 5.0,"quantity": 10 },
+    { "name": "Orange Juice", "type": "drink", "price": 5.0,"quantity": 10 },
+    { "name": "Red Rock Deli", "type": "chips", "price": 5.0,"quantity": 10 },
+    { "name": "Mars", "type": "chocolate", "price": 5.0,"quantity": 10 },
+    { "name": "Jelly Beans", "type": "lolly", "price": 5.0,"quantity": 10 }
   ]
 }

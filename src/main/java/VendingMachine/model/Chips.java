@@ -3,9 +3,13 @@ package VendingMachine.model;
 public class Chips implements Food {
 
     String name;
+    double price;
+    int quantity;
 
-    public Chips(String name) {
+    public Chips(String name, double price, int quantity) {
         this.name = name;
+        this.price = price;
+        this.quantity = quantity;
     }
 
     @Override
@@ -16,5 +20,15 @@ public class Chips implements Food {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

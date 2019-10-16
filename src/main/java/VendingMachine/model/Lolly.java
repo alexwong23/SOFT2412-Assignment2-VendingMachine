@@ -3,9 +3,13 @@ package VendingMachine.model;
 public class Lolly implements Food {
 
     String name;
+    double price;
+    int quantity;
 
-    public Lolly(String name) {
+    public Lolly(String name, double price, int quantity) {
         this.name = name;
+        this.price = price;
+        this.quantity = quantity;
     }
 
     @Override
@@ -16,5 +20,15 @@ public class Lolly implements Food {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
     }
 }

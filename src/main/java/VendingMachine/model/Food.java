@@ -5,7 +5,11 @@ public interface Food {
 
     String getName();
 
+    double getPrice();
+
+    int getQuantity();
+
     default String getDisplayString() {
-        return String.format("%s %s", getName(), getType().toString());
+        return String.format("%s %s %s %s", getName(), getType().toString(), getPrice(), getQuantity());
     }
 }

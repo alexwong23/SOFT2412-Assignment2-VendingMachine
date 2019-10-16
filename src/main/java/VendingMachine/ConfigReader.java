@@ -43,13 +43,17 @@ public class ConfigReader {
             /* Obtain all platform values from JSON object and cast into relevant types */
             String name = (String) foodJSON.get("name");
             String type = (String) foodJSON.get("type");
+            double price = (double) foodJSON.get("price");
+            int quantity = (int) (long)  foodJSON.get("quantity");
             if (!EnumUtils.isValidEnum(FoodEnum.class, type.toUpperCase())) {
                 throw new IllegalArgumentException("Invalid enemy color provided.");
             }
             /* Add to our array list of platforms. */
             foodConfigs.add(new FoodConfig(
                     name,
-                    FoodEnum.valueOf(type.toUpperCase())
+                    FoodEnum.valueOf(type.toUpperCase()),
+                    price,
+                    quantity
             ));
         }
 
