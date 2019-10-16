@@ -13,11 +13,13 @@ public class App {
     }
 
     public static void main(String[] args) {
-        VendingMachineConfig vendingConfig = ConfigReader.read("src/main/resources/config.json");
+        VendingMachineConfig vendingConfig = ConfigReader.readFoodConfigs("src/main/resources/config.json");
 
         VendingMachine vendingMachine = new VendingMachine(vendingConfig);
 
         // Customer user interface
         new CustomerInterface(vendingMachine);
+
+        //System.out.println(ConfigReader.readRateConfigs("src/test/resources/config.json").getClass().getCanonicalName());
     }
 }
