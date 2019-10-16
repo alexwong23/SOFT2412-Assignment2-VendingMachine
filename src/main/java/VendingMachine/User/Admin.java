@@ -11,8 +11,8 @@ public class Admin implements User {
     }
 
     /**
-     *
-     * @return the user's type, for admin, it will return ADMIN
+     *  For Admin, it will return AMIN
+     * @return the user's type
      */
     @Override
     public UserType getType() {

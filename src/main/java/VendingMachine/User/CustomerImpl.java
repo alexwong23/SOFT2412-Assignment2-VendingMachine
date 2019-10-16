@@ -12,8 +12,8 @@ public class CustomerImpl implements Customer{
     }
 
     /**
-     *
-     * @return the shopping cart which manage the items customer plan to purchase
+     *Get the shopping cart which contain all items customer plan to purchase
+     * @return the shopping cart
      */
     @Override
     public ShoppingCart getCart() {
@@ -21,7 +21,7 @@ public class CustomerImpl implements Customer{
     }
 
     /**
-     *
+     *It creates a payment
      * @param paymentAmount how much customer pay for the vending machine
      * @return the payment
      */
@@ -31,8 +31,8 @@ public class CustomerImpl implements Customer{
     }
 
     /**
-     *
-     * @return user's type, for customer, it will return CUSTOMER
+     *For customer class, it will return CUSTOMER
+     * @return user's type
      */
     @Override
     public UserType getType() {

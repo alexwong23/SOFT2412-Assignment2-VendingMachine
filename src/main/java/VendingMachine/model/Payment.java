@@ -11,7 +11,8 @@ public class Payment {
     private boolean success;
 
     /**
-     *
+     *  All status of this payment will be setted up once it is created, including payment succeed or fail, and how much
+     *  chager
      * @param customer  the customer who is using vending machine
      * @param paymentAmount how much money user pay for the vending machine
      */
@@ -33,7 +34,7 @@ public class Payment {
     }
 
     /**
-     *
+     * Determine if this payment is success or fail
      * @return the status of payment - true: payment succeed; -false: paymeny fail
      */
     public boolean isSuccess(){
@@ -41,7 +42,7 @@ public class Payment {
     }
 
     /**
-     *
+     *  Get the charge of payment. If charge is positive, it means payment succeed. If it is negative, it means fail
      * @return the charge
      */
     public double getCharge(){
@@ -49,7 +50,7 @@ public class Payment {
     }
 
     /**
-     *
+     *  Generate String to show receipt for customer to read
      * @return the receipt of this payment
      */
     public String receipt(){
