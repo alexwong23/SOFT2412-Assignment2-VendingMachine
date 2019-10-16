@@ -55,9 +55,9 @@ public class Payment {
     public String receipt(){
         String receipt="";
         if(success){
-            receipt+="Payment succeed\n";
+            receipt+="Payment succeed\n";   //extend more later
         }else{
-            receipt+="Payment fail\n";
+            receipt+="Payment fail\n";      //extend more later
         }
         return receipt;
     }

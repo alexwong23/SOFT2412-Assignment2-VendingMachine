@@ -10,6 +10,10 @@ public class Admin implements User {
 
     }
 
+    /**
+     *
+     * @return the user's type, for admin, it will return ADMIN
+     */
     @Override
     public UserType getType() {
         return UserType.ADMIN;
