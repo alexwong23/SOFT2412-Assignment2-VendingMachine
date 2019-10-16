@@ -24,6 +24,10 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:27.1-jre'
 
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+    compile 'org.apache.commons:commons-lang3:3.9'
+
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 }

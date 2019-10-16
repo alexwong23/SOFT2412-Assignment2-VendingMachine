@@ -1,0 +1,11 @@
+{
+  "food": [
+    { "name": "Pepsi", "type": "drink", "price": 5.0,"quantity": 10 },
+    { "name": "Sprite", "type": "drink", "price": 5.0,"quantity": 10 },
+    { "name": "Coke", "type": "drink", "price": 5.0,"quantity": 10 },
+    { "name": "Orange Juice", "type": "drink", "price": 5.0,"quantity": 10 },
+    { "name": "Red Rock Deli", "type": "chips", "price": 5.0,"quantity": 10 },
+    { "name": "Mars", "type": "chocolate", "price": 5.0,"quantity": 10 },
+    { "name": "Jelly Beans", "type": "lolly", "price": 5.0,"quantity": 10 }
+  ]
+}
