@@ -1,6 +1,5 @@
 package VendingMachine;
 
-
 import VendingMachine.config.FoodConfig;
 import VendingMachine.config.VendingMachineConfig;
 import VendingMachine.model.FoodEnum;
