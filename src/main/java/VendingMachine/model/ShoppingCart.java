@@ -40,6 +40,7 @@ public class ShoppingCart {
 
         } else {
 
+
             cart.add(e);
 
             totalPrice = totalPrice + (e.getPrice() * quantity);
@@ -53,7 +54,7 @@ public class ShoppingCart {
     /**
      * Remove a Food item from the Cart.
      * @param e, the actual food item selected
-     * @param quantity, the amount of that specific food item that was selected.
+     * @param quantity, the amount of that specific food item that wasgi selected.
      */
     public void removeFromCart(Food e, int quantity) {
 
@@ -106,5 +107,6 @@ public class ShoppingCart {
         this.cartSize = 0;
 
     }
+
 
 }

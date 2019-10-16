@@ -10,6 +10,6 @@ public interface Food {
     int getQuantity();
 
     default String getDisplayString() {
-        return String.format("%s %s %s %s", getName(), getType().toString(), getPrice(), getQuantity());
+        return String.format("%-20s %-10s %-10s %-10s", getName(), getType().toString(), getPrice(), getQuantity());
     }
 }

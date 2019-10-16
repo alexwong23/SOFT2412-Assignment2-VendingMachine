@@ -1,6 +1,5 @@
 package VendingMachine;
 
-
 import VendingMachine.config.FoodConfig;
 import VendingMachine.config.VendingMachineConfig;
 import VendingMachine.model.FoodEnum;
@@ -13,10 +12,11 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class ConfigReader {
-    public static VendingMachineConfig read (String relPathToConfigFile) throws IllegalArgumentException {
+    public static VendingMachineConfig readFoodConfigs (String relPathToConfigFile) throws IllegalArgumentException {
         /* Create a new jsonParser */
         JSONParser jsonParser = new JSONParser();
         JSONObject settingsJSON = null;
@@ -58,5 +58,29 @@ public class ConfigReader {
         }
 
         return new VendingMachineConfig(foodConfigs);
+    }
+
+    /**
+     * Generate the HashMap which store the currency
+     * @param filePath the file path of rate json file
+     * @return
+     */
+    public static HashMap<String, Double> readRateConfigs(String filePath) {
+        HashMap<String, Double> fxRates = null;
+        try {
+            Object obj = new JSONParser().parse(new FileReader(filePath));
+            JSONObject jo = (JSONObject) obj;
+            fxRates = (HashMap) jo.get("rate");
+        }catch(ParseException | IOException e){
+            e.printStackTrace();
+            System.exit(1);
+        }
+
+        // If settingsJSON stays null then we have a problem and we should
+        if (fxRates == null) {
+            System.out.println("There was a problem parsing JSON file");
+            System.exit(1);
+        }
+        return fxRates;
     }
 }

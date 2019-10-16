@@ -4,14 +4,22 @@ import VendingMachine.model.Food;
 import VendingMachine.model.VendingMachine;
 
 public class CustomerInterface implements CommandLineInterface {
-    public CustomerInterface(VendingMachine vendingMachine) {
-        System.out.println("Welcome to vending machine!");
+    private VendingMachine vd;
 
-        for (Food item : vendingMachine.getAllFood()) {
-            System.out.println(item.getDisplayString());
-        }
+    public CustomerInterface(VendingMachine vendingMachine) {
+        this.vd = vendingMachine;
+        System.out.println("=========Welcome to vending machine!=========");
+        printFoodList();
 
         // Code that reads user inputs goes here
         // Code that outputs data to users goes here
+    }
+
+    public void printFoodList(){
+        System.out.printf("%-20s%-10s%-10s%-10s\n","Items"," Type","  Qua","Price");
+        System.out.println("---------------------------------------------");
+        for (Food item : this.vd.getAllFood()) {
+            System.out.println(item.getDisplayString());
+        }
     }
 }

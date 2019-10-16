@@ -12,6 +12,7 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application
     id 'application'
+
 }
 
 repositories {
@@ -24,9 +25,13 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:27.1-jre'
 
+    compile 'org.javatuples:javatuples:1.2'
+
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 
     compile 'org.apache.commons:commons-lang3:3.9'
+
+    //compile 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
