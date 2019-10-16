@@ -1,36 +1,32 @@
 package VendingMachine.model;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShoppingCart {
 
-    private Food[] cart;
+    private List<Food> cart = new ArrayList<Food>(); // actual list of food.
     private int itemCount;      // total number of items in the cart
     private double totalPrice;  // total price of items in the cart
-    private int capacity;       // current cart capacity
 
     public ShoppingCart()
     {
-
-        capacity = 5;
-        cart = new Food[capacity];
         itemCount = 0;
+
         totalPrice = 0.0;
     }
 
-    public void addToCart(String itemName, double price, int quantity){
+    public void addToCart(Food e)
+    {
 
-     //   Food temp = new Food(itemName, price, quantity);
+        cart.add(e);
 
-        totalPrice = totalPrice + (price*quantity);
+        totalPrice = totalPrice + e.getPrice();
 
-        itemCount += quantity;
-
-        if(itemCount == capacity){
-
-            capacity++;
-        }
-
-
+        itemCount++;
 
     }
+
 
 }
