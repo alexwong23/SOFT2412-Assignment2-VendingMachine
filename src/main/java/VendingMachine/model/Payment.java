@@ -11,7 +11,7 @@ public class Payment {
     private boolean success;
 
     /**
-     *  All status of this payment will be setted up once it is created, including payment succeed or fail, and how much
+     *  All status of this payment will be set up once it is created, including payment succeed or fail, and how much
      *  chager
      * @param customer  the customer who is using vending machine
      * @param paymentAmount how much money user pay for the vending machine

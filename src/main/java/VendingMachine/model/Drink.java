@@ -31,4 +31,9 @@ public class Drink implements Food {
     public int getQuantity() {
         return quantity;
     }
+
+    @Override
+    public void setQuantity(int num) {
+        this.quantity = num;
+    }
 }
