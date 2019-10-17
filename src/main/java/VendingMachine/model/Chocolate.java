@@ -36,4 +36,9 @@ public class Chocolate implements Food {
     public void setQuantity(int num) {
         this.quantity = num;
     }
+
+    @Override
+    public Food clone(int quantity) {
+        return new Chocolate(this.name, this.price, quantity);
+    }
 }
