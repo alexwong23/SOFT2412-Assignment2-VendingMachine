@@ -65,9 +65,12 @@ public class ShoppingCart{
         return cart;
     }
 
-    public int getCartSize() {
-
-        return cart.size();
+    public int getTotalQuantity() {
+        int totalQuantity = 0;
+        for(int i = 0; i < cart.size(); i++){
+            totalQuantity += cart.get(i).getQuantity();
+        }
+        return totalQuantity;
     }
 
     public double getTotalPrice() {
@@ -75,7 +78,7 @@ public class ShoppingCart{
 
         for(int i = 0; i < cart.size(); i++){
 
-          totalPrice = cart.get(i).getPrice();
+          totalPrice += cart.get(i).getPrice()*cart.get(i).getQuantity();
         }
 
         return totalPrice;
@@ -104,6 +107,8 @@ public class ShoppingCart{
         for(Food food: cart){
             s+=food.getDisplayString()+"\n";
         }
+        s+="\nTotal Quatity: "+getTotalQuantity()+"\n";
+        s+="Total Price: $ "+getTotalPrice()+"\n";
         return s;
     }
 }
