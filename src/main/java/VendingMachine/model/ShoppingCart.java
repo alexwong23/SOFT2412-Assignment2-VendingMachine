@@ -11,7 +11,6 @@ import java.util.List;
 public class ShoppingCart{
 
     private List<Food> cart; //actual list of food
-    private double totalPrice;  // total price of items in the cart
 
     /**
      * ShoppingCart constructor
@@ -20,7 +19,6 @@ public class ShoppingCart{
 
         cart = new ArrayList<Food>();
 
-        totalPrice = 0.0;
     }
 
     /**
@@ -30,17 +28,15 @@ public class ShoppingCart{
      */
     public void addToCart(Food e) {
 
-        if(e.getQuantity() <= 0 ){
+        //if(e.getQuantity() <= 0 ){
 
-            System.out.println("Sorry this item is currently out of stock.");
+        //    System.out.println("Sorry this item is currently out of stock.");
 
-        }else {
+        //}else {
 
             cart.add(e);
 
-            totalPrice = totalPrice + e.getPrice();
-
-        }
+        //}
 
     }
 
@@ -48,11 +44,19 @@ public class ShoppingCart{
      * Remove a Food item from the Cart.
      * @param e, Adds the actual food item selected
      */
-    public void removeFromCart(Food e) {
+    public void removeFromCart(Food e, int qua) {
 
-        cart.remove(e.getId());
-
-        totalPrice = totalPrice - e.getPrice();
+        for(Food food: cart){
+            if(food.getId()==e.getId()){
+                int newQua = food.getQuantity()-qua;
+                if(newQua==0) {
+                    cart.remove(food);
+                }else{
+                    food.setQuantity(newQua);
+                }
+                break;
+            }
+        }
 
     }
 
@@ -67,6 +71,7 @@ public class ShoppingCart{
     }
 
     public double getTotalPrice() {
+        double totalPrice=0;
 
         for(int i = 0; i < cart.size(); i++){
 
@@ -85,8 +90,6 @@ public class ShoppingCart{
 
         this.cart.clear();
 
-        this.totalPrice = 0;
-
     }
 
     /**
@@ -95,10 +98,13 @@ public class ShoppingCart{
      */
     @Override
     public String toString(){
-
-        return getCart() +"Total Price: "+totalPrice+ "Cart size: "+ getCartSize();
-
+        String s = "";
+        s+="------------------Shopping Cart------------------\n";
+        s+=String.format("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Qua");
+        for(Food food: cart){
+            s+=food.getDisplayString()+"\n";
+        }
+        return s;
     }
-
 }
 

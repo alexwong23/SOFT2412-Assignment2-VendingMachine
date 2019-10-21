@@ -3,7 +3,10 @@ package VendingMachine.view;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
+import VendingMachine.User.Customer;
+import VendingMachine.User.CustomerImpl;
 import VendingMachine.model.Food;
+import VendingMachine.model.Payment;
 import VendingMachine.model.ShoppingCart;
 import VendingMachine.model.VendingMachine;
 
@@ -11,10 +14,12 @@ import VendingMachine.model.VendingMachine;
 public class CustomerInterface implements CommandLineInterface {
     private VendingMachine vd;
     private ShoppingCart cart;
+    private Customer customer;
 
     public CustomerInterface(VendingMachine vendingMachine) {
         this.vd = vendingMachine;
-        this.cart = new ShoppingCart();
+        this.customer = new CustomerImpl();
+        this.cart = customer.getCart();
         commandLine();
     }
 
@@ -31,9 +36,11 @@ public class CustomerInterface implements CommandLineInterface {
                     purchaseInterface();
                     break;
                 case "2":
+                    shoppingCartInterface();
                     break;
                 case "3":
-                    System.exit(1);
+                    System.out.println("Thank you!");
+                    System.exit(0);
                     break;
             }
         }
@@ -88,7 +95,7 @@ public class CustomerInterface implements CommandLineInterface {
     }
 
     public void shoppingCartInterface(){
-        //cart.report();
+        System.out.println(cart.toString());
         Scanner sc = new Scanner(System.in);
         System.out.println("1. Delete Items");
         System.out.println("2. Checkout");
@@ -104,7 +111,23 @@ public class CustomerInterface implements CommandLineInterface {
                     System.out.println("Enter Quantity:");
                     int qua = Integer.parseInt(deleting_sc.next());
 
-                    //cart.removeFromCart();
+                    //The following part can be put into a method - findFood
+                    Food target = null;
+                    for(Food food:cart.getCart()){
+                        if(food.getId()==id){
+                            target = food;
+                            break;
+                        }
+                    }
+                    if(target==null){
+                        System.out.println("Invalid ID");
+                    }else if(qua>target.getQuantity()){
+                        System.out.println("Not enough in cart");
+                    } else{
+                        cart.removeFromCart(target,qua);
+                        System.out.println("Deleted");
+                        System.out.println("\n"+cart.toString());
+                    }
 
                     System.out.println("Continue Deleting? (Y|N)");
                     String answer = deleting_sc.next().toUpperCase();
@@ -114,7 +137,7 @@ public class CustomerInterface implements CommandLineInterface {
                 }
                 break;
             case "2":
-
+                Payment payment = new Payment(customer,cart.getTotalPrice());
                 break;
         }
     }
