@@ -103,11 +103,11 @@ public class ShoppingCart{
     public String toString(){
         String s = "";
         s+="------------------Shopping Cart------------------\n";
-        s+=String.format("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Qua");
+        s+=String.format("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Quantity");
         for(Food food: cart){
             s+=food.getDisplayString()+"\n";
         }
-        s+="\nTotal Quatity: "+getTotalQuantity()+"\n";
+        s+="\nTotal Quantity: "+getTotalQuantity()+"\n";
         s+="Total Price: $ "+getTotalPrice()+"\n";
         return s;
     }

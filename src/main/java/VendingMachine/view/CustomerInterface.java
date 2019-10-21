@@ -140,7 +140,7 @@ public class CustomerInterface implements CommandLineInterface {
 
     public void printVendingMachine(){
         System.out.println("===========Welcome to vending machine!===========");
-        System.out.printf("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Qua");
+        System.out.printf("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Quantity");
         System.out.println("-------------------------------------------------");
         for (Food food :vd.getAllFood()) {
             System.out.printf("%s\n",food.getDisplayString());
