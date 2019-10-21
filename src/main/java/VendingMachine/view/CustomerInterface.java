@@ -5,10 +5,7 @@ import java.util.Scanner;
 
 import VendingMachine.User.Customer;
 import VendingMachine.User.CustomerImpl;
-import VendingMachine.model.Food;
-import VendingMachine.model.Payment;
-import VendingMachine.model.ShoppingCart;
-import VendingMachine.model.VendingMachine;
+import VendingMachine.model.*;
 import VendingMachine.CurrencyConverter;
 import VendingMachine.ConfigReader;
 
@@ -121,14 +118,22 @@ public class CustomerInterface implements CommandLineInterface {
             case "2":
                 printCurrencyList();
                 Scanner currency_sc = new Scanner(System.in);
-                String selection = currency_sc.next().replace(" ","");  //delete any white space
+                String selection = currency_sc.next().replace(" ","").toUpperCase();  //delete any white space
                 double amount = converter.convertCurrency("USD",selection,cart.getTotalPrice());
                 System.out.printf("You need to pay: %f in %s\n", amount, selection);
                 System.out.println("Checkout? (Y|N)");
                 Payment payment = new Payment(customer,cart.getTotalPrice());
-                String answer = currency_sc.next();
+                String answer = currency_sc.next().toUpperCase();
                 if(answer.equals("Y")){
                     //do customer pay here
+                    System.out.println("Time to pay");
+                    conversation(payment);
+                    for(Food food: cart.getCart()){
+//                        if(food.getType()==){
+//
+//                        }
+                    }
+//                    vd.getInventory().removeFoodFromInventory();
                     System.out.println("Thank you for your purchasing");
                     System.exit(0);
                 }else if(answer.equals("N")){
@@ -164,5 +169,72 @@ public class CustomerInterface implements CommandLineInterface {
         System.out.println("JPY");
         System.out.println("CAD");
         System.out.println("Enter your selection: ");
+    }
+    public void conversation(Payment payment) {
+        payment.setPaid(new Money());
+        Scanner scan = new Scanner(System.in);
+        System.out.println("How is this being paid?");
+        double moneyGiven = 0;
+        String temp;
+        while (moneyGiven != payment.getPaymentAmount()) {
+            System.out.println("Please enter the number of 10 cent coins that are to be entered.");
+            temp = scan.nextLine();
+            try {
+                payment.getPaid().tenCents = Integer.parseInt(temp);
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
+            System.out.println("Please enter the number of 20 cent coins that are to be entered.");
+            temp = scan.nextLine();
+            try {
+                payment.getPaid().twentyCents = Integer.parseInt(temp);
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
+            System.out.println("Please enter the number of 50 cent coins that are to be entered.");
+            temp = scan.nextLine();
+            try {
+                payment.getPaid().fiftyCents = Integer.parseInt(temp);
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
+            System.out.println("Please enter the number of 1 dollar coins that are to be entered.");
+            temp = scan.nextLine();
+            try {
+                payment.getPaid().one = Integer.parseInt(temp);
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
+            System.out.println("Please enter the number of 2 dollar coins that are to be entered.");
+            temp = scan.nextLine();
+            try {
+                payment.getPaid().two = Integer.parseInt(temp);
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
+            System.out.println("Please enter the number of 5 dollar notes that are to be entered.");
+            temp = scan.nextLine();
+            try {
+                payment.getPaid().five = Integer.parseInt(temp);
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
+            System.out.println("Please enter the number of 10 dollar notes that are to be entered.");
+            temp = scan.nextLine();
+            try {
+                payment.getPaid().ten = Integer.parseInt(temp);
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
+            System.out.println("Please enter the number of twemty dollar notes that are to be entered.");
+            temp = scan.nextLine();
+            try {
+                payment.getPaid().twenty = Integer.parseInt(temp);
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
+            moneyGiven = payment.getTotal();
+            System.out.println("Amount being paid is : " + moneyGiven + "." + " Amount expected is " + payment.getPaymentAmount());
+        }
     }
 }
