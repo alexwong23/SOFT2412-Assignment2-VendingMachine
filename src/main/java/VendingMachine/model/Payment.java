@@ -83,7 +83,7 @@ public class Payment {
             }
             catch(Exception e ){e.printStackTrace();}
             moneyGiven = paid.tenCents*0.1+paid.twentyCents*0.2+paid.fiftyCents*0.5+paid.one+paid.two*2+paid.five*5+paid.ten*10+paid.twenty*20;
-            System.out.println("Amount being paid is : "+ moneyGiven"."+ " Amount expected is "+ paymentAmount);
+            System.out.println("Amount being paid is : "+ moneyGiven+"."+ " Amount expected is "+ paymentAmount);
         }
         this.customer = customer;
         this.paymentAmount = paymentAmount;
