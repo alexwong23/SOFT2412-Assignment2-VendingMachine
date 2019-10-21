@@ -8,9 +8,6 @@ import VendingMachine.model.VendingMachine;
 import VendingMachine.view.CustomerInterface;
 
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
 
     public static void main(String[] args) {
         VendingMachineConfig vendingConfig = ConfigReader.readFoodConfigs("src/main/resources/config.json");
