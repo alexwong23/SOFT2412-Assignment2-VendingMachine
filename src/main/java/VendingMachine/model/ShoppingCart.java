@@ -8,10 +8,9 @@ import java.util.List;
  * Shopping Cart class, stores the customer's purchase selection.
  *
  */
-public class ShoppingCart {
+public class ShoppingCart{
 
     private List<Food> cart; //actual list of food
-    private int cartSize;      // total number of items in the cart
     private double totalPrice;  // total price of items in the cart
 
     /**
@@ -20,8 +19,6 @@ public class ShoppingCart {
     public ShoppingCart() {
 
         cart = new ArrayList<Food>();
-
-        cartSize = 0;
 
         totalPrice = 0.0;
     }
@@ -43,9 +40,7 @@ public class ShoppingCart {
 
             totalPrice = totalPrice + e.getPrice();
 
-            cartSize = cartSize++;
         }
-
 
     }
 
@@ -55,11 +50,9 @@ public class ShoppingCart {
      */
     public void removeFromCart(Food e) {
 
-        cart.remove(e);
+        cart.remove(e.getId());
 
         totalPrice = totalPrice - e.getPrice();
-
-        cartSize--;
 
     }
 
@@ -70,10 +63,15 @@ public class ShoppingCart {
 
     public int getCartSize() {
 
-        return cartSize;
+        return cart.size();
     }
 
     public double getTotalPrice() {
+
+        for(int i = 0; i < cart.size(); i++){
+
+          totalPrice = cart.get(i).getPrice();
+        }
 
         return totalPrice;
     }
@@ -89,8 +87,6 @@ public class ShoppingCart {
 
         this.totalPrice = 0;
 
-        this.cartSize = 0;
-
     }
 
     /**
@@ -100,7 +96,7 @@ public class ShoppingCart {
     @Override
     public String toString(){
 
-        return cart+"Total Price: "+totalPrice+ "Cart size: "+ cartSize;
+        return getCart() +"Total Price: "+totalPrice+ "Cart size: "+ getCartSize();
 
     }
 
