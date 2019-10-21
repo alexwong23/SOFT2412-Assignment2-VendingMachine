@@ -1,5 +1,7 @@
 package VendingMachine.view;
 
+import java.util.Scanner;
+
 import VendingMachine.model.Food;
 import VendingMachine.model.ShoppingCart;
 import VendingMachine.model.VendingMachine;
@@ -42,6 +44,11 @@ public class CustomerInterface implements CommandLineInterface {
         System.out.println("Pleas enter quantity");
         int qua = Integer.parseInt(sc.next());
         // Code that outputs data to users goes here
+//        Scanner userScanner = new Scanner(System.in);
+//        String userInput=userScanner.nextLine();
+//        if(userInput == "staff") {
+//        	new StaffInterface(vd);
+//        }
     }
 
     public void printVendingMachine(){
