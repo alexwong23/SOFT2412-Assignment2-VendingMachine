@@ -11,7 +11,7 @@ public class Payment {
     private double totalPrice;
     private double change;
     private boolean success;
-    private Money paid;
+    //private Money paid;
 
 //    Customer can:
 //
@@ -68,15 +68,15 @@ public class Payment {
     public String receipt(){
         String receipt="";
         if(success){
-            receipt+="Payment succeed\n";   //extend more later
+            receipt+="Payment succeed";   //extend more later
         }else{
-            receipt+="Payment fail\n";      //extend more later
+            receipt+="Payment fail";      //extend more later
         }
         return receipt;
     }
-    public Money getMoney(){
-        return this.paid;
-    }
+   // public Money getMoney(){
+      //  return this.paid;
+    //}
 }
 
 

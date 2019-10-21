@@ -1,6 +1,6 @@
 package VendingMachine.view;
 
-import java.sql.SQLOutput;
+
 import java.util.Scanner;
 
 import VendingMachine.User.Customer;
@@ -9,12 +9,15 @@ import VendingMachine.model.Food;
 import VendingMachine.model.Payment;
 import VendingMachine.model.ShoppingCart;
 import VendingMachine.model.VendingMachine;
+import VendingMachine.CurrencyConverter;
+import VendingMachine.ConfigReader;
 
 
 public class CustomerInterface implements CommandLineInterface {
     private VendingMachine vd;
     private ShoppingCart cart;
     private Customer customer;
+    private CurrencyConverter converter = new CurrencyConverter(ConfigReader.readRateConfigs("src/main/resources/config.json"));
 
     public CustomerInterface(VendingMachine vendingMachine) {
         this.vd = vendingMachine;
@@ -25,8 +28,6 @@ public class CustomerInterface implements CommandLineInterface {
 
     public void commandLine(){
         printVendingMachine();
-
-
         Scanner sc = new Scanner(System.in);
         while(true){
             printMainMenu();
@@ -46,32 +47,14 @@ public class CustomerInterface implements CommandLineInterface {
         }
     }
 
-    public void printVendingMachine(){
-        System.out.println("===========Welcome to vending machine!===========");
-        System.out.printf("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Qua");
-        System.out.println("-------------------------------------------------");
-        for (Food food :vd.getAllFood()) {
-            System.out.printf("%s\n",food.getDisplayString());
-        }
-        System.out.println("=================================================");
-    }
-
-    public void printMainMenu(){
-        System.out.println("Options:");
-        System.out.println("1. Purchase");
-        System.out.println("2. Shopping Cart");
-        System.out.println("3. Quit");
-        System.out.println("Enter your options:");
-    }
-
     public void purchaseInterface(){
         boolean purchasing = true;
-        Scanner sc = new Scanner(System.in);
+        Scanner purchase_sc = new Scanner(System.in);
         while(purchasing) {
             System.out.println("Enter ID:");
-            int id = Integer.parseInt(sc.next());
+            int id = Integer.parseInt(purchase_sc.next());
             System.out.println("Enter Quantity:");
-            int qua = Integer.parseInt(sc.next());
+            int qua = Integer.parseInt(purchase_sc.next());
 
             Food target = null;
             for(Food food: vd.getAllFood()){
@@ -87,7 +70,7 @@ public class CustomerInterface implements CommandLineInterface {
             }
 
             System.out.println("Continue Shopping? (Y|N)");
-            String answer = sc.next().toUpperCase();
+            String answer = purchase_sc.next().toUpperCase();
             if(answer.equals("N")){
                 purchasing=false;
             }
@@ -96,16 +79,15 @@ public class CustomerInterface implements CommandLineInterface {
 
     public void shoppingCartInterface(){
         System.out.println(cart.toString());
-        Scanner sc = new Scanner(System.in);
         System.out.println("1. Delete Items");
         System.out.println("2. Checkout");
-
-        String option = sc.next();
+        Scanner cart_sc = new Scanner(System.in);
+        String option = cart_sc.next();
         switch (option){
             case "1":
                 boolean deleting = true;
+                Scanner deleting_sc = new Scanner(System.in);
                 while(deleting){
-                    Scanner deleting_sc = new Scanner(System.in);
                     System.out.println("Enter ID:");
                     int id = Integer.parseInt(deleting_sc.next());
                     System.out.println("Enter Quantity:");
@@ -137,8 +119,50 @@ public class CustomerInterface implements CommandLineInterface {
                 }
                 break;
             case "2":
+                printCurrencyList();
+                Scanner currency_sc = new Scanner(System.in);
+                String selection = currency_sc.next().replace(" ","");  //delete any white space
+                double amount = converter.convertCurrency("USD",selection,cart.getTotalPrice());
+                System.out.printf("You need to pay: %f in %s\n", amount, selection);
+                System.out.println("Checkout? (Y|N)");
                 Payment payment = new Payment(customer,cart.getTotalPrice());
+                String answer = currency_sc.next();
+                if(answer.equals("Y")){
+                    //do customer pay here
+                    System.out.println("Thank you for your purchasing");
+                    System.exit(0);
+                }else if(answer.equals("N")){
+                    //do nothing
+                }
                 break;
         }
+    }
+
+    public void printVendingMachine(){
+        System.out.println("===========Welcome to vending machine!===========");
+        System.out.printf("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Qua");
+        System.out.println("-------------------------------------------------");
+        for (Food food :vd.getAllFood()) {
+            System.out.printf("%s\n",food.getDisplayString());
+        }
+        System.out.println("=================================================");
+    }
+
+    public void printMainMenu(){
+        System.out.println("Options:");
+        System.out.println("1. Purchase");
+        System.out.println("2. Shopping Cart");
+        System.out.println("3. Quit");
+        System.out.println("Enter your options:");
+    }
+
+    public void printCurrencyList(){
+        System.out.println("How would you like to pay?");
+        System.out.println("USD");
+        System.out.println("AUD");
+        System.out.println("CNY");
+        System.out.println("JPY");
+        System.out.println("CAD");
+        System.out.println("Enter your selection: ");
     }
 }
