@@ -3,9 +3,13 @@
  */
 package VendingMachine;
 
+import java.util.Scanner;
+
 import VendingMachine.config.VendingMachineConfig;
 import VendingMachine.model.VendingMachine;
 import VendingMachine.view.CustomerInterface;
+import VendingMachine.view.StaffInterface;
+
 
 public class App {
 
@@ -13,10 +17,23 @@ public class App {
         VendingMachineConfig vendingConfig = ConfigReader.readFoodConfigs("src/main/resources/config.json");
 
         VendingMachine vendingMachine = new VendingMachine(vendingConfig);
-
         // Customer user interface
         new CustomerInterface(vendingMachine);
-
+        
+//        System.out.println("===========Welcome to vending machine!===========");
+//        System.out.println("Enter Y to login as staff\nOtherwise, enter anything to continue.");
+//        Scanner userScanner = new Scanner(System.in);
+//        while(true) {
+//            String userInput = userScanner.nextLine();
+//            if(userInput.compareTo("Y") == 0) {
+//    			// Staff user interface
+//    			new StaffInterface(vendingMachine);
+//    		}
+//           
+//            break; 
+//        }
+//		userScanner.close();
+		
         //System.out.println(ConfigReader.readRateConfigs("src/test/resources/config.json").getClass().getCanonicalName());
     }
 }
