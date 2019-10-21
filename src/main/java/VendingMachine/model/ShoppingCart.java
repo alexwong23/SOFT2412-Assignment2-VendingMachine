@@ -43,7 +43,6 @@ public class ShoppingCart {
 
     /**
      * Remove a Food item from the Cart.
-     *
      * @param e, Adds the actual food item selected
      */
     public void removeFromCart(Food e) {
@@ -85,5 +84,17 @@ public class ShoppingCart {
         this.cartSize = 0;
 
     }
+
+    /**
+     * Simple toString method to print the current "state" of the cart as a string.
+     * @return total price and how many items are in the cart.
+     */
+
+    public String toString(){
+
+        return "Total Price: "+totalPrice+ "Cart size: "+ cartSize;
+
+    }
+
 
 }
