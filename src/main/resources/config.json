@@ -1,12 +1,12 @@
 {
   "food": [
-    { "name": "Pepsi", "type": "drink", "price": 5.0,"quantity": 10 },
-    { "name": "Sprite", "type": "drink", "price": 5.0,"quantity": 10 },
-    { "name": "Coke", "type": "drink", "price": 5.0,"quantity": 10 },
-    { "name": "Orange Juice", "type": "drink", "price": 5.0,"quantity": 10 },
-    { "name": "Red Rock Deli", "type": "chips", "price": 5.0,"quantity": 10 },
-    { "name": "Mars bar", "type": "chocolate", "price": 5.0,"quantity": 10 },
-    { "name": "Jelly Beans", "type": "lolly", "price": 10.0,"quantity": 5 }
+    { "id": 1, "name": "Pepsi", "type": "drink", "price": 5.0,"quantity": 10 },
+    { "id": 2, "name": "Sprite", "type": "drink", "price": 5.0,"quantity": 10 },
+    { "id": 3, "name": "Coke", "type": "drink", "price": 5.0,"quantity": 10 },
+    { "id": 4, "name": "Orange Juice", "type": "drink", "price": 5.0,"quantity": 10 },
+    { "id": 5, "name": "Red Rock Deli", "type": "chips", "price": 5.0,"quantity": 10 },
+    { "id": 6, "name": "Mars bar", "type": "chocolate", "price": 5.0,"quantity": 10 },
+    { "id": 7, "name": "Jelly Beans", "type": "lolly", "price": 10.0,"quantity": 5 }
   ],
 
   "rate": {

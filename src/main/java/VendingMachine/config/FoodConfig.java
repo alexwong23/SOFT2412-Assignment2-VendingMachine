@@ -7,8 +7,10 @@ public class FoodConfig {
     private FoodEnum type;
     private double price;
     private int quantity;
+    private int id;
 
-    public FoodConfig(String name, FoodEnum type, double price, int quantity) {
+    public FoodConfig(int id, String name, FoodEnum type, double price, int quantity) {
+        this.id = id;
         this.name = name;
         this.type = type;
         this.price = price;
@@ -30,4 +32,6 @@ public class FoodConfig {
     public int getQuantity() {
         return quantity;
     }
+
+    public int getId() { return id; };
 }

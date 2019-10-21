@@ -42,6 +42,7 @@ public class ConfigReader {
         while (iterator.hasNext()) {
             JSONObject foodJSON = iterator.next();
             /* Obtain all platform values from JSON object and cast into relevant types */
+            int id = (int) (long) foodJSON.get("id");
             String name = (String) foodJSON.get("name");
             String type = (String) foodJSON.get("type");
             double price = (double) foodJSON.get("price");
@@ -51,6 +52,7 @@ public class ConfigReader {
             }
             /* Add to our array list of platforms. */
             foodConfigs.add(new FoodConfig(
+                    id,
                     name,
                     FoodEnum.valueOf(type.toUpperCase()),
                     price,

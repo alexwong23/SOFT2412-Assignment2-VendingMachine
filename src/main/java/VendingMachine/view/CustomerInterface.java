@@ -1,13 +1,12 @@
 package VendingMachine.view;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 import VendingMachine.model.Food;
 import VendingMachine.model.ShoppingCart;
 import VendingMachine.model.VendingMachine;
 
-import java.sql.SQLOutput;
-import java.util.Scanner;
 
 public class CustomerInterface implements CommandLineInterface {
     private VendingMachine vd;
@@ -24,7 +23,7 @@ public class CustomerInterface implements CommandLineInterface {
 
 
         Scanner sc = new Scanner(System.in);
-        while(sc.hasNext()){
+        while(true){
             printMainMenu();
             String input = sc.next();
             switch (input){
@@ -38,28 +37,24 @@ public class CustomerInterface implements CommandLineInterface {
                     break;
             }
         }
-        System.out.println("Enter Id to make purchase:");
-
-        int id = Integer.parseInt(sc.next());
-        System.out.println("Pleas enter quantity");
-        int qua = Integer.parseInt(sc.next());
     }
 
     public void printVendingMachine(){
-        System.out.println("=========Welcome to vending machine!=========");
+        System.out.println("===========Welcome to vending machine!===========");
         System.out.printf("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Qua");
-        System.out.println("---------------------------------------------");
+        System.out.println("-------------------------------------------------");
         for (Food food :vd.getAllFood()) {
             System.out.printf("%s\n",food.getDisplayString());
         }
-        System.out.println("=============================================");
+        System.out.println("=================================================");
     }
 
     public void printMainMenu(){
-        System.out.println("(Enter the option number to start)");
+        System.out.println("Options:");
         System.out.println("1. Purchase");
         System.out.println("2. Shopping Cart");
         System.out.println("3. Quit");
+        System.out.println("Enter your options:");
     }
 
     public void purchaseInterface(){
@@ -73,18 +68,19 @@ public class CustomerInterface implements CommandLineInterface {
 
             Food target = null;
             for(Food food: vd.getAllFood()){
-                if(food.getID().equals(id)){
+                if(food.getId()==id){
                     target = food;
+                    break;
                 }
             }
             if(target==null){
                 System.out.println("Invalid ID");
-            }else{
+            }else {
                 cart.addToCart(target.clone(qua));
             }
 
             System.out.println("Continue Shopping? (Y|N)");
-            String answer = sc.next();
+            String answer = sc.next().toUpperCase();
             if(answer.equals("N")){
                 purchasing=false;
             }
@@ -92,16 +88,34 @@ public class CustomerInterface implements CommandLineInterface {
     }
 
     public void shoppingCartInterface(){
+        //cart.report();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("1. Delete Items");
+        System.out.println("2. Checkout");
 
+        String option = sc.next();
+        switch (option){
+            case "1":
+                boolean deleting = true;
+                while(deleting){
+                    Scanner deleting_sc = new Scanner(System.in);
+                    System.out.println("Enter ID:");
+                    int id = Integer.parseInt(deleting_sc.next());
+                    System.out.println("Enter Quantity:");
+                    int qua = Integer.parseInt(deleting_sc.next());
+
+                    //cart.removeFromCart();
+
+                    System.out.println("Continue Deleting? (Y|N)");
+                    String answer = deleting_sc.next().toUpperCase();
+                    if(answer.equals("N")){
+                        deleting = false;
+                    }
+                }
+                break;
+            case "2":
+
+                break;
+        }
     }
-
-//    public void printFoodList(){
-//        System.out.printf("%-20s%-10s%-10s%-10s\n","Items","Type","Price","Quantity");
-//        System.out.println("---------------------------------------------");
-//        for (Food item : this.vd.getAllFood()) {
-//            System.out.println(item.getDisplayString());
-//        }
-//
-//    }
-
 }

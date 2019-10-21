@@ -14,7 +14,9 @@ public interface Food {
     Food clone(int quantity);
 
     default String getDisplayString() {
-        return String.format("%-20s%-10s%-10s%-10s", getName(), getType().toString(), getPrice(), getQuantity());
+        return String.format("%-5d%-20s%-10s%-10s%-10s", getId(),getName(), getType().toString(), getPrice(), getQuantity());
     }
+
+    int getId();
     
 }
