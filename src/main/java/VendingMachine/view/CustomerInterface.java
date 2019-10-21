@@ -121,12 +121,12 @@ public class CustomerInterface implements CommandLineInterface {
             case "2":
                 printCurrencyList();
                 Scanner currency_sc = new Scanner(System.in);
-                String selection = currency_sc.next().replace(" ","");  //delete any white space
+                String selection = currency_sc.next().replace(" ","").toUpperCase();  //delete any white space
                 double amount = converter.convertCurrency("USD",selection,cart.getTotalPrice());
                 System.out.printf("You need to pay: %f in %s\n", amount, selection);
                 System.out.println("Checkout? (Y|N)");
                 Payment payment = new Payment(customer,cart.getTotalPrice());
-                String answer = currency_sc.next();
+                String answer = currency_sc.next().toUpperCase();
                 if(answer.equals("Y")){
                     //do customer pay here
                     System.out.println("Thank you for your purchasing");
