@@ -24,7 +24,7 @@ public class VendingMachine {
 
     /**
      * @param foodId  The id of the food item
-     * @param quantity How many food items the customer wnats
+     * @param quantity How many food items the customer wants
      */
     public Food retrieveFoodItemForCustomer(int foodId, int quantity) {
         int result = inventory.removeFoodFromInventory(foodId, quantity);

@@ -31,7 +31,6 @@ public class Inventory {
     }
     
     public int restockSingleInventory(int foodId) {
-
         Food item = getFoodById(foodId);
         if (item == null) {
             /* This error code indicates the item was not found */
