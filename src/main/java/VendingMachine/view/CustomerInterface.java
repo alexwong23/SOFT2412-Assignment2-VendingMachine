@@ -16,10 +16,12 @@ public class CustomerInterface implements CommandLineInterface {
     }
 
     public void printFoodList(){
-        System.out.printf("%-20s%-10s%-10s%-10s\n","Items"," Type","  Qua","Price");
+        System.out.printf("%-20s%-10s%-10s%-10s\n","Items","Type","Price","Quantity");
         System.out.println("---------------------------------------------");
         for (Food item : this.vd.getAllFood()) {
             System.out.println(item.getDisplayString());
         }
+
     }
+
 }

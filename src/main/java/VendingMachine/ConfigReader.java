@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+@SuppressWarnings("unchecked")
 public class ConfigReader {
     public static VendingMachineConfig readFoodConfigs (String relPathToConfigFile) throws IllegalArgumentException {
         /* Create a new jsonParser */
