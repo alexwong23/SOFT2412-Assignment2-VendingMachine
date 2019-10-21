@@ -1,17 +1,17 @@
 package VendingMachine.model;
 
 public class Money {
-//    Amount value;
+    //    Amount value;
 //    enum Amount{
 //    TENC, TWENTYC, FIFTYC, ONE, TWO, FIVE, TEN, TWENTY;
 //    }
-    int tenCents;
-    int twentyCents;
-    int fiftyCents;
-    int one;
-    int two;
-    int five;
-    int ten;
-    int twenty; 
+    public int tenCents;
+    public int twentyCents;
+    public int fiftyCents;
+    public int one;
+    public int two;
+    public int five;
+    public int ten;
+    public int twenty;
 
 }
