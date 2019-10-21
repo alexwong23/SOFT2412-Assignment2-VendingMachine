@@ -1,9 +1,10 @@
 package VendingMachine.view;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 import VendingMachine.model.Food;
-import VendingMachine.model.ShoppingCart;
 import VendingMachine.model.VendingMachine;
 
 public class StaffInterface implements CommandLineInterface {
@@ -24,7 +25,9 @@ public class StaffInterface implements CommandLineInterface {
                 case "1":
                 	printVendingMachine();
                 	if(vd.getInventory().restockAllInventory() == 0) {
-                		System.out.println("Success: All Inventory Restocked.");
+                		Date date = new Date();
+                		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                		System.out.println("Success: All Inventory Restocked @ " + formatter.format(date));
                 	} else {
                 		System.out.println("Error: Restock All Inventory Failed.");
                 	}
@@ -35,7 +38,9 @@ public class StaffInterface implements CommandLineInterface {
                     System.out.println("Enter Food ID: ");
                     int id = Integer.parseInt(sc.next());
                 	if(vd.getInventory().restockSingleInventory(id) == 0) {
-                		System.out.println("Success: Single Inventory Restocked.");
+                		Date date = new Date();
+                		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                		System.out.println("Success: Single Inventory Restocked @ " + formatter.format(date));
                 	} else if(vd.getInventory().restockSingleInventory(id) == -2) {
                 		System.out.println("Error: Item already has max quantity.");
                 	} else {
