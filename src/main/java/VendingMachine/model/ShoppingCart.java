@@ -97,12 +97,12 @@ public class ShoppingCart {
      * Simple toString method to print the current "state" of the cart as a string.
      * @return total price and how many items are in the cart.
      */
-
+    @Override
     public String toString(){
 
-        return "Total Price: "+totalPrice+ "Cart size: "+ cartSize;
+        return cart+"Total Price: "+totalPrice+ "Cart size: "+ cartSize;
 
     }
 
-
 }
+
