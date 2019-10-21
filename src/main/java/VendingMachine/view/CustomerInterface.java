@@ -21,5 +21,7 @@ public class CustomerInterface implements CommandLineInterface {
         for (Food item : this.vd.getAllFood()) {
             System.out.println(item.getDisplayString());
         }
+
     }
+
 }

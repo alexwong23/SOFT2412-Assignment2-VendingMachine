@@ -26,29 +26,18 @@ public class ShoppingCart {
         totalPrice = 0.0;
     }
 
-
     /**
      * Adds a Food item to the Cart.
      *
      * @param e, Adds the actual food item selected
-     * @param quantity, the amount of that specific food item that was selected.
      */
-    public void addToCart(Food e, int quantity) {
-
-        if (quantity <= 0) {
-
-            System.out.println("Invalid amount inputted.");
-
-        } else {
-
+    public void addToCart(Food e) {
 
             cart.add(e);
 
-            totalPrice = totalPrice + (e.getPrice() * quantity);
+            totalPrice = totalPrice + e.getPrice();
 
-            cartSize = cartSize + quantity;
-
-        }
+            cartSize = cartSize++;
 
     }
 
@@ -56,27 +45,14 @@ public class ShoppingCart {
      * Remove a Food item from the Cart.
      *
      * @param e, Adds the actual food item selected
-     * @param quantity, the amount of that specific food item that wasgi selected.
      */
-    public void removeFromCart(Food e, int quantity) {
+    public void removeFromCart(Food e) {
 
-        if (cartSize <= 0) {
+        cart.remove(e);
 
-            System.out.println("Trying to remove from an empty cart.");
+        totalPrice = totalPrice - e.getPrice();
 
-        } else if (quantity <= 0) {
-
-            System.out.println("Invalid amount inputted.");
-
-        } else {
-
-            cart.remove(e);
-
-            totalPrice = totalPrice - (e.getPrice() * quantity);
-
-            cartSize = cartSize - quantity;
-
-        }
+        cartSize--;
 
     }
 
