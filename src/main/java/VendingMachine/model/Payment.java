@@ -88,7 +88,7 @@ public class Payment {
     public void conversation() {
         this.paid = new Money();
         Scanner scan = new Scanner(System.in);
-        System.out.println("How is this being paid? ");
+        System.out.println("How is this being paid?");
         double moneyGiven = 0;
         String temp;
         while (moneyGiven < paymentAmount) {
@@ -97,56 +97,56 @@ public class Payment {
             try {
                 paid.tenCents = Integer.parseInt(temp);
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             System.out.println("Please enter the number of 20 cent coins that are to be entered.");
             temp = scan.nextLine();
             try {
                 paid.twentyCents = Integer.parseInt(temp);
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             System.out.println("Please enter the number of 50 cent coins that are to be entered.");
             temp = scan.nextLine();
             try {
                 paid.fiftyCents = Integer.parseInt(temp);
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             System.out.println("Please enter the number of 1 dollar coins that are to be entered.");
             temp = scan.nextLine();
             try {
                 paid.one = Integer.parseInt(temp);
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             System.out.println("Please enter the number of 2 dollar coins that are to be entered.");
             temp = scan.nextLine();
             try {
                 paid.two = Integer.parseInt(temp);
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             System.out.println("Please enter the number of 5 dollar notes that are to be entered.");
             temp = scan.nextLine();
             try {
                 paid.five = Integer.parseInt(temp);
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             System.out.println("Please enter the number of 10 dollar notes that are to be entered.");
             temp = scan.nextLine();
             try {
                 paid.ten = Integer.parseInt(temp);
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             System.out.println("Please enter the number of twemty dollar notes that are to be entered.");
             temp = scan.nextLine();
             try {
                 paid.twenty = Integer.parseInt(temp);
             } catch (Exception e) {
-                e.printStackTrace();
+//                e.printStackTrace();
             }
             moneyGiven = paid.tenCents * 0.1 + paid.twentyCents * 0.2 + paid.fiftyCents * 0.5 + paid.one + paid.two * 2 + paid.five * 5 + paid.ten * 10 + paid.twenty * 20;
             System.out.println("Amount being paid is : " + moneyGiven + "." + " Amount expected is " + paymentAmount);

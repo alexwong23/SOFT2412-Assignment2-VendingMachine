@@ -129,6 +129,14 @@ public class CustomerInterface implements CommandLineInterface {
                 String answer = currency_sc.next().toUpperCase();
                 if(answer.equals("Y")){
                     //do customer pay here
+                    System.out.println("Time to pay");
+                    payment.conversation();
+                    for(Food food: cart.getCart()){
+//                        if(food.getType()==){
+//
+//                        }
+                    }
+//                    vd.getInventory().removeFoodFromInventory();
                     System.out.println("Thank you for your purchasing");
                     System.exit(0);
                 }else if(answer.equals("N")){
