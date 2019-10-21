@@ -42,6 +42,7 @@ public class CustomerInterface implements CommandLineInterface {
         // Code that outputs data to users goes here
     }
 
+<<<<<<< HEAD
     public void printVendingMachine(){
         System.out.println("===========Welcome to vending machine!===========");
         System.out.printf("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Qua");
@@ -62,4 +63,15 @@ public class CustomerInterface implements CommandLineInterface {
     }
 
     public void
+=======
+    public void printFoodList(){
+        System.out.printf("%-20s%-10s%-10s%-10s\n","Items","Type","Price","Quantity");
+        System.out.println("---------------------------------------------");
+        for (Food item : this.vd.getAllFood()) {
+            System.out.println(item.getDisplayString());
+        }
+
+    }
+
+>>>>>>> c4290c555b5edcf2803fe16df726e0282308818d
 }
