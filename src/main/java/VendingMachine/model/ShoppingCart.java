@@ -33,11 +33,19 @@ public class ShoppingCart {
      */
     public void addToCart(Food e) {
 
+        if(e.getQuantity() <= 0 ){
+
+            System.out.println("Sorry this item is currently out of stock.");
+
+        }else {
+
             cart.add(e);
 
             totalPrice = totalPrice + e.getPrice();
 
             cartSize = cartSize++;
+        }
+
 
     }
 
