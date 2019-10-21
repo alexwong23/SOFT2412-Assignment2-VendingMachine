@@ -22,6 +22,16 @@ public class VendingMachine {
         return inventory;
     }
 
-
+    /**
+     * @param foodId  The id of the food item
+     * @param quantity How many food items the customer wnats
+     */
+    public Food retrieveFoodItemForCustomer(int foodId, int quantity) {
+        int result = inventory.removeFoodFromInventory(foodId, quantity);
+        if (result == 0) {
+            return inventory.getFoodById(foodId);
+        }
+        return null;
+    }
 
 }
