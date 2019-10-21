@@ -25,9 +25,9 @@ public class Admin implements User {
     	}
 	 }
     
-    public void restockSingle(int indexFood) {
+    public void restockSingle(int foodId) {
 		// incorrect index and quantity provided
-    	int restockBoolean = Inventory.restockSingleInventory(indexFood);
+    	int restockBoolean = Inventory.restockSingleInventory(foodId);
     	if(restockBoolean == -1) {
     		System.out.println("Error: Invalid input provided.");
     	} else if(restockBoolean == -2) {

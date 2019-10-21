@@ -18,5 +18,6 @@ public interface Food {
     }
 
     int getId();
+
     
 }
