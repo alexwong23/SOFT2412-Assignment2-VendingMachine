@@ -12,7 +12,7 @@ public class Inventory {
         FoodFactory foodFactory = null;
         for (FoodConfig configItem : foodConfigs) {
             foodFactory = configItem.getType().getFactory();
-            food.add(foodFactory.makeFood(configItem.getName(), configItem.getPrice(), configItem.getQuantity()));
+            food.add(foodFactory.makeFood(configItem.getId(), configItem.getName(), configItem.getPrice(), configItem.getQuantity()));
         }
     }
 

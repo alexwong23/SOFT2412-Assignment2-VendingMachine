@@ -5,8 +5,10 @@ public class Chips implements Food {
     String name;
     double price;
     int quantity;
+    int id;
 
-    public Chips(String name, double price, int quantity) {
+    public Chips(int id, String name, double price, int quantity) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -39,6 +41,11 @@ public class Chips implements Food {
 
     @Override
     public Food clone(int quantity) {
-        return new Chips(this.name, this.price, quantity);
+        return new Chips(this.id, this.name, this.price, quantity);
+    }
+
+    @Override
+    public int getId() {
+        return id;
     }
 }

@@ -1,5 +1,5 @@
 package VendingMachine.model;
 
 public interface FoodFactory {
-    Food makeFood(String name, double price, int quantity);
+    Food makeFood(int id, String name, double price, int quantity);
 }

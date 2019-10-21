@@ -16,5 +16,7 @@ public interface Food {
     default String getDisplayString() {
         return String.format("%-20s%-10s%-10s%-10s", getName(), getType().toString(), getPrice(), getQuantity());
     }
+
+    int getId();
     
 }

@@ -40,9 +40,9 @@ public class CustomerInterface implements CommandLineInterface {
         }
         System.out.println("Enter Id to make purchase:");
 
-        int id = Integer.parseInt(sc.next());
-        System.out.println("Pleas enter quantity");
-        int qua = Integer.parseInt(sc.next());
+//        int id = Integer.parseInt(sc.next());
+//        System.out.println("Pleas enter quantity");
+//        int qua = Integer.parseInt(sc.next());
         // Code that outputs data to users goes here
 //        Scanner userScanner = new Scanner(System.in);
 //        String userInput=userScanner.nextLine();
@@ -78,13 +78,13 @@ public class CustomerInterface implements CommandLineInterface {
             System.out.println("Enter Quantity:");
             int qua = Integer.parseInt(sc.next());
 
-            cart.addToCart();
+//            cart.addToCart();
 
-            System.out.println("Continue Shopping? (Y|N)");
-            String answer = sc.next();
-            if(answer.equals("N")){
-                purchasing=false;
-            }
+//            System.out.println("Continue Shopping? (Y|N)");
+//            String answer = sc.next();
+//            if(answer.equals("N")){
+//                purchasing=false;
+//            }
         }
 
     }

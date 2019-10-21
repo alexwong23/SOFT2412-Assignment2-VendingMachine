@@ -21,4 +21,7 @@ public class VendingMachine {
     public Inventory getInventory() {
         return inventory;
     }
+
+
+
 }
