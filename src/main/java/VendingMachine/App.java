@@ -3,12 +3,9 @@
  */
 package VendingMachine;
 
-import java.util.Scanner;
-
 import VendingMachine.config.VendingMachineConfig;
 import VendingMachine.model.VendingMachine;
 import VendingMachine.view.CustomerInterface;
-import VendingMachine.view.StaffInterface;
 
 
 public class App {
