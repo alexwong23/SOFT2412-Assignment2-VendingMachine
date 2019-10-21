@@ -21,11 +21,11 @@ public class CustomerInterface implements CommandLineInterface {
 
     public void commandLine(){
         printVendingMachine();
-        printMainMenu();
 
-        // Code that reads user inputs goes here
+
         Scanner sc = new Scanner(System.in);
         while(sc.hasNext()){
+            printMainMenu();
             String input = sc.next();
             switch (input){
                 case "1":
@@ -43,23 +43,16 @@ public class CustomerInterface implements CommandLineInterface {
         int id = Integer.parseInt(sc.next());
         System.out.println("Pleas enter quantity");
         int qua = Integer.parseInt(sc.next());
-        // Code that outputs data to users goes here
-//        Scanner userScanner = new Scanner(System.in);
-//        String userInput=userScanner.nextLine();
-//        if(userInput == "staff") {
-//        	new StaffInterface(vd);
-//        }
     }
 
     public void printVendingMachine(){
-        System.out.println("===========Welcome to vending machine!===========");
+        System.out.println("=========Welcome to vending machine!=========");
         System.out.printf("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Qua");
-        System.out.println("-------------------------------------------------");
-        for (int i=0; i<vd.getAllFood().size(); i++) {
-            int itemId = i+1;
-            System.out.printf("%-5d%s\n",itemId,vd.getAllFood().get(i).getDisplayString());
+        System.out.println("---------------------------------------------");
+        for (Food food :vd.getAllFood()) {
+            System.out.printf("%s\n",food.getDisplayString());
         }
-        System.out.println("=================================================");
+        System.out.println("=============================================");
     }
 
     public void printMainMenu(){
@@ -78,7 +71,17 @@ public class CustomerInterface implements CommandLineInterface {
             System.out.println("Enter Quantity:");
             int qua = Integer.parseInt(sc.next());
 
-            cart.addToCart();
+            Food target = null;
+            for(Food food: vd.getAllFood()){
+                if(food.getID().equals(id)){
+                    target = food;
+                }
+            }
+            if(target==null){
+                System.out.println("Invalid ID");
+            }else{
+                cart.addToCart(target.clone(qua));
+            }
 
             System.out.println("Continue Shopping? (Y|N)");
             String answer = sc.next();
@@ -86,6 +89,9 @@ public class CustomerInterface implements CommandLineInterface {
                 purchasing=false;
             }
         }
+    }
+
+    public void shoppingCartInterface(){
 
     }
 
