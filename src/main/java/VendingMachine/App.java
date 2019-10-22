@@ -22,8 +22,8 @@ public class App {
         System.out.println("Enter Y to login as staff\nOtherwise, enter anything to continue.");
         Scanner userScanner = new Scanner(System.in);
         while(true) {
-            String userInput = userScanner.nextLine();
-            if(userInput.compareTo("Y") == 0) {
+            String userInput = userScanner.nextLine().toLowerCase();
+            if(userInput.compareTo("y") == 0) {
     			// Staff user interface
     			new StaffInterface(vendingMachine);
     		} else {
@@ -32,7 +32,7 @@ public class App {
             }
             break;
         }
-//		userScanner.close();
+		userScanner.close();
 
         //System.out.println(ConfigReader.readRateConfigs("src/test/resources/config.json").getClass().getCanonicalName());
     }

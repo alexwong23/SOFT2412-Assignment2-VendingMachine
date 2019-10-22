@@ -49,9 +49,12 @@ public class StaffInterface implements CommandLineInterface {
                 	}
                     break;
                 case "3":
-                	printMainMenu();
+                    printVendingMachine();
                     break;
                 case "4":
+                	printMainMenu();
+                    break;
+                case "5":
                     System.out.println("Staff has Quit!");
                     System.exit(0);
                     break;
@@ -70,11 +73,12 @@ public class StaffInterface implements CommandLineInterface {
     }
 
     public void printMainMenu(){
-    	System.out.println("Options:");
+    	System.out.println("Staff Options:");
         System.out.println("1. Restock All Items");
         System.out.println("2. Restock a Single Item");
-        System.out.println("3. List All Options");
-        System.out.println("4. Quit");
-        System.out.println("Enter your option:");
+        System.out.println("3. List All Items");
+        System.out.println("4. List Staff Options");
+        System.out.println("5. Quit");
+        System.out.println("Choose an option:");
     }
 }
