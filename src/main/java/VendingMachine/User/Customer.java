@@ -1,7 +1,7 @@
 package VendingMachine.User;
 
-import VendingMachine.model.Payment;
-import VendingMachine.model.ShoppingCart;
+        import VendingMachine.model.Payment;
+        import VendingMachine.model.ShoppingCart;
 
 public interface Customer extends User{
     ShoppingCart getCart();
