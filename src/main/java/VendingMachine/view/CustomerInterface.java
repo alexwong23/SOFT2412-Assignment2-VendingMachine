@@ -223,7 +223,7 @@ public class CustomerInterface implements CommandLineInterface {
             } catch (Exception e) {
 //                e.printStackTrace();
             }
-            System.out.println("Please enter the number of twemty dollar notes that are to be entered.");
+            System.out.println("Please enter the number of twenty dollar notes that are to be entered.");
             temp = scan.nextLine();
             try {
                 payment.getPaid().twenty = Integer.parseInt(temp);
