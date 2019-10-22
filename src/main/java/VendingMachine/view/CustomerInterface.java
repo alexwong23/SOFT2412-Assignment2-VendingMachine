@@ -129,11 +129,8 @@ public class CustomerInterface implements CommandLineInterface {
                     System.out.println("Time to pay");
                     conversation(payment);
                     for(Food food: cart.getCart()){
-//                        if(food.getType()==){
-//
-//                        }
+                        vd.getInventory().removeFoodFromInventory(food.getId(),food.getQuantity());
                     }
-//                    vd.getInventory().removeFoodFromInventory();
                     System.out.println("Thank you for your purchasing");
                     System.exit(0);
                 }else if(answer.equals("N")){
@@ -236,5 +233,6 @@ public class CustomerInterface implements CommandLineInterface {
             moneyGiven = payment.getTotal();
             System.out.println("Amount being paid is : " + moneyGiven + "." + " Amount expected is " + payment.getPaymentAmount());
         }
+        //the money has been given.
     }
 }
