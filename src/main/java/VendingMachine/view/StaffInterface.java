@@ -37,11 +37,12 @@ public class StaffInterface implements CommandLineInterface {
                 	Scanner sc = new Scanner(System.in);
                     System.out.println("Enter Food ID: ");
                     int id = Integer.parseInt(sc.next());
-                	if(vd.getInventory().restockSingleInventory(id) == 0) {
+                    int restockStatus = vd.getInventory().restockSingleInventory(id);
+                	if(restockStatus == 0) {
                 		Date date = new Date();
                 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
                 		System.out.println("Success: Single Inventory Restocked @ " + formatter.format(date));
-                	} else if(vd.getInventory().restockSingleInventory(id) == -2) {
+                	} else if(restockStatus == -2) {
                 		System.out.println("Error: Item already has max quantity.");
                 	} else {
                 		System.out.println("Error: Item could not be found.");
@@ -51,12 +52,13 @@ public class StaffInterface implements CommandLineInterface {
                 	printMainMenu();
                     break;
                 case "4":
-                    System.exit(1);
+                    System.out.println("Staff has Quit!");
+                    System.exit(0);
                     break;
             }
-        }    
+        }
     }
-	    
+
     public void printVendingMachine(){
         System.out.println("===========Welcome to vending machine!===========");
         System.out.printf("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Qua");
