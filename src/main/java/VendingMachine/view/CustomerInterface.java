@@ -5,10 +5,7 @@ import java.util.Scanner;
 
 import VendingMachine.User.Customer;
 import VendingMachine.User.CustomerImpl;
-import VendingMachine.model.Food;
-import VendingMachine.model.Payment;
-import VendingMachine.model.ShoppingCart;
-import VendingMachine.model.VendingMachine;
+import VendingMachine.model.*;
 import VendingMachine.CurrencyConverter;
 import VendingMachine.ConfigReader;
 
@@ -56,10 +53,10 @@ public class CustomerInterface implements CommandLineInterface {
             System.out.println("Enter Quantity:");
             int qua = Integer.parseInt(purchase_sc.next());
 
-            Food target = null;
-            for(Food food: vd.getAllFood()){
-                if(food.getId()==id){
-                    target = food;
+            InventoryItem target = null;
+            for(InventoryItem item: vd.getInventory().getInventoryItems()){
+                if(item.getFood().getId()==id){
+                    target = item;
                     break;
                 }
             }
@@ -147,13 +144,7 @@ public class CustomerInterface implements CommandLineInterface {
     }
 
     public void printVendingMachine(){
-        System.out.println("===========Welcome to vending machine!================");
-        System.out.printf("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Quantity");
-        System.out.println("------------------------------------------------------");
-        for (Food food :vd.getAllFood()) {
-            System.out.printf("%s\n",food.getDisplayString());
-        }
-        System.out.println("======================================================");
+        System.out.println(vd.toString());
     }
 
     public void printMainMenu(){
