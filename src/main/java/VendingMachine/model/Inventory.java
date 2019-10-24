@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Inventory {
 
-    private ArrayList<Food> food = new ArrayList<>();
+    private ArrayList<InventoryItem> inventoryItems = new ArrayList<>();
 
     private static int MAX_QUANTITY = 10;
 
@@ -14,24 +14,25 @@ public class Inventory {
         FoodFactory foodFactory = null;
         for (FoodConfig configItem : foodConfigs) {
             foodFactory = configItem.getType().getFactory();
-            food.add(foodFactory.makeFood(configItem.getId(), configItem.getName(), configItem.getPrice(), configItem.getQuantity()));
+            Food food = foodFactory.makeFood(configItem.getId(), configItem.getName(), configItem.getPrice());
+            inventoryItems.add(new InventoryItem(food, configItem.getQuantity()));
         }
     }
 
-    ArrayList<Food> getAllFood() {
-        return food;
+    public ArrayList<InventoryItem> getInventoryItems() {
+        return inventoryItems;
     }
     
     // no error checks yet    
     public int restockAllInventory() {
-    	for (Food food : food) {
-    		food.setQuantity(MAX_QUANTITY);
+    	for (InventoryItem item : inventoryItems) {
+    		item.setQuantity(MAX_QUANTITY);
     	}
     	return 0;
     }
     
     public int restockSingleInventory(int foodId) {
-        Food item = getFoodById(foodId);
+        InventoryItem item = getInventoryItemByFoodId(foodId);
         if (item == null) {
             /* This error code indicates the item was not found */
             return -1;
@@ -45,7 +46,7 @@ public class Inventory {
     }
 
     public int addFoodToInventory(int foodId, int quantity) {
-        Food item = getFoodById(foodId);
+        InventoryItem item = getInventoryItemByFoodId(foodId);
         if (item == null) {
             /* This error code indicates the item was not found */
             return -1;
@@ -62,7 +63,7 @@ public class Inventory {
 
     public int removeFoodFromInventory(int foodId, int quantity) {
 
-        Food item = getFoodById(foodId);
+        InventoryItem item = getInventoryItemByFoodId(foodId);
         if (item == null) {
             /* This error code indicates the item was not found */
             return -1;
@@ -75,9 +76,9 @@ public class Inventory {
         return 0;
     }
 
-    public Food getFoodById(int foodId) {
-        for (Food item : food) {
-            if (item.getId() == foodId) {
+    public InventoryItem getInventoryItemByFoodId(int foodId) {
+        for (InventoryItem item : inventoryItems) {
+            if (item.getFood().getId() == foodId) {
                 return item;
             }
         }
