@@ -7,7 +7,7 @@ public class Admin implements User {
     }
 
     /**
-     *  For Admin, it will return AMIN
+     *  For Admin, it will return ADMIN
      * @return the user's type
      */
     @Override
