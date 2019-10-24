@@ -91,10 +91,10 @@ public class CustomerInterface implements CommandLineInterface {
                     int qua = Integer.parseInt(deleting_sc.next());
 
                     //The following part can be put into a method - findFood
-                    Food target = null;
-                    for(Food food:cart.getCart()){
-                        if(food.getId()==id){
-                            target = food;
+                    InventoryItem target = null;
+                    for(InventoryItem item:cart.getCart()){
+                        if(item.getFood().getId()==id){
+                            target = item;
                             break;
                         }
                     }
@@ -128,8 +128,8 @@ public class CustomerInterface implements CommandLineInterface {
                     //do customer pay here
                     System.out.println("Time to pay");
                     conversation(payment);
-                    for(Food food: cart.getCart()){
-                        vd.getInventory().removeFoodFromInventory(food.getId(),food.getQuantity());
+                    for(InventoryItem item: cart.getCart()){
+                        vd.getInventory().removeFoodFromInventory(item.getFood().getId(),item.getQuantity());
                     }
                     System.out.println("Thank you for your purchasing");
                     System.exit(0);

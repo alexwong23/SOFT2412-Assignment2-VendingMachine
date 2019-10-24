@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import VendingMachine.model.Food;
+import VendingMachine.model.InventoryItem;
 import VendingMachine.model.VendingMachine;
 
 public class StaffInterface implements CommandLineInterface {
@@ -90,8 +90,8 @@ public class StaffInterface implements CommandLineInterface {
         System.out.println("===========Welcome to vending machine!===========");
         System.out.printf("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Qua");
         System.out.println("-------------------------------------------------");
-        for (Food food :vd.getAllFood()) {
-            System.out.printf("%s\n",food.getDisplayString());
+        for (InventoryItem item :vd.getInventory().getInventoryItems()) {
+            System.out.printf("%s\n",item.getDisplayString());
         }
         System.out.println("=================================================");
     }

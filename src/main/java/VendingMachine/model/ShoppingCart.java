@@ -10,14 +10,14 @@ import java.util.List;
  */
 public class ShoppingCart{
 
-    private List<Food> cart; //actual list of food
+    private List<InventoryItem> cart; //actual list of food
 
     /**
      * ShoppingCart constructor
      */
     public ShoppingCart() {
 
-        cart = new ArrayList<Food>();
+        cart = new ArrayList<InventoryItem>();
 
     }
 
@@ -26,7 +26,7 @@ public class ShoppingCart{
      *
      * @param e, Adds the actual food item selected
      */
-    public void addToCart(Food e) {
+    public void addToCart(InventoryItem e) {
 
         //if(e.getQuantity() <= 0 ){
 
@@ -36,6 +36,7 @@ public class ShoppingCart{
 
             cart.add(e);
 
+
         //}
 
     }
@@ -44,15 +45,15 @@ public class ShoppingCart{
      * Remove a Food item from the Cart.
      * @param e, Adds the actual food item selected
      */
-    public void removeFromCart(Food e, int qua) {
+    public void removeFromCart(InventoryItem e, int qua) {
 
-        for(Food food: cart){
-            if(food.getId()==e.getId()){
-                int newQua = food.getQuantity()-qua;
+        for(InventoryItem item: cart){
+            if(item.getFood().getId()==e.getFood().getId()){
+                int newQua = item.getQuantity()-qua;
                 if(newQua==0) {
-                    cart.remove(food);
+                    cart.remove(item);
                 }else{
-                    food.setQuantity(newQua);
+                    item.setQuantity(newQua);
                 }
                 break;
             }
@@ -60,7 +61,7 @@ public class ShoppingCart{
 
     }
 
-    public List<Food> getCart() {
+    public List<InventoryItem> getCart() {
 
         return cart;
     }
@@ -78,7 +79,7 @@ public class ShoppingCart{
 
         for(int i = 0; i < cart.size(); i++){
 
-          totalPrice += cart.get(i).getPrice()*cart.get(i).getQuantity();
+          totalPrice += cart.get(i).getFood().getPrice()*cart.get(i).getQuantity();
         }
 
         return totalPrice;
@@ -104,8 +105,8 @@ public class ShoppingCart{
         String s = "";
         s+="------------------Shopping Cart------------------\n";
         s+=String.format("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Quantity");
-        for(Food food: cart){
-            s+=food.getDisplayString()+"\n";
+        for(InventoryItem item: cart){
+            s+=item.getDisplayString()+"\n";
         }
         s+="\nTotal Quantity: "+getTotalQuantity()+"\n";
         s+="Total Price: $ "+getTotalPrice()+"\n";
