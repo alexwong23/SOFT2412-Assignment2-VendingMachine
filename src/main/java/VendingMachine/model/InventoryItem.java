@@ -14,6 +14,10 @@ public class InventoryItem {
         this.quantity = quantity;
     }
 
+    public void addQuantity(int quantity) { this.quantity += quantity; }
+
+    public void reduceQuantity(int quantity) { this.quantity -= quantity; }
+
     public int getQuantity() {
         return quantity;
     }

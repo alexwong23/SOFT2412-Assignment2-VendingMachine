@@ -48,6 +48,7 @@ public class CustomerInterface implements CommandLineInterface {
         boolean purchasing = true;
         Scanner purchase_sc = new Scanner(System.in);
         while(purchasing) {
+            printVendingMachine();
             System.out.println("Enter ID:");
             int id = Integer.parseInt(purchase_sc.next());
             System.out.println("Enter Quantity:");
@@ -63,7 +64,8 @@ public class CustomerInterface implements CommandLineInterface {
             if(target==null){
                 System.out.println("Invalid ID");
             }else {
-                cart.addToCart(target.clone(qua));
+//                cart.addToCart(target.clone(qua));
+                cart.addToCart(target, qua);
             }
 
             System.out.println("Continue Shopping? (Y|N)");
