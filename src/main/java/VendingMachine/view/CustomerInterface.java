@@ -54,19 +54,8 @@ public class CustomerInterface implements CommandLineInterface {
             System.out.println("Enter Quantity:");
             int qua = Integer.parseInt(purchase_sc.next());
 
-            InventoryItem target = null;
-            for(InventoryItem item: vd.getInventory().getInventoryItems()){
-                if(item.getFood().getId()==id){
-                    target = item;
-                    break;
-                }
-            }
-            if(target==null){
-                System.out.println("Invalid ID");
-            }else {
-//                cart.addToCart(target.clone(qua));
-                cart.addToCart(target, qua);
-            }
+            InventoryItem target = vd.getInventory().getInventoryItemByFoodId(id);
+            cart.addToCart(target, qua);
 
             System.out.println("Continue Shopping? (Y|N)");
             String answer = purchase_sc.next().toUpperCase();
@@ -87,28 +76,17 @@ public class CustomerInterface implements CommandLineInterface {
                 boolean deleting = true;
                 Scanner deleting_sc = new Scanner(System.in);
                 while(deleting){
+                    System.out.println(cart.toString());
                     System.out.println("Enter ID:");
                     int id = Integer.parseInt(deleting_sc.next());
                     System.out.println("Enter Quantity:");
                     int qua = Integer.parseInt(deleting_sc.next());
 
-                    //The following part can be put into a method - findFood
-                    InventoryItem target = null;
-                    for(InventoryItem item:cart.getCart()){
-                        if(item.getFood().getId()==id){
-                            target = item;
-                            break;
-                        }
-                    }
-                    if(target==null){
-                        System.out.println("Invalid ID");
-                    }else if(qua>target.getQuantity()){
-                        System.out.println("Not enough in cart");
-                    } else{
-                        cart.removeFromCart(target,qua);
-                        System.out.println("Deleted");
-                        System.out.println("\n"+cart.toString());
-                    }
+                    InventoryItem target = cart.getInventoryItemByFoodId(id);
+                    cart.removeFromCart(target, qua);
+
+                    InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
+                    target2.addQuantity(qua);
 
                     System.out.println("Continue Deleting? (Y|N)");
                     String answer = deleting_sc.next().toUpperCase();
