@@ -24,7 +24,8 @@ public class CustomerInterface implements CommandLineInterface {
     }
 
     public void commandLine(){
-        printVendingMachine();
+        System.out.println("===========Welcome to vending machine!================\n");
+        printAllFood();
         Scanner sc = new Scanner(System.in);
         while(true){
             printMainMenu();
@@ -48,7 +49,7 @@ public class CustomerInterface implements CommandLineInterface {
         boolean purchasing = true;
         Scanner purchase_sc = new Scanner(System.in);
         while(purchasing) {
-            printVendingMachine();
+            printAllFood();
             System.out.println("Enter ID:");
             int id = Integer.parseInt(purchase_sc.next());
             System.out.println("Enter Quantity:");
@@ -120,8 +121,8 @@ public class CustomerInterface implements CommandLineInterface {
         }
     }
 
-    public void printVendingMachine(){
-        System.out.println(vd.toString());
+    public void printAllFood(){
+        System.out.println(vd.foodToString());
     }
 
     public void printMainMenu(){
