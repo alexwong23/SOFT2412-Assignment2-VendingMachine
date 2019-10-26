@@ -3,14 +3,20 @@ package VendingMachine.model;
 import VendingMachine.config.VendingMachineConfig;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /* Vending machine for customers to interact with. Staff directly interact with Inventory. */
 public class VendingMachine {
-
+    Money money;
     Inventory inventory;
 
     public VendingMachine(VendingMachineConfig config) {
         inventory = new Inventory(config.getFoodConfigs());
+        money = new Money();
+    }
+
+    public double totalMoney(){
+        return money.totalMoney();
     }
 
     public String toString(){
