@@ -147,7 +147,8 @@ public class CustomerInterface implements CommandLineInterface {
         System.out.println("How is this being paid?");
         double moneyGiven = 0;
         String temp;
-        while (moneyGiven != payment.getPaymentAmount()) {
+        boolean successful_purchase = false;
+        while (successful_purchase) {
             System.out.println("Please enter the number of 10 cent coins that are to be entered.");
             temp = scan.nextLine();
             try {
@@ -204,7 +205,33 @@ public class CustomerInterface implements CommandLineInterface {
             } catch (Exception e) {
 //                e.printStackTrace();
             }
+            System.out.println("Please enter the number of fifty dollar notes that are to be entered.");
+            temp = scan.nextLine();
+            try {
+                payment.getPaid().fifty = Integer.parseInt(temp);
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
+            System.out.println("Please enter the number of hundred dollar notes that are to be entered.");
+            temp = scan.nextLine();
+            try {
+                payment.getPaid().hundred = Integer.parseInt(temp);
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
             moneyGiven = payment.getTotal();
+            if(moneyGiven>=payment.getPaymentAmount()){ // see if the money given is equla to or more than the amoutn that has to be paid
+                //do change calculations
+                double vdMoney = vd.totalMoney();
+                if(vdMoney==moneyGiven){
+                    successful_purchase=true;
+                }else if(vdMoney>moneyGiven){
+
+                    successful_purchase = true;
+                }else{
+                    successful_purchase = false;
+                }
+            }
             System.out.println("Amount being paid is : " + moneyGiven + "." + " Amount expected is " + payment.getPaymentAmount());
         }
         //the money has been given.

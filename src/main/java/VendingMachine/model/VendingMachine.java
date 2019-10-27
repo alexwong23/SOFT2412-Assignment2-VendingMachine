@@ -13,10 +13,24 @@ public class VendingMachine {
     public VendingMachine(VendingMachineConfig config) {
         inventory = new Inventory(config.getFoodConfigs());
         money = new Money();
+        //maybe have the amount of money be insane;
+        money.tenCents = 100;
+        money.twentyCents = 100;
+        money.fiftyCents = 100;
+        money.one = 100;
+        money.two = 100;
+        money.five = 100;
+        money.ten = 100;
+        money.twenty = 100;
+        money.fifty = 100;
+        money.hundred = 100;
     }
 
     public double totalMoney(){
         return money.totalMoney();
+    }
+    public boolean subtractMoney(double moneyTakenOut){
+
     }
 
     public String toString(){

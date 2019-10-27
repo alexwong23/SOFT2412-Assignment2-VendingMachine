@@ -94,6 +94,6 @@ public class Payment {
         this.paid = paid;
     }
     public double getTotal(){
-        return (double)(paid.tenCents * 0.1 + paid.twentyCents * 0.2 + paid.fiftyCents * 0.5 + paid.one + paid.two * 2 + paid.five * 5 + paid.ten * 10 + paid.twenty * 20);
+        return paid.totalMoney();
     }
 }
