@@ -9,9 +9,7 @@ import java.util.List;
  *
  */
 public class ShoppingCart{
-
     private List<InventoryItem> cart; //actual list of food
-
     /**
      * ShoppingCart constructor
      */
@@ -38,7 +36,7 @@ public class ShoppingCart{
      * @param e, Adds the actual food item selected
      */
     public void addToCart(InventoryItem e, int quantity) {
-        if(e==null){
+        if(e == null){
             System.out.println("Sorry, invalid ID provided.");
         }else if(quantity <= 0) {
             System.out.println("Sorry, invalid quantity provided.");

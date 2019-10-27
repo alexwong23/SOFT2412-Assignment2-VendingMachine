@@ -76,7 +76,7 @@ public class ConfigReader {
             String type = (String) cashJSON.get("type");
             double value = (double) cashJSON.get("value");
             int quantity = (int) (long)  cashJSON.get("quantity");
-            if (!EnumUtils.isValidEnum(FoodEnum.class, type.toUpperCase())) {
+            if (!EnumUtils.isValidEnum(CashEnum.class, type.toUpperCase())) {
                 throw new IllegalArgumentException("Invalid enemy color provided.");
             }
             /* Add to our array list of platforms. */

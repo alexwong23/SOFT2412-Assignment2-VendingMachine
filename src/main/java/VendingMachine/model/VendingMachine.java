@@ -2,8 +2,6 @@ package VendingMachine.model;
 
 import VendingMachine.config.VendingMachineConfig;
 
-import java.util.ArrayList;
-
 /* Vending machine for customers to interact with. Staff directly interact with Inventory. */
 public class VendingMachine {
 
@@ -27,13 +25,25 @@ public class VendingMachine {
         return s;
     }
 
-    // FOR STAFF ONLY
     public String cashToString(){
-        String s = String.format("%-5s%-20s%-10s%-10s%-10s\n", "ID","Items","Type","Value","Quantity");
+        String s = String.format("%-5s%-20s%-10s\n", "ID","Items","Type");
         s += "------------------------------------------------------\n";
 
         for (CofferDenomination denomination : coffer.getCofferDenominations()) {
             s += String.format("%s\n", denomination.getDisplayString());
+        }
+        s += "======================================================\n";
+
+        return s;
+    }
+
+    // FOR STAFF ONLY
+    public String staffCashToString(){
+        String s = String.format("%-5s%-20s%-10s%-10s%-10s\n", "ID","Items","Type","Value","Quantity");
+        s += "------------------------------------------------------\n";
+
+        for (CofferDenomination denomination : coffer.getCofferDenominations()) {
+            s += String.format("%s\n", denomination.getStaffDisplayString());
         }
         s += "======================================================\n";
 

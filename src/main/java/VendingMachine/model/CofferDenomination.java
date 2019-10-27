@@ -27,6 +27,9 @@ public class CofferDenomination {
     }
 
     public String getDisplayString() {
+        return String.format("%-5d%-20s%-10s", cash.getId(), cash.getName(), cash.getType().toString());
+    }
+    public String getStaffDisplayString() {
         return String.format("%-5d%-20s%-10s%-10s%-10s", cash.getId(), cash.getName(), cash.getType().toString(), cash.getValue(), quantity);
     }
 

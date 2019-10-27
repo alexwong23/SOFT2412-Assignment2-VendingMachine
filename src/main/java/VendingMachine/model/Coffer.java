@@ -76,13 +76,13 @@ public class Coffer {
 //        return 0;
 //    }
 //
-//    public InventoryItem getInventoryItemByFoodId(int foodId) {
-//        for (InventoryItem item : inventoryItems) {
-//            if (item.getFood().getId() == foodId) {
-//                return item;
-//            }
-//        }
-//        return null;
-//    }
+    public CofferDenomination getDenominationByCashId(int cashId) {
+        for (CofferDenomination denomination : cofferDenominations) {
+            if (denomination.getCash().getId() == cashId) {
+                return denomination;
+            }
+        }
+        return null;
+    }
 
 }

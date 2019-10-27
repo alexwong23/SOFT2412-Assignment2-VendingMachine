@@ -2,16 +2,12 @@ package VendingMachine.model;
 
 import VendingMachine.User.Customer;
 
-import java.util.Scanner;
-
 public class Payment {
 
     private Customer customer;
-    private double paymentAmount;
-    private double totalPrice;
-    private double change;
-    private boolean success;
-    private Money paid;
+    private double amountDue;
+    private double amountPaid;
+    private String currency;
 
 //    Customer can:
 //
@@ -20,80 +16,43 @@ public class Payment {
 //    Upon success, customer receives product and change.
 //    Product Stock will be updated accordingly
 
-
     /**
      * All status of this payment will be set up once it is created, including payment succeed or fail, and how much
      * chager
      *
      * @param customer      the customer who is using vending machine
-     * @param paymentAmount how much money user pay for the vending machine
+     * @param amountDue how much money user pay for the vending machine
+     * @param currency currency to pay in
      */
-    public Payment(Customer customer, double paymentAmount) {
-
+    public Payment(Customer customer, double amountDue, String currency) {
         this.customer = customer;
-        this.paymentAmount = paymentAmount;
+        this.amountDue = amountDue;
+        this.currency = currency;
+        this.amountPaid = 0;
+    }
 
-        this.totalPrice = customer.getCart().getTotalPrice();
+    public void resetPayment() { this.amountPaid = 0; }
+    public double change() { return this.amountPaid - this.amountDue; }
 
-        //Positive charge means that customer pays enough
-        this.change = paymentAmount - totalPrice;
-
-        //if customer pay enough, this payment is success, or otherwise this payment will be declined.
-        if (change > 0) {
-            this.success = true;
+    public void makePayment(CofferDenomination e, int quantity) {
+        if(e==null){
+            System.out.println("Sorry, invalid ID provided.");
+        }else if(quantity <= 0) {
+            System.out.println("Sorry, invalid quantity provided.");
         } else {
-            this.success = false;
+            e.addQuantity(quantity); // add original quantity
+            this.amountPaid += e.getCash().getValue() * quantity;
+            System.out.println("Cash inserted successfully.");
         }
     }
 
-    /**
-     * Determine if this payment is success or fail
-     *
-     * @return the status of payment - true: payment succeed; -false: paymeny fail
-     */
-    public boolean isSuccess() {
-        return success;
+    // return change greedily!!!
+    public void returnChange(){
+        System.out.printf("Change of $%.2f in %s received.\n", change());
     }
 
-    /**
-     * Get the charge of payment. If charge is positive, it means payment succeed. If it is negative, it means fail
-     *
-     * @return the charge
-     */
-    public double getChange() {
-        return change;
-    }
-
-    /**
-     * Generate String to show receipt for customer to read
-     *
-     * @return the receipt of this payment
-     */
-    public String receipt() {
-        String receipt = "";
-        if (success) {
-            receipt += "Payment succeed";   //extend more later
-        } else {
-            receipt += "Payment fail";      //extend more later
-        }
-        return receipt;
-    }
-    // public Money getMoney(){
-    //  return this.paid;
-    //}
-
-
-//Oscar! Your code is here!
-    public Money getPaid(){
-        return this.paid;
-    }
-    public double getPaymentAmount(){
-        return this.paymentAmount;
-    }
-    public void setPaid(Money paid){
-        this.paid = paid;
-    }
-    public double getTotal(){
-        return (double)(paid.tenCents * 0.1 + paid.twentyCents * 0.2 + paid.fiftyCents * 0.5 + paid.one + paid.two * 2 + paid.five * 5 + paid.ten * 10 + paid.twenty * 20);
+    public void printStatus(){
+        System.out.printf("You need to pay: $%.2f in %s\n", this.amountDue, this.currency);
+        System.out.printf("You have paid: $%.2f in %s\n", this.amountPaid, this.currency);
     }
 }
