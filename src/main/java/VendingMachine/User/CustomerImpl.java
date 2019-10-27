@@ -1,6 +1,5 @@
 package VendingMachine.User;
 
-import VendingMachine.model.Payment;
 import VendingMachine.model.ShoppingCart;
 
 public class CustomerImpl implements Customer{
@@ -20,15 +19,15 @@ public class CustomerImpl implements Customer{
         return cart;
     }
 
-    /**
-     *It creates a payment
-     * @param paymentAmount how much customer pay for the vending machine
-     * @return the payment
-     */
-    @Override
-    public Payment makePayment(double paymentAmount) {
-        return new Payment(this, paymentAmount);
-    }
+//    /**
+//     *It creates a payment
+//     * @param paymentAmount how much customer pay for the vending machine
+//     * @return the payment
+//     */
+//    @Override
+//    public Payment getPayment(double paymentAmount) {
+//        return new Payment(this, paymentAmount);
+//    }
 
     /**
      *For customer class, it will return CUSTOMER
