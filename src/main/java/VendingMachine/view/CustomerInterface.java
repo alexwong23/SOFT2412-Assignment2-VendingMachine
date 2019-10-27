@@ -104,15 +104,12 @@ public class CustomerInterface implements CommandLineInterface {
 
                 Payment payment = new Payment(customer, amountDue, selection);
                 if(paymentInterface(payment)) {
-                    // remove food properly....
-                    for(InventoryItem item: cart.getCart()) {
-                        vd.getInventory().removeFoodFromInventory(item.getFood().getId(),item.getQuantity());
-                    }
-                    payment.returnChange();
+                    cart.resetCart();
+                    payment.returnChange(true);
                     System.out.println("Thank you for your purchase, come back again!");
-                    System.exit(0);
+                    break;
                 } else {
-                    payment.returnChange();
+                    payment.returnChange(false);
                     System.out.println("Your change has been returned.");
                     break;
                 }
@@ -151,17 +148,21 @@ public class CustomerInterface implements CommandLineInterface {
         while(true) {
             payment.printStatus();
             printAllCash();
-            System.out.println("Enter ID:");
+            System.out.println("Return to cart: 0 \tOR");
+            System.out.println("Enter ID: ");
             int id = Integer.parseInt(payment_sc.next());
+            if(id == 0) {
+                break;
+            }
             System.out.println("Enter Quantity:");
             int qua = Integer.parseInt(payment_sc.next());
 
             CofferDenomination target = vd.getCoffer().getDenominationByCashId(id);
             payment.makePayment(target, qua);
             if(payment.change() >= 0) {
-                System.out.println("You have enough to checkout. Continue Paying? (Y|N)");
+                System.out.println("You have enough to checkout. Checkout now? (Y|N)");
                 String answer = payment_sc.next().toUpperCase();
-                if(answer.equals("N")){
+                if(answer.equals("Y")){
                     success = true;
                     break;
                 }

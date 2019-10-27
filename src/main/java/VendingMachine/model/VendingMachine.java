@@ -25,12 +25,13 @@ public class VendingMachine {
         return s;
     }
 
+    // SHOW DENOMINATION QUANTITY FOR TESTING PURPOSE
     public String cashToString(){
         String s = String.format("%-5s%-20s%-10s\n", "ID","Items","Type");
         s += "------------------------------------------------------\n";
 
         for (CofferDenomination denomination : coffer.getCofferDenominations()) {
-            s += String.format("%s\n", denomination.getDisplayString());
+            s += String.format("%s\n", denomination.getStaffDisplayString());
         }
         s += "======================================================\n";
 

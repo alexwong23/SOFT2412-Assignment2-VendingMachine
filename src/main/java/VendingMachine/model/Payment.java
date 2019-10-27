@@ -31,7 +31,11 @@ public class Payment {
         this.amountPaid = 0;
     }
 
-    public void resetPayment() { this.amountPaid = 0; }
+    public void resetPayment() {
+        this.amountDue = 0;
+        this.currency = "";
+        this.amountPaid = 0;
+    }
     public double change() { return this.amountPaid - this.amountDue; }
 
     public void makePayment(CofferDenomination e, int quantity) {
@@ -46,9 +50,14 @@ public class Payment {
         }
     }
 
-    // return change greedily!!!
-    public void returnChange(){
-        System.out.printf("Change of $%.2f in %s received.\n", change());
+    // return change greedily!!! INCOMPLETE
+    public void returnChange(boolean paymentSuccessful){
+        if(paymentSuccessful) {
+            System.out.printf("Change of $%.2f in %s received.\n", change(), this.currency);
+        } else {
+            System.out.printf("Change of $%.2f in %s received.\n", this.amountPaid, this.currency);
+        }
+        resetPayment();
     }
 
     public void printStatus(){
