@@ -34,7 +34,7 @@ public class RecordsTest {
         InventoryItem chips = new InventoryItem(new Drink(2, "Chips", 4), 1);
 
         /* Cancel chip order */
-        testRecords.addCancellationRecord(cokeDescription, chips);
+        testRecords.addCancellationRecord("Cancelling Chips", chips);
 
         /* Records should have a size of 2 */
         assertEquals(testRecords.getRecords().size(), 2);
