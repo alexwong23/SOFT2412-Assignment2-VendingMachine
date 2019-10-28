@@ -101,7 +101,7 @@ public class StaffInterface implements CommandLineInterface {
     public void printMainMenu(){
     	System.out.println("Staff Options:");
         System.out.println("\t1. Refill All");
-    //    System.out.println("\t2. Refill Single");
+        System.out.println("\t2. Refill Single");
         System.out.println("\t3. List All Items");
      //   System.out.println("\t4. List Staff Options");
         System.out.println("\t5. Quit");
