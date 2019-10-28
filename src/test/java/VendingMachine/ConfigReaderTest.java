@@ -24,6 +24,5 @@ public class ConfigReaderTest {
         assertEquals(expected.get("CNY"), test.get("CNY"), 0.01);
         assertEquals(expected.get("JPY"), test.get("JPY"), 0.01);
         assertEquals(expected.get("CAD"), test.get("CAD"), 0.01);
-
     }
 }

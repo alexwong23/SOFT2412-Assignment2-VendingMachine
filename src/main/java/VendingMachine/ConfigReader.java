@@ -1,7 +1,9 @@
 package VendingMachine;
 
+import VendingMachine.config.CashConfig;
 import VendingMachine.config.FoodConfig;
 import VendingMachine.config.VendingMachineConfig;
+import VendingMachine.model.CashEnum;
 import VendingMachine.model.FoodEnum;
 import org.apache.commons.lang3.EnumUtils;
 import org.json.simple.JSONArray;
@@ -17,7 +19,7 @@ import java.util.Iterator;
 
 @SuppressWarnings("unchecked")
 public class ConfigReader {
-    public static VendingMachineConfig readFoodConfigs (String relPathToConfigFile) throws IllegalArgumentException {
+    public static VendingMachineConfig readFoodNCashConfigs (String relPathToConfigFile) throws IllegalArgumentException {
         /* Create a new jsonParser */
         JSONParser jsonParser = new JSONParser();
         JSONObject settingsJSON = null;
@@ -60,7 +62,34 @@ public class ConfigReader {
             ));
         }
 
-        return new VendingMachineConfig(foodConfigs);
+        /* Initialise our platform array list */
+        ArrayList<CashConfig> cashConfigs = new ArrayList<>();
+        /* Get array of platforms from JSON file */
+        JSONArray cashArr = (JSONArray) settingsJSON.get("cash");
+        /* Iterate through each platform */
+        Iterator<JSONObject> cashIterator = cashArr.iterator();
+        while (cashIterator.hasNext()) {
+            JSONObject cashJSON = cashIterator.next();
+            /* Obtain all platform values from JSON object and cast into relevant types */
+            int id = (int) (long) cashJSON.get("id");
+            String name = (String) cashJSON.get("name");
+            String type = (String) cashJSON.get("type");
+            double value = (double) cashJSON.get("value");
+            int quantity = (int) (long)  cashJSON.get("quantity");
+            if (!EnumUtils.isValidEnum(CashEnum.class, type.toUpperCase())) {
+                throw new IllegalArgumentException("Invalid enemy color provided.");
+            }
+            /* Add to our array list of platforms. */
+            cashConfigs.add(new CashConfig(
+                    id,
+                    name,
+                    CashEnum.valueOf(type.toUpperCase()),
+                    value,
+                    quantity
+            ));
+        }
+
+        return new VendingMachineConfig(foodConfigs, cashConfigs);
     }
 
     /**
@@ -86,4 +115,5 @@ public class ConfigReader {
         }
         return fxRates;
     }
+
 }

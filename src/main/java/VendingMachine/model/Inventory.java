@@ -22,15 +22,15 @@ public class Inventory {
     public ArrayList<InventoryItem> getInventoryItems() {
         return inventoryItems;
     }
-    
-    // no error checks yet    
+
+    // no error checks yet
     public int restockAllInventory() {
     	for (InventoryItem item : inventoryItems) {
     		item.setQuantity(MAX_QUANTITY);
     	}
     	return 0;
     }
-    
+
     public int restockSingleInventory(int foodId) {
         InventoryItem item = getInventoryItemByFoodId(foodId);
         if (item == null) {
