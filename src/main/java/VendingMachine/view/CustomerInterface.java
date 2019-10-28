@@ -7,30 +7,24 @@ import VendingMachine.User.Customer;
 import VendingMachine.User.CustomerImpl;
 import VendingMachine.model.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class CustomerInterface implements CommandLineInterface {
+    private Records record;
     private VendingMachine vd;
     private ShoppingCart cart;
     private Customer customer;
     private CurrencyConverter converter = new CurrencyConverter(ConfigReader.readRateConfigs("src/main/resources/config.json"));
 
     public CustomerInterface(VendingMachine vendingMachine) {
+        this.record = new Records();
         this.vd = vendingMachine;
         this.customer = new CustomerImpl();
         this.cart = customer.getCart();
         commandLine();
     }
-
-//    public static  CustomerInterface testConstructor(VendingMachine vendingMachine){
-//        CustomerInterface This = new CustomerInterface(vendingMachine);
-//        This.record = new Records();
-//        This.vd = vendingMachine;
-//        This.customer = new CustomerImpl();
-//        This.cart = This.customer.getCart();
-//        return This;
-//    }
 
     public void commandLine(){
         System.out.println("===========Welcome to vending machine!================\n");
@@ -54,17 +48,9 @@ public class CustomerInterface implements CommandLineInterface {
         }
     }
 
-    public void purchaseInterface(){
-        boolean purchasing = true;
-        Scanner purchase_sc = new Scanner(System.in);
+    public void purchaseLoop(boolean purchasing, Scanner purchase_sc){
         while(purchasing) {
             printAllFood();
-<<<<<<< HEAD
-            System.out.println("Enter ID:");
-            int id = Integer.parseInt(purchase_sc.next());
-            System.out.println("Enter Quantity:");
-            int qua = Integer.parseInt(purchase_sc.next());
-=======
             int id = -1;
             int qua = -1;
             try {
@@ -78,21 +64,33 @@ public class CustomerInterface implements CommandLineInterface {
             } catch (Exception e) {
                 System.out.println("did not enter an ID. Please choose again, or stop shopping.");
             }
-            if(qua!=-1){
+            if(id!=-1){
                 try {
                     System.out.println("Enter Quantity:");
                     qua = Integer.parseInt(purchase_sc.next());
->>>>>>> parent of ef2af96... Now the change system works with a greedyh algorithm,. Records 'works' but needs to change the shoppingcart class to make it work
 
-            InventoryItem target = vd.getInventory().getInventoryItemByFoodId(id);
-            cart.addToCart(target, qua);
+                } catch (Exception e) {
+                    System.out.println("did not enter an amount. Please choose again or stop shopping.");
+                }
+            }
+            if(qua>-1 &&id>-1){
+                InventoryItem target = vd.getInventory().getInventoryItemByFoodId(id);
+                cart.addToCart(target, qua);
 
+            }
             System.out.println("Continue Shopping? (Y|N)");
             String answer = purchase_sc.next().toUpperCase();
             if(answer.equals("N")){
                 purchasing=false;
             }
         }
+    }
+
+    public void purchaseInterface(){
+        boolean purchasing = true;
+        Scanner purchase_sc = new Scanner(System.in);
+        purchaseLoop(purchasing, purchase_sc);
+
     }
 
     public void shoppingCartInterface(){
@@ -105,25 +103,26 @@ public class CustomerInterface implements CommandLineInterface {
             case "1":
                 boolean deleting = true;
                 Scanner deleting_sc = new Scanner(System.in);
-                while(deleting){
-                    System.out.println(cart.toString());
-                    System.out.println("Enter ID:");
-                    int id = Integer.parseInt(deleting_sc.next());
-                    System.out.println("Enter Quantity:");
-                    int qua = Integer.parseInt(deleting_sc.next());
-
-                    InventoryItem target = cart.getInventoryItemByFoodId(id);
-                    cart.removeFromCart(target, qua);
-
-                    InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
-                    target2.addQuantity(qua);
-
-                    System.out.println("Continue Deleting? (Y|N)");
-                    String answer = deleting_sc.next().toUpperCase();
-                    if(answer.equals("N")){
-                        deleting = false;
-                    }
-                }
+                purchaseLoop(deleting, deleting_sc);
+//                while(deleting){
+//                    System.out.println(cart.toString());
+//                    System.out.println("Enter ID:");
+//                    int id = Integer.parseInt(deleting_sc.next());
+//                    System.out.println("Enter Quantity:");
+//                    int qua = Integer.parseInt(deleting_sc.next());
+//
+//                    InventoryItem target = cart.getInventoryItemByFoodId(id);
+//                    cart.removeFromCart(target, qua);
+//
+//                    InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
+//                    target2.addQuantity(qua);
+//
+//                    System.out.println("Continue Deleting? (Y|N)");
+//                    String answer = deleting_sc.next().toUpperCase();
+//                    if(answer.equals("N")){
+//                        deleting = false;
+//                    }
+//                }
                 break;
             case "2":
                 printCurrencyList();
@@ -171,39 +170,107 @@ public class CustomerInterface implements CommandLineInterface {
         System.out.println("Enter your selection: ");
     }
 
+//    public void conversation(Payment payment) {
+//        payment.setPaid(new Money());
+//        Scanner scan = new Scanner(System.in);
+//        System.out.println("How is this being paid?");
+//        double moneyGiven = 0;
+//        String temp;
+//        boolean successful_purchase = false;
+//        while (successful_purchase) {
+//            System.out.println("Please enter the number of 10 cent coins that are to be entered.");
+//            temp = scan.nextLine();
+//            try {
+//                payment.getPaid().tenCents = Integer.parseInt(temp);
+//            } catch (Exception e) {
+////                e.printStackTrace();
+//            }
+//            System.out.println("Please enter the number of 20 cent coins that are to be entered.");
+//            temp = scan.nextLine();
+//            try {
+//                payment.getPaid().twentyCents = Integer.parseInt(temp);
+//            } catch (Exception e) {
+////                e.printStackTrace();
+//            }
+//            System.out.println("Please enter the number of 50 cent coins that are to be entered.");
+//            temp = scan.nextLine();
+//            try {
+//                payment.getPaid().fiftyCents = Integer.parseInt(temp);
+//            } catch (Exception e) {
+////                e.printStackTrace();
+//            }
+//            System.out.println("Please enter the number of 1 dollar coins that are to be entered.");
+//            temp = scan.nextLine();
+//            try {
+//                payment.getPaid().one = Integer.parseInt(temp);
+//            } catch (Exception e) {
+////                e.printStackTrace();
+//            }
+//            System.out.println("Please enter the number of 2 dollar coins that are to be entered.");
+//            temp = scan.nextLine();
+//            try {
+//                payment.getPaid().two = Integer.parseInt(temp);
+//            } catch (Exception e) {
+////                e.printStackTrace();
+//            }
+//            System.out.println("Please enter the number of 5 dollar notes that are to be entered.");
+//            temp = scan.nextLine();
+//            try {
+//                payment.getPaid().five = Integer.parseInt(temp);
+//            } catch (Exception e) {
+////                e.printStackTrace();
+//            }
+//            System.out.println("Please enter the number of 10 dollar notes that are to be entered.");
+//            temp = scan.nextLine();
+//            try {
+//                payment.getPaid().ten = Integer.parseInt(temp);
+//            } catch (Exception e) {
+////                e.printStackTrace();
+
+
     public boolean paymentInterface(Payment payment) {
         boolean success = false;
         Scanner payment_sc = new Scanner(System.in);
         while(true) {
             payment.printStatus();
             printAllCash();
+            int id = -1;
             System.out.println("Return to cart: 0 \tOR");
             System.out.println("Enter ID: ");
-            int id = Integer.parseInt(payment_sc.next());
+
+            try{
+                id = Integer.parseInt(payment_sc.next());
+            }catch(Exception e){
+                System.out.println("did not enter an ID, nor did you choose to return.");
+            }
             if(id == 0) {
                 break;
             }
-            System.out.println("Enter Quantity:");
-            int qua = Integer.parseInt(payment_sc.next());
+            int qua = 0;
+            if(id>0){
+                System.out.println("Enter Quantity:");
 
-<<<<<<< HEAD
-            CofferDenomination target = vd.getCoffer().getDenominationByCashId(id);
-            payment.makePayment(target, qua);
-=======
                 try {
                     qua = Integer.parseInt(payment_sc.next());
                 } catch (Exception e) {
                     System.out.println("did not enter an amount. Please choose again, or checkout.");
                 }
             }
-
 //            int qua = Integer.parseInt(payment_sc.next());
             if(qua>0){
                 CofferDenomination target = vd.getCoffer().getDenominationByCashId(id);
                 payment.makePayment(target, qua);
             }
->>>>>>> parent of ef2af96... Now the change system works with a greedyh algorithm,. Records 'works' but needs to change the shoppingcart class to make it work
             if(payment.change() >= 0) {
+                boolean paid = vd.getCoffer().payOut(payment.change());
+                if(paid==true){
+                    //money traklen out from ccustomer.
+
+                    //skip that for now
+//                    record.success(0,(ArrayList) cart.getCart());
+                }else{
+//                    record.fail(0, (ArrayList) cart.getCart());
+                }
                 System.out.println("You have enough to checkout. Checkout now? (Y|N)");
                 String answer = payment_sc.next().toUpperCase();
                 if(answer.equals("Y")){
@@ -211,8 +278,6 @@ public class CustomerInterface implements CommandLineInterface {
                     break;
                 }
             }
-<<<<<<< HEAD
-=======
 //            System.out.println("Please enter the number of fifty dollar notes that are to be entered.");
 //            temp = scan.nextLine();
 //            try {
@@ -241,11 +306,6 @@ public class CustomerInterface implements CommandLineInterface {
 //                }
 //            }
 //            System.out.println("Amount being paid is : " + moneyGiven + "." + " Amount expected is " + payment.getPaymentAmount());
-
-<<<<<<< HEAD
->>>>>>> parent of ef2af96... Now the change system works with a greedyh algorithm,. Records 'works' but needs to change the shoppingcart class to make it work
-=======
->>>>>>> parent of ef2af96... Now the change system works with a greedyh algorithm,. Records 'works' but needs to change the shoppingcart class to make it work
         }
         return success;
     }
