@@ -5,7 +5,6 @@ import VendingMachine.config.VendingMachineConfig;
 
 /* Vending machine for customers to interact with. Staff directly interact with Inventory. */
 public class VendingMachine {
-    Money money;
     Inventory inventory;
     Coffer coffer;
 
