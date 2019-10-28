@@ -59,10 +59,30 @@ public class CustomerInterface implements CommandLineInterface {
         Scanner purchase_sc = new Scanner(System.in);
         while(purchasing) {
             printAllFood();
+<<<<<<< HEAD
             System.out.println("Enter ID:");
             int id = Integer.parseInt(purchase_sc.next());
             System.out.println("Enter Quantity:");
             int qua = Integer.parseInt(purchase_sc.next());
+=======
+            int id = -1;
+            int qua = -1;
+            try {
+                System.out.println("Enter ID:");
+                id = Integer.parseInt(purchase_sc.next());
+                if(id<1||id>7){
+                    System.out.println("No ID found.");
+                    id = -1;
+                }
+
+            } catch (Exception e) {
+                System.out.println("did not enter an ID. Please choose again, or stop shopping.");
+            }
+            if(qua!=-1){
+                try {
+                    System.out.println("Enter Quantity:");
+                    qua = Integer.parseInt(purchase_sc.next());
+>>>>>>> parent of ef2af96... Now the change system works with a greedyh algorithm,. Records 'works' but needs to change the shoppingcart class to make it work
 
             InventoryItem target = vd.getInventory().getInventoryItemByFoodId(id);
             cart.addToCart(target, qua);
@@ -166,8 +186,23 @@ public class CustomerInterface implements CommandLineInterface {
             System.out.println("Enter Quantity:");
             int qua = Integer.parseInt(payment_sc.next());
 
+<<<<<<< HEAD
             CofferDenomination target = vd.getCoffer().getDenominationByCashId(id);
             payment.makePayment(target, qua);
+=======
+                try {
+                    qua = Integer.parseInt(payment_sc.next());
+                } catch (Exception e) {
+                    System.out.println("did not enter an amount. Please choose again, or checkout.");
+                }
+            }
+
+//            int qua = Integer.parseInt(payment_sc.next());
+            if(qua>0){
+                CofferDenomination target = vd.getCoffer().getDenominationByCashId(id);
+                payment.makePayment(target, qua);
+            }
+>>>>>>> parent of ef2af96... Now the change system works with a greedyh algorithm,. Records 'works' but needs to change the shoppingcart class to make it work
             if(payment.change() >= 0) {
                 System.out.println("You have enough to checkout. Checkout now? (Y|N)");
                 String answer = payment_sc.next().toUpperCase();
@@ -176,6 +211,38 @@ public class CustomerInterface implements CommandLineInterface {
                     break;
                 }
             }
+<<<<<<< HEAD
+=======
+//            System.out.println("Please enter the number of fifty dollar notes that are to be entered.");
+//            temp = scan.nextLine();
+//            try {
+//                payment.getPaid().fifty = Integer.parseInt(temp);
+//            } catch (Exception e) {
+////                e.printStackTrace();
+//            }
+//            System.out.println("Please enter the number of hundred dollar notes that are to be entered.");
+//            temp = scan.nextLine();
+//            try {
+//                payment.getPaid().hundred = Integer.parseInt(temp);
+//            } catch (Exception e) {
+////                e.printStackTrace();
+//            }
+//            moneyGiven = payment.getTotal();
+//            if(moneyGiven>=payment.getPaymentAmount()){ // see if the money given is equla to or more than the amoutn that has to be paid
+//                //do change calculations
+//                double vdMoney = vd.totalMoney();
+//                if(vdMoney==moneyGiven){
+//                    successful_purchase=true;
+//                }else if(vdMoney>moneyGiven){
+//
+//                    successful_purchase = true;
+//                }else{
+//                    successful_purchase = false;
+//                }
+//            }
+//            System.out.println("Amount being paid is : " + moneyGiven + "." + " Amount expected is " + payment.getPaymentAmount());
+
+>>>>>>> parent of ef2af96... Now the change system works with a greedyh algorithm,. Records 'works' but needs to change the shoppingcart class to make it work
         }
         return success;
     }

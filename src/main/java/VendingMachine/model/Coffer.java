@@ -22,6 +22,7 @@ public class Coffer {
     public ArrayList<CofferDenomination> getCofferDenominations() {
         return cofferDenominations;
     }
+<<<<<<< HEAD
 
     // no error checks yet
     public int refillCash() {
@@ -31,6 +32,62 @@ public class Coffer {
         return 0;
     }
 
+=======
+//
+//    // no error checks yet
+//    public int restockAllInventory() {
+//    	for (InventoryItem item : inventoryItems) {
+//    		item.setQuantity(MAX_QUANTITY);
+//    	}
+//    	return 0;
+//    }
+//
+//    public int restockSingleInventory(int foodId) {
+//        InventoryItem item = getInventoryItemByFoodId(foodId);
+//        if (item == null) {
+//            /* This error code indicates the item was not found */
+//            return -1;
+//        }
+//
+//        if (item.getQuantity() >= MAX_QUANTITY) {
+//            return -2;
+//        }
+//        item.setQuantity(MAX_QUANTITY);
+//        return 0;
+//    }
+//
+//    public int addFoodToInventory(int foodId, int quantity) {
+//        InventoryItem item = getInventoryItemByFoodId(foodId);
+//        if (item == null) {
+//            /* This error code indicates the item was not found */
+//            return -1;
+//        }
+//
+//        int newTotal = item.getQuantity() + quantity;
+//        /* If there are already MAX_QUANTITY items */
+//        if (newTotal > MAX_QUANTITY) {
+//            return -2;
+//        }
+//        item.setQuantity(newTotal);
+//        return 0;
+//    }
+//
+//    public int removeFoodFromInventory(int foodId, int quantity) {
+//
+//        InventoryItem item = getInventoryItemByFoodId(foodId);
+//        if (item == null) {
+//            /* This error code indicates the item was not found */
+//            return -1;
+//        }
+//        /* If the quantity required exceeds the stock level, return error  */
+//        if (quantity > item.getQuantity()) {
+//            return -2;
+//        }
+//        item.setQuantity(item.getQuantity() - quantity);
+//        return 0;
+//    }
+//
+>>>>>>> parent of ef2af96... Now the change system works with a greedyh algorithm,. Records 'works' but needs to change the shoppingcart class to make it work
     public CofferDenomination getDenominationByCashId(int cashId) {
         for (CofferDenomination denomination : cofferDenominations) {
             if (denomination.getCash().getId() == cashId) {
@@ -40,6 +97,7 @@ public class Coffer {
         return null;
     }
 
+<<<<<<< HEAD
     public boolean payOut(double moneyToBePaid){
 //        System.out.println("The amount of money that the vendingg machine has at the beginnign is  :");
 //        System.out.println(this.getCofferDenominations().get(0).getQuantity());
@@ -93,4 +151,6 @@ public class Coffer {
 
     }
 
+=======
+>>>>>>> parent of ef2af96... Now the change system works with a greedyh algorithm,. Records 'works' but needs to change the shoppingcart class to make it work
 }
