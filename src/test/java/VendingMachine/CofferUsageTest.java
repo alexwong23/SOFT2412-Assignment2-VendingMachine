@@ -71,13 +71,13 @@ public class CofferUsageTest {
         Coffer coffer = vendingMachine.getCoffer();
 
 
-        assertEquals(coffer.getCofferDenominations().get(0).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(1).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(2).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(3).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(4).getQuantity(),10);
+        assertEquals(coffer.getCofferDenominations().get(0).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(1).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(2).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(3).getQuantity(),50);
+        assertEquals(coffer.getCofferDenominations().get(4).getQuantity(),25);
         assertEquals(coffer.getCofferDenominations().get(5).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(6).getQuantity(),10);
+        assertEquals(coffer.getCofferDenominations().get(6).getQuantity(),5);
         assertEquals(coffer.getCofferDenominations().get(7).getQuantity(),5);
         assertEquals(coffer.getCofferDenominations().get(8).getQuantity(),2);
         assertEquals(coffer.getCofferDenominations().get(9).getQuantity(),1);
@@ -85,61 +85,67 @@ public class CofferUsageTest {
 
         coffer.payOut(10); // lose a 10 dollar note, not another combination, siuncer that is the largest money that works
 
-        assertEquals(coffer.getCofferDenominations().get(0).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(1).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(2).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(3).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(4).getQuantity(),10);
+
+        assertEquals(coffer.getCofferDenominations().get(0).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(1).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(2).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(3).getQuantity(),50);
+        assertEquals(coffer.getCofferDenominations().get(4).getQuantity(),25);
         assertEquals(coffer.getCofferDenominations().get(5).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(6).getQuantity(),9);
+        assertEquals(coffer.getCofferDenominations().get(6).getQuantity(),4);
         assertEquals(coffer.getCofferDenominations().get(7).getQuantity(),5);
         assertEquals(coffer.getCofferDenominations().get(8).getQuantity(),2);
         assertEquals(coffer.getCofferDenominations().get(9).getQuantity(),1);
 
+
         coffer.payOut(0.10); //lost a 10 cent coin
-        assertEquals(coffer.getCofferDenominations().get(0).getQuantity(),9);
-        assertEquals(coffer.getCofferDenominations().get(1).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(2).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(3).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(4).getQuantity(),10);
+
+        assertEquals(coffer.getCofferDenominations().get(0).getQuantity(),99);
+        assertEquals(coffer.getCofferDenominations().get(1).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(2).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(3).getQuantity(),50);
+        assertEquals(coffer.getCofferDenominations().get(4).getQuantity(),25);
         assertEquals(coffer.getCofferDenominations().get(5).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(6).getQuantity(),9);
+        assertEquals(coffer.getCofferDenominations().get(6).getQuantity(),4);
         assertEquals(coffer.getCofferDenominations().get(7).getQuantity(),5);
         assertEquals(coffer.getCofferDenominations().get(8).getQuantity(),2);
         assertEquals(coffer.getCofferDenominations().get(9).getQuantity(),1);
 
         coffer.payOut(7); // lose a 5 dollar note, then a 2 dollar note.
-        assertEquals(coffer.getCofferDenominations().get(0).getQuantity(),9);
-        assertEquals(coffer.getCofferDenominations().get(1).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(2).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(3).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(4).getQuantity(),9);
+
+        assertEquals(coffer.getCofferDenominations().get(0).getQuantity(),99);
+        assertEquals(coffer.getCofferDenominations().get(1).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(2).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(3).getQuantity(),50);
+        assertEquals(coffer.getCofferDenominations().get(4).getQuantity(),24);
         assertEquals(coffer.getCofferDenominations().get(5).getQuantity(),9);
-        assertEquals(coffer.getCofferDenominations().get(6).getQuantity(),9);
+        assertEquals(coffer.getCofferDenominations().get(6).getQuantity(),4);
         assertEquals(coffer.getCofferDenominations().get(7).getQuantity(),5);
         assertEquals(coffer.getCofferDenominations().get(8).getQuantity(),2);
         assertEquals(coffer.getCofferDenominations().get(9).getQuantity(),1);
 
         coffer.payOut(0); //no notes were used, therefore, no change
-        assertEquals(coffer.getCofferDenominations().get(0).getQuantity(),9);
-        assertEquals(coffer.getCofferDenominations().get(1).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(2).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(3).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(4).getQuantity(),9);
+
+        assertEquals(coffer.getCofferDenominations().get(0).getQuantity(),99);
+        assertEquals(coffer.getCofferDenominations().get(1).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(2).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(3).getQuantity(),50);
+        assertEquals(coffer.getCofferDenominations().get(4).getQuantity(),24);
         assertEquals(coffer.getCofferDenominations().get(5).getQuantity(),9);
-        assertEquals(coffer.getCofferDenominations().get(6).getQuantity(),9);
+        assertEquals(coffer.getCofferDenominations().get(6).getQuantity(),4);
         assertEquals(coffer.getCofferDenominations().get(7).getQuantity(),5);
         assertEquals(coffer.getCofferDenominations().get(8).getQuantity(),2);
         assertEquals(coffer.getCofferDenominations().get(9).getQuantity(),1);
 
         coffer.payOut(100000000); //uses up more than all the notes, so it is unsuccessful
-        assertEquals(coffer.getCofferDenominations().get(0).getQuantity(),9);
-        assertEquals(coffer.getCofferDenominations().get(1).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(2).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(3).getQuantity(),10);
-        assertEquals(coffer.getCofferDenominations().get(4).getQuantity(),9);
+
+        assertEquals(coffer.getCofferDenominations().get(0).getQuantity(),99);
+        assertEquals(coffer.getCofferDenominations().get(1).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(2).getQuantity(),100);
+        assertEquals(coffer.getCofferDenominations().get(3).getQuantity(),50);
+        assertEquals(coffer.getCofferDenominations().get(4).getQuantity(),24);
         assertEquals(coffer.getCofferDenominations().get(5).getQuantity(),9);
-        assertEquals(coffer.getCofferDenominations().get(6).getQuantity(),9);
+        assertEquals(coffer.getCofferDenominations().get(6).getQuantity(),4);
         assertEquals(coffer.getCofferDenominations().get(7).getQuantity(),5);
         assertEquals(coffer.getCofferDenominations().get(8).getQuantity(),2);
         assertEquals(coffer.getCofferDenominations().get(9).getQuantity(),1);
