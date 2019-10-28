@@ -7,16 +7,19 @@ import VendingMachine.User.Customer;
 import VendingMachine.User.CustomerImpl;
 import VendingMachine.model.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class CustomerInterface implements CommandLineInterface {
+    private Records record;
     private VendingMachine vd;
     private ShoppingCart cart;
     private Customer customer;
     private CurrencyConverter converter = new CurrencyConverter(ConfigReader.readRateConfigs("src/main/resources/config.json"));
 
     public CustomerInterface(VendingMachine vendingMachine) {
+        this.record = new Records();
         this.vd = vendingMachine;
         this.customer = new CustomerImpl();
         this.cart = customer.getCart();
@@ -61,7 +64,7 @@ public class CustomerInterface implements CommandLineInterface {
             } catch (Exception e) {
                 System.out.println("did not enter an ID. Please choose again, or stop shopping.");
             }
-            if(qua!=-1){
+            if(id!=-1){
                 try {
                     System.out.println("Enter Quantity:");
                     qua = Integer.parseInt(purchase_sc.next());
@@ -253,13 +256,21 @@ public class CustomerInterface implements CommandLineInterface {
                     System.out.println("did not enter an amount. Please choose again, or checkout.");
                 }
             }
-
 //            int qua = Integer.parseInt(payment_sc.next());
             if(qua>0){
                 CofferDenomination target = vd.getCoffer().getDenominationByCashId(id);
                 payment.makePayment(target, qua);
             }
             if(payment.change() >= 0) {
+                boolean paid = vd.getCoffer().payOut(payment.change());
+                if(paid==true){
+                    //money traklen out from ccustomer.
+
+                    //skip that for now
+                    record.success(0,(ArrayList) cart.getCart());
+                }else{
+                    record.fail(0, (ArrayList) cart.getCart());
+                }
                 System.out.println("You have enough to checkout. Checkout now? (Y|N)");
                 String answer = payment_sc.next().toUpperCase();
                 if(answer.equals("Y")){
@@ -295,7 +306,6 @@ public class CustomerInterface implements CommandLineInterface {
 //                }
 //            }
 //            System.out.println("Amount being paid is : " + moneyGiven + "." + " Amount expected is " + payment.getPaymentAmount());
-
         }
         return success;
     }
