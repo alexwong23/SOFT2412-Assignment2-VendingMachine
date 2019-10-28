@@ -45,25 +45,44 @@ public class CustomerInterface implements CommandLineInterface {
         }
     }
 
-    public void purchaseInterface(){
-        boolean purchasing = true;
-        Scanner purchase_sc = new Scanner(System.in);
+    public void purchaseLoop(boolean purchasing, Scanner purchase_sc){
         while(purchasing) {
             printAllFood();
-            System.out.println("Enter ID:");
-            int id = Integer.parseInt(purchase_sc.next());
-            System.out.println("Enter Quantity:");
-            int qua = Integer.parseInt(purchase_sc.next());
+            int id = -1;
+            int qua = -1;
+            try {
+                System.out.println("Enter ID:");
+                id = Integer.parseInt(purchase_sc.next());
 
-            InventoryItem target = vd.getInventory().getInventoryItemByFoodId(id);
-            cart.addToCart(target, qua);
+            } catch (Exception e) {
+                System.out.println("did not enter an ID. Please choose again.");
+            }
+            try {
+                System.out.println("Enter Quantity:");
+                qua = Integer.parseInt(purchase_sc.next());
 
+            } catch (Exception e) {
+                System.out.println("did not enter an amount. Please choose again.");
+            }
+
+            if(qua>-1 &&id>-1){
+                InventoryItem target = vd.getInventory().getInventoryItemByFoodId(id);
+                cart.addToCart(target, qua);
+
+            }
             System.out.println("Continue Shopping? (Y|N)");
             String answer = purchase_sc.next().toUpperCase();
             if(answer.equals("N")){
                 purchasing=false;
             }
         }
+    }
+
+    public void purchaseInterface(){
+        boolean purchasing = true;
+        Scanner purchase_sc = new Scanner(System.in);
+        purchaseLoop(purchasing, purchase_sc);
+
     }
 
     public void shoppingCartInterface(){
@@ -76,25 +95,26 @@ public class CustomerInterface implements CommandLineInterface {
             case "1":
                 boolean deleting = true;
                 Scanner deleting_sc = new Scanner(System.in);
-                while(deleting){
-                    System.out.println(cart.toString());
-                    System.out.println("Enter ID:");
-                    int id = Integer.parseInt(deleting_sc.next());
-                    System.out.println("Enter Quantity:");
-                    int qua = Integer.parseInt(deleting_sc.next());
-
-                    InventoryItem target = cart.getInventoryItemByFoodId(id);
-                    cart.removeFromCart(target, qua);
-
-                    InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
-                    target2.addQuantity(qua);
-
-                    System.out.println("Continue Deleting? (Y|N)");
-                    String answer = deleting_sc.next().toUpperCase();
-                    if(answer.equals("N")){
-                        deleting = false;
-                    }
-                }
+                purchaseLoop(deleting, deleting_sc);
+//                while(deleting){
+//                    System.out.println(cart.toString());
+//                    System.out.println("Enter ID:");
+//                    int id = Integer.parseInt(deleting_sc.next());
+//                    System.out.println("Enter Quantity:");
+//                    int qua = Integer.parseInt(deleting_sc.next());
+//
+//                    InventoryItem target = cart.getInventoryItemByFoodId(id);
+//                    cart.removeFromCart(target, qua);
+//
+//                    InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
+//                    target2.addQuantity(qua);
+//
+//                    System.out.println("Continue Deleting? (Y|N)");
+//                    String answer = deleting_sc.next().toUpperCase();
+//                    if(answer.equals("N")){
+//                        deleting = false;
+//                    }
+//                }
                 break;
             case "2":
                 printCurrencyList();
@@ -213,10 +233,17 @@ public class CustomerInterface implements CommandLineInterface {
                 break;
             }
             System.out.println("Enter Quantity:");
-            int qua = Integer.parseInt(payment_sc.next());
-
-            CofferDenomination target = vd.getCoffer().getDenominationByCashId(id);
-            payment.makePayment(target, qua);
+            int qua = 0;
+            try {
+                qua = Integer.parseInt(payment_sc.next());
+            } catch (Exception e) {
+                System.out.println("did not enter an amount. Please choose again.");
+            }
+//            int qua = Integer.parseInt(payment_sc.next());
+            if(qua>0){
+                CofferDenomination target = vd.getCoffer().getDenominationByCashId(id);
+                payment.makePayment(target, qua);
+            }
             if(payment.change() >= 0) {
                 System.out.println("You have enough to checkout. Checkout now? (Y|N)");
                 String answer = payment_sc.next().toUpperCase();
