@@ -23,6 +23,15 @@ public class CustomerInterface implements CommandLineInterface {
         commandLine();
     }
 
+    public static  CustomerInterface testConstructor(VendingMachine vendingMachine){
+        CustomerInterface This = new CustomerInterface(vendingMachine);
+        This.record = new Records();
+        This.vd = vendingMachine;
+        This.customer = new CustomerImpl();
+        This.cart = This.customer.getCart();
+        return This;
+    }
+
     public void commandLine(){
         System.out.println("===========Welcome to vending machine!================\n");
         printAllFood();
