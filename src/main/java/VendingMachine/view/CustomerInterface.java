@@ -53,18 +53,23 @@ public class CustomerInterface implements CommandLineInterface {
             try {
                 System.out.println("Enter ID:");
                 id = Integer.parseInt(purchase_sc.next());
+                if(id<1||id>7){
+                    System.out.println("No ID found.");
+                    id = -1;
+                }
 
             } catch (Exception e) {
-                System.out.println("did not enter an ID. Please choose again.");
+                System.out.println("did not enter an ID. Please choose again, or stop shopping.");
             }
-            try {
-                System.out.println("Enter Quantity:");
-                qua = Integer.parseInt(purchase_sc.next());
+            if(qua!=-1){
+                try {
+                    System.out.println("Enter Quantity:");
+                    qua = Integer.parseInt(purchase_sc.next());
 
-            } catch (Exception e) {
-                System.out.println("did not enter an amount. Please choose again.");
+                } catch (Exception e) {
+                    System.out.println("did not enter an amount. Please choose again or stop shopping.");
+                }
             }
-
             if(qua>-1 &&id>-1){
                 InventoryItem target = vd.getInventory().getInventoryItemByFoodId(id);
                 cart.addToCart(target, qua);
@@ -226,19 +231,29 @@ public class CustomerInterface implements CommandLineInterface {
         while(true) {
             payment.printStatus();
             printAllCash();
+            int id = -1;
             System.out.println("Return to cart: 0 \tOR");
             System.out.println("Enter ID: ");
-            int id = Integer.parseInt(payment_sc.next());
+
+            try{
+                id = Integer.parseInt(payment_sc.next());
+            }catch(Exception e){
+                System.out.println("did not enter an ID, nor did you choose to return.");
+            }
             if(id == 0) {
                 break;
             }
-            System.out.println("Enter Quantity:");
             int qua = 0;
-            try {
-                qua = Integer.parseInt(payment_sc.next());
-            } catch (Exception e) {
-                System.out.println("did not enter an amount. Please choose again.");
+            if(id>0){
+                System.out.println("Enter Quantity:");
+
+                try {
+                    qua = Integer.parseInt(payment_sc.next());
+                } catch (Exception e) {
+                    System.out.println("did not enter an amount. Please choose again, or checkout.");
+                }
             }
+
 //            int qua = Integer.parseInt(payment_sc.next());
             if(qua>0){
                 CofferDenomination target = vd.getCoffer().getDenominationByCashId(id);
