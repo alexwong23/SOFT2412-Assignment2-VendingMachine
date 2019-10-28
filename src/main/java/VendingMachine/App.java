@@ -38,9 +38,8 @@ public class App {
                     if(StaffInterface.StaffIDCheck(staffIdInput)) {
                         new StaffInterface(vendingMachine);
                     } else {
-                        System.out.println("Error: Invalid Staff ID.");
+                        System.out.println("Invalid Staff ID.");
                     }
-                    staffScanner.close();
                     break;
                 }
             }

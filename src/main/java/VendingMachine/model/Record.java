@@ -30,4 +30,8 @@ public class Record {
     public TransactionEnum getTransactionType() {
         return transactionType;
     }
+
+    public String getDisplayString() {
+        return String.format("%-10s%-20s%-10s%-10s", this.date, this.description, this.item, this.transactionType);
+    }
 }

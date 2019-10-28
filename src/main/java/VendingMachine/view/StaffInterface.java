@@ -1,13 +1,12 @@
 package VendingMachine.view;
 
+import VendingMachine.model.VendingMachine;
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-
-import VendingMachine.model.InventoryItem;
-import VendingMachine.model.VendingMachine;
 
 public class StaffInterface implements CommandLineInterface {
 	private VendingMachine vd;
@@ -16,7 +15,7 @@ public class StaffInterface implements CommandLineInterface {
 
     public StaffInterface(VendingMachine vendingMachine) {
     	this.vd = vendingMachine;
-        System.out.println("=========Welcome staff!=========");
+        System.out.println("=========Welcome Staff!=========");
         commandLine();
     }
 
@@ -35,7 +34,7 @@ public class StaffInterface implements CommandLineInterface {
             String staffInput = staffScanner.nextLine();
             switch (staffInput) {
                 case "1": {
-                    printVendingMachine();
+                    System.out.println(vd.foodToString());
                     if (vd.getInventory().restockAllInventory() == 0) {
                         Date date = new Date();
                         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
@@ -46,7 +45,7 @@ public class StaffInterface implements CommandLineInterface {
                     break;
                 }
                 case "2": {
-                    printVendingMachine();
+                    System.out.println(vd.foodToString());
                     Scanner foodScanner = new Scanner(System.in);
                     System.out.println("Enter Food ID: ");
                     int id = Integer.parseInt(foodScanner.next());
@@ -70,14 +69,29 @@ public class StaffInterface implements CommandLineInterface {
                     foodScanner.close();
                 }
                 case "3": {
-                    printVendingMachine();
+                    System.out.println(vd.foodToString());
                     break;
                 }
                 case "4": {
-                    printMainMenu();
+                    System.out.println(vd.cashToString());
+                    if (vd.getCoffer().refillCash() == 0) {
+                        Date date = new Date();
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                        System.out.println("Cash Refilled @ " + formatter.format(date));
+                    } else {
+                        System.out.println("Refill Cash Failed.");
+                    }
                     break;
                 }
                 case "5": {
+                    System.out.println(vd.cashToString());
+                    break;
+                }
+                case "6": {
+                    System.out.println(vd.recordsToString());
+                    break;
+                }
+                case "7": {
                     System.out.println("Staff has Quit!");
                     System.exit(0);
                     break;
@@ -86,23 +100,15 @@ public class StaffInterface implements CommandLineInterface {
         }
     }
 
-    public void printVendingMachine(){
-        System.out.println("===========Welcome to vending machine!===========");
-        System.out.printf("%-5s%-20s%-10s%-10s%-10s\n","ID","Items","Type","Price","Qua");
-        System.out.println("-------------------------------------------------");
-        for (InventoryItem item :vd.getInventory().getInventoryItems()) {
-            System.out.printf("%s\n",item.getDisplayString());
-        }
-        System.out.println("=================================================");
-    }
-
     public void printMainMenu(){
     	System.out.println("Staff Options:");
-        System.out.println("\t1. Refill All");
-        System.out.println("\t2. Refill Single");
+        System.out.println("\t1. Refill All Items");
+        System.out.println("\t2. Refill Single Item");
         System.out.println("\t3. List All Items");
-        System.out.println("\t4. List Staff Options");
-        System.out.println("\t5. Quit");
+        System.out.println("\t4. Refill Cash");
+        System.out.println("\t5. List Cash");
+        System.out.println("\t6. List Records");
+        System.out.println("\t7. Quit");
         System.out.println("Choose an option:");
     }
 }

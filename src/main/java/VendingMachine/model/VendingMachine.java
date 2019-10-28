@@ -7,10 +7,12 @@ public class VendingMachine {
 
     Inventory inventory;
     Coffer coffer;
+    Records records;
 
     public VendingMachine(VendingMachineConfig config) {
         inventory = new Inventory(config.getFoodConfigs());
         coffer = new Coffer(config.getCashConfigs());
+        records = new Records();
     }
 
     public String foodToString(){
@@ -51,12 +53,28 @@ public class VendingMachine {
         return s;
     }
 
+    // FOR STAFF ONLY
+    public String recordsToString(){
+        String s = String.format("%-10s%-20s%-10s%-10s\n", "Date","Description","Item","Type");
+        s += "------------------------------------------------------\n";
+
+        for (Record record : records.getRecords()) {
+            s += String.format("%s\n", record.getDisplayString());
+        }
+        s += "======================================================\n";
+
+        return s;
+    }
+
     /* This should only be called by the StaffInterface class. User's in my opinion should only interact with this Vending machine instance */
     public Inventory getInventory() {
         return inventory;
     }
     public Coffer getCoffer() {
         return coffer;
+    }
+    public Records getRecords() {
+        return records;
     }
 
 }
