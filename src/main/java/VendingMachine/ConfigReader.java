@@ -115,4 +115,5 @@ public class ConfigReader {
         }
         return fxRates;
     }
+
 }

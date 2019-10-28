@@ -2,15 +2,16 @@ package VendingMachine.model;
 
 import VendingMachine.config.VendingMachineConfig;
 
+
 /* Vending machine for customers to interact with. Staff directly interact with Inventory. */
 public class VendingMachine {
-
     Inventory inventory;
     Coffer coffer;
     Records records;
 
     public VendingMachine(VendingMachineConfig config) {
         inventory = new Inventory(config.getFoodConfigs());
+
         coffer = new Coffer(config.getCashConfigs());
         records = new Records();
     }
