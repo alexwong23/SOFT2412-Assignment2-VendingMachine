@@ -1,10 +1,13 @@
 package VendingMachine.model;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+=======
+>>>>>>> parent of ef2af96... Now the change system works with a greedyh algorithm,. Records 'works' but needs to change the shoppingcart class to make it work
 public class Records {
     /*
     * Have a method for each type of transaction change. One for cancellation, another for purchase.
@@ -36,5 +39,8 @@ public class Records {
     /*
     * Have a method for each type of transaction change. One for cancellation, another for purchase.
     * */
+<<<<<<< HEAD
+>>>>>>> parent of ef2af96... Now the change system works with a greedyh algorithm,. Records 'works' but needs to change the shoppingcart class to make it work
+=======
 >>>>>>> parent of ef2af96... Now the change system works with a greedyh algorithm,. Records 'works' but needs to change the shoppingcart class to make it work
 }
