@@ -77,6 +77,9 @@ public class Coffer {
             return false;
         }else{
             for(int i = this.cofferDenominations.size()-1; i>=0; i--){
+                if(amountGiven.get(i).quantity!=0){
+                    System.out.println(amountGiven.get(i).quantity+" "+  cofferDenominations.get(i).quantity+" dollar note/coin was sent out");
+                }
                 cofferDenominations.get(i).reduceQuantity(amountGiven.get(i).quantity);
             }
 //            System.out.println("The money has been taken out.");
