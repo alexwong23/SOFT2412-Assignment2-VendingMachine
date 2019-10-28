@@ -86,14 +86,14 @@ public class Coffer {
     }
 
     public boolean payOut(double moneyToBePaid){
-        System.out.println("The amount of money that the vendingg machine has at the beginnign is  :");
-        System.out.println(this.getCofferDenominations().get(0).getQuantity());
-        System.out.println(this.getCofferDenominations().get(1).getQuantity());
-        System.out.println(this.getCofferDenominations().get(2).getQuantity());
-        System.out.println(this.getCofferDenominations().get(3).getQuantity());
-        System.out.println(this.getCofferDenominations().get(4).getQuantity());
-        System.out.println(this.getCofferDenominations().get(5).getQuantity());
-        System.out.println(this.getCofferDenominations().get(6).getQuantity());
+//        System.out.println("The amount of money that the vendingg machine has at the beginnign is  :");
+//        System.out.println(this.getCofferDenominations().get(0).getQuantity());
+//        System.out.println(this.getCofferDenominations().get(1).getQuantity());
+//        System.out.println(this.getCofferDenominations().get(2).getQuantity());
+//        System.out.println(this.getCofferDenominations().get(3).getQuantity());
+//        System.out.println(this.getCofferDenominations().get(4).getQuantity());
+//        System.out.println(this.getCofferDenominations().get(5).getQuantity());
+//        System.out.println(this.getCofferDenominations().get(6).getQuantity());
         double cumulative = moneyToBePaid;
         ArrayList<CofferDenomination> amountGiven = new ArrayList<CofferDenomination>();
         for(int i = 0; i < cofferDenominations.size();i++){
@@ -103,10 +103,10 @@ public class Coffer {
         for(int i = this.cofferDenominations.size()-1; i>=0; i--){
 //            if(cumulative>=cofferDenominations.get(i).cash.getValue()){
                 int amount = (int) ((10*cumulative)/(10*amountGiven.get(i).cash.getValue()));
-                System.out.println("cumulative, and the value of this coinage is  "+cumulative+" "+amountGiven.get(i).cash.getValue());
-                System.out.println("amount is "+amount);
+//                System.out.println("cumulative, and the value of this coinage is  "+cumulative+" "+amountGiven.get(i).cash.getValue());
+//                System.out.println("amount is "+amount);
                 if(amount<=cofferDenominations.get(i).quantity){
-                    System.out.println("OK, an adequate amoutn has been added");
+//                    System.out.println("OK, an adequate amoutn has been added");
                     amountGiven.get(i).addQuantity(amount);
                     cumulative-=amount*amountGiven.get(i).cash.getValue();
                 }else{
@@ -124,15 +124,15 @@ public class Coffer {
             for(int i = this.cofferDenominations.size()-1; i>=0; i--){
                 cofferDenominations.get(i).reduceQuantity(amountGiven.get(i).quantity);
             }
-            System.out.println("The money has been taken out.");
-            System.out.println("The amount of money that the vendingg machine has left are :");
-            System.out.println(this.getCofferDenominations().get(0).getQuantity());
-            System.out.println(this.getCofferDenominations().get(1).getQuantity());
-            System.out.println(this.getCofferDenominations().get(2).getQuantity());
-            System.out.println(this.getCofferDenominations().get(3).getQuantity());
-            System.out.println(this.getCofferDenominations().get(4).getQuantity());
-            System.out.println(this.getCofferDenominations().get(5).getQuantity());
-            System.out.println(this.getCofferDenominations().get(6).getQuantity());
+//            System.out.println("The money has been taken out.");
+//            System.out.println("The amount of money that the vendingg machine has left are :");
+//            System.out.println(this.getCofferDenominations().get(0).getQuantity());
+//            System.out.println(this.getCofferDenominations().get(1).getQuantity());
+//            System.out.println(this.getCofferDenominations().get(2).getQuantity());
+//            System.out.println(this.getCofferDenominations().get(3).getQuantity());
+//            System.out.println(this.getCofferDenominations().get(4).getQuantity());
+//            System.out.println(this.getCofferDenominations().get(5).getQuantity());
+//            System.out.println(this.getCofferDenominations().get(6).getQuantity());
             return true;
         }
 
