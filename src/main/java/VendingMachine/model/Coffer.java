@@ -71,7 +71,7 @@ public class Coffer {
 //            }
         }
         // now I will have done the best I could for takiing out the money that is to be paid.
-        if(cumulative!=0){
+        if(Math.floor(cumulative*10)!=0){
             System.out.println(cumulative+"is left unpaid");
             System.out.println("Cannot pay you back.");
             return false;

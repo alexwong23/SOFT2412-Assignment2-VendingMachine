@@ -127,20 +127,26 @@ public class CustomerInterface implements CommandLineInterface {
             case "2":
                 printCurrencyList();
                 Scanner currency_sc = new Scanner(System.in);
-                String selection = currency_sc.next().replace(" ","").toUpperCase();  //delete any white space
-                double amountDue = converter.convertCurrency("USD",selection,cart.getTotalPrice());
+                try{
+                    String selection = currency_sc.next().replace(" ","").toUpperCase();  //delete any white space
+                    double amountDue = converter.convertCurrency("USD",selection,cart.getTotalPrice());
 
-                Payment payment = new Payment(customer, amountDue, selection);
-                if(paymentInterface(payment)) {
-                    cart.resetCart();
-                    payment.returnChange(true);
-                    System.out.println("Thank you for your purchase, come back again!");
-                    break;
-                } else {
-                    payment.returnChange(false);
-                    System.out.println("Your change has been returned.");
+                    Payment payment = new Payment(customer, amountDue, selection);
+                    if(paymentInterface(payment)) {
+                        cart.resetCart();
+                        payment.returnChange(true);
+                        System.out.println("Thank you for your purchase, come back again!");
+                        break;
+                    } else {
+                        payment.returnChange(false);
+                        System.out.println("Your change has been returned.");
+                        break;
+                    }
+                }catch(Exception e){
+                    System.out.println("invalid currency");
                     break;
                 }
+
         }
     }
 
@@ -262,6 +268,7 @@ public class CustomerInterface implements CommandLineInterface {
                 payment.makePayment(target, qua);
             }
             if(payment.change() >= 0) {
+                System.out.println("change is "+ payment.change());
                 boolean paid = vd.getCoffer().payOut(payment.change());
                 if(paid==true){
                     //money traklen out from ccustomer.
