@@ -49,7 +49,7 @@ public class Coffer {
 //        System.out.println(this.getCofferDenominations().get(4).getQuantity());
 //        System.out.println(this.getCofferDenominations().get(5).getQuantity());
 //        System.out.println(this.getCofferDenominations().get(6).getQuantity());
-        double cumulative = moneyToBePaid;
+        double cumulative = moneyToBePaid*100; // in cents
         ArrayList<CofferDenomination> amountGiven = new ArrayList<CofferDenomination>();
         for(int i = 0; i < cofferDenominations.size();i++){
             amountGiven.add(this.cofferDenominations.get(i).clone(0));
@@ -57,21 +57,21 @@ public class Coffer {
         // amountGiven is set up with 0 as all of itsvalues. Increase this later on.
         for(int i = this.cofferDenominations.size()-1; i>=0; i--){
 //            if(cumulative>=cofferDenominations.get(i).cash.getValue()){
-                int amount = (int) ((10*cumulative)/(10*amountGiven.get(i).cash.getValue()));
+                int amount = (int) (cumulative/Math.round(amountGiven.get(i).cash.getValue()*100));
 //                System.out.println("cumulative, and the value of this coinage is  "+cumulative+" "+amountGiven.get(i).cash.getValue());
 //                System.out.println("amount is "+amount);
                 if(amount<=cofferDenominations.get(i).quantity){
 //                    System.out.println("OK, an adequate amoutn has been added");
                     amountGiven.get(i).addQuantity(amount);
-                    cumulative-=amount*amountGiven.get(i).cash.getValue();
+                    cumulative-=amount*100*amountGiven.get(i).cash.getValue();
                 }else{
                     amountGiven.get(i).addQuantity(cofferDenominations.get(i).quantity);
-                    cumulative-=cofferDenominations.get(i).quantity*amountGiven.get(i).cash.getValue();
+                    cumulative-=cofferDenominations.get(i).quantity*100*amountGiven.get(i).cash.getValue();
                 }
 //            }
         }
         // now I will have done the best I could for takiing out the money that is to be paid.
-        if(Math.floor(cumulative*10)!=0){
+        if(cumulative!=0){
             System.out.println(cumulative+"is left unpaid");
             System.out.println("Cannot pay you back.");
             return false;
