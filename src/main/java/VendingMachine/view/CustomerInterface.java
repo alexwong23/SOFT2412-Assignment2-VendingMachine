@@ -89,6 +89,8 @@ public class CustomerInterface implements CommandLineInterface {
                     InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
                     target2.addQuantity(qua);
 
+                    this.vd.getRecords().addCancellationRecord("Customer cancel" , target);
+
                     System.out.println("Continue Deleting? (Y|N)");
                     String answer = deleting_sc.next().toUpperCase();
                     if(answer.equals("N")){
@@ -104,6 +106,9 @@ public class CustomerInterface implements CommandLineInterface {
 
                 Payment payment = new Payment(customer, amountDue, selection);
                 if(paymentInterface(payment)) {
+                    for(InventoryItem item: cart.getCart()){
+                        this.vd.getRecords().addPurchaseRecord("Purchased by Customer", item);
+                    }
                     cart.resetCart();
                     payment.returnChange(true);
                     System.out.println("Thank you for your purchase, come back again!");
