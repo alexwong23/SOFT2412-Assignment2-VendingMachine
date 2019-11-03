@@ -12,8 +12,6 @@ import java.util.Scanner;
 
 public class App {
 
-
-
     public static void main(String[] args) {
         VendingMachineConfig vendingConfig = ConfigReader.readFoodNCashConfigs("src/main/resources/config.json");
         VendingMachine vendingMachine = new VendingMachine(vendingConfig);
@@ -35,7 +33,7 @@ public class App {
                     Scanner staffScanner = new Scanner(System.in);
                     System.out.println("Enter Staff ID: ");
                     String staffIdInput = staffScanner.next();
-                    if(StaffInterface.StaffIDCheck(staffIdInput)) {
+                    if (StaffInterface.StaffIDCheck(staffIdInput)) {
                         new StaffInterface(vendingMachine);
                     } else {
                         System.out.println("Invalid Staff ID.");
@@ -44,7 +42,6 @@ public class App {
                 }
             }
         }
-
         //System.out.println(ConfigReader.readRateConfigs("src/test/resources/config.json").getClass().getCanonicalName());
     }
 }
