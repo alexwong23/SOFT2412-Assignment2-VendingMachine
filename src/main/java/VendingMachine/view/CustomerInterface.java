@@ -7,7 +7,6 @@ import VendingMachine.User.Customer;
 import VendingMachine.User.CustomerImpl;
 import VendingMachine.model.*;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -43,6 +42,10 @@ public class CustomerInterface implements CommandLineInterface {
                 case "3":
                     System.out.println("Thank you!");
                     System.exit(0);
+                    break;
+                case "4":
+                    System.out.println("======All Records======\n");
+                    System.out.println(vd.recordsToString());
                     break;
             }
         }
@@ -101,28 +104,27 @@ public class CustomerInterface implements CommandLineInterface {
             case "1":
                 boolean deleting = true;
                 Scanner deleting_sc = new Scanner(System.in);
-                purchaseLoop(deleting, deleting_sc);
-//                while(deleting){
-//                    System.out.println(cart.toString());
-//                    System.out.println("Enter ID:");
-//                    int id = Integer.parseInt(deleting_sc.next());
-//                    System.out.println("Enter Quantity:");
-//                    int qua = Integer.parseInt(deleting_sc.next());
-//
-//                    InventoryItem target = cart.getInventoryItemByFoodId(id);
-//                    cart.removeFromCart(target, qua);
-//
-//                    InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
-//                    target2.addQuantity(qua);
-//
-//                    this.vd.getRecords().addCancellationRecord("Customer cancel" , target);
+                while(deleting){
+                    System.out.println(cart.toString());
+                    System.out.println("Enter ID:");
+                    int id = Integer.parseInt(deleting_sc.next());
+                    System.out.println("Enter Quantity:");
+                    int qua = Integer.parseInt(deleting_sc.next());
 
-//                    System.out.println("Continue Deleting? (Y|N)");
-//                    String answer = deleting_sc.next().toUpperCase();
-//                    if(answer.equals("N")){
-//                        deleting = false;
-//                    }
-//                }
+                    InventoryItem target = cart.getInventoryItemByFoodId(id);
+                    cart.removeFromCart(target, qua);
+
+                    InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
+                    target2.addQuantity(qua);
+
+                    this.vd.getRecords().addCancellationRecord("Customer cancel" , target);
+
+                    System.out.println("Continue Deleting? (Y|N)");
+                    String answer = deleting_sc.next().toUpperCase();
+                    if(answer.equals("N")){
+                        deleting = false;
+                    }
+                }
                 break;
             case "2":
                 printCurrencyList();

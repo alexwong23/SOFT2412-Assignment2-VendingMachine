@@ -1,0 +1,7 @@
+Date                Item           Quantity  Type      
+----------------------------------------------------------------
+03-11-2019 20:27:41 Coke           1         CANCELLATION
+03-11-2019 20:28:15 Coke           1         PURCHASE  
+03-11-2019 20:28:15 Jelly Beans    3         PURCHASE  
+03-11-2019 20:29:03 Orange Juice   1         CANCELLATION
+03-11-2019 20:29:23 Orange Juice   1         PURCHASE  

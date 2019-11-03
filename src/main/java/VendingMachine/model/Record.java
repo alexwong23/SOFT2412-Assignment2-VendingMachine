@@ -34,7 +34,7 @@ public class Record {
 
     public String getDisplayString() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        return String.format("%-20s%-10s%-10s%-10s",
+        return String.format("%-20s%-15s%-10s%-10s",
                 formatter.format(this.date),
                 this.item.getFood().getName(),
                 this.item.getQuantity(),

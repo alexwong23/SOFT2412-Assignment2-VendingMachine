@@ -55,7 +55,7 @@ public class VendingMachine {
 
     // FOR STAFF ONLY
     public String recordsToString(){
-        String s = String.format("%-20s%-10s%-10s%-10s\n", "Date","Item","Quantity","Type");
+        String s = String.format("%-20s%-15s%-10s%-10s\n", "Date","Item","Quantity","Type");
         s += "----------------------------------------------------------------\n";
 
         for (Record record : records.getRecords()) {
