@@ -103,26 +103,51 @@ public class CustomerInterface implements CommandLineInterface {
             case "1":
                 boolean deleting = true;
                 Scanner deleting_sc = new Scanner(System.in);
-                purchaseLoop(deleting, deleting_sc);
-//                while(deleting){
-//                    System.out.println(cart.toString());
-//                    System.out.println("Enter ID:");
-//                    int id = Integer.parseInt(deleting_sc.next());
-//                    System.out.println("Enter Quantity:");
-//                    int qua = Integer.parseInt(deleting_sc.next());
-//
-//                    InventoryItem target = cart.getInventoryItemByFoodId(id);
-//                    cart.removeFromCart(target, qua);
-//
-//                    InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
-//                    target2.addQuantity(qua);
-//
-//                    System.out.println("Continue Deleting? (Y|N)");
-//                    String answer = deleting_sc.next().toUpperCase();
-//                    if(answer.equals("N")){
-//                        deleting = false;
-//                    }
-//                }
+//                purchaseLoop(deleting, deleting_sc);
+                while(deleting){
+                    System.out.println(cart.toString());
+                    int qua = -1;
+                    int id = -1;
+                    try {
+                        System.out.println("Enter ID:");
+                        id = Integer.parseInt(deleting_sc.next());
+                        if(id<1||id>7){
+                            System.out.println("No ID found.");
+                            id = -1;
+                        }
+
+                    } catch (Exception e) {
+                        System.out.println("did not enter an ID. Please choose again, or stop shopping.");
+                    }
+
+                    try {
+
+                        System.out.println("Enter Quantity:");
+                        qua = Integer.parseInt(deleting_sc.next());
+                        if(qua>7){
+                            System.out.println("too much.");
+                            qua = -1;
+                        }else if(qua <1){
+                            System.out.println("too few");
+                            qua = -1;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("did not enter an quantity. Please choose again, or stop shopping.");
+                    }
+                    if(qua!=-1 & id!=-1){
+                        InventoryItem target = cart.getInventoryItemByFoodId(id);
+                        cart.removeFromCart(target, qua);
+
+                        InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
+                        target2.addQuantity(qua);
+                    }
+
+                    System.out.println("Continue Deleting? (Y|N)");
+                    String answer = deleting_sc.next().toUpperCase();
+                    if(answer.equals("N")){
+                        deleting = false;
+                    }
+                }
                 break;
             case "2":
                 printCurrencyList();
