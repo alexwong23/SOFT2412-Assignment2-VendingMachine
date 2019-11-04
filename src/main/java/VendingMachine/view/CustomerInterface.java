@@ -249,6 +249,9 @@ public class CustomerInterface implements CommandLineInterface {
                 if(paid==true){
                     System.out.println("You have enough to checkout. Checkout now? (Y|N)");
                     String answer = payment_sc.next().toUpperCase();
+
+                    notifier(answer);   //leave this line after answer
+
                     if(answer.equals("Y")){
                         success = true;
                         break;
