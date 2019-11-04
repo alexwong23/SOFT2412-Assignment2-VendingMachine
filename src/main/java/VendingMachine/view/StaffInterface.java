@@ -15,8 +15,7 @@ public class StaffInterface implements CommandLineInterface {
 
     public StaffInterface(VendingMachine vendingMachine) {
     	this.vd = vendingMachine;
-        System.out.println("=========Welcome Staff!=========");
-        commandLine();
+
     }
 
     public static boolean StaffIDCheck(String staffId) {
@@ -26,9 +25,9 @@ public class StaffInterface implements CommandLineInterface {
         return false;
     }
 
-    public void commandLine() {
+    public void run() {
         Scanner staffScanner = new Scanner(System.in);
-
+        System.out.println("=========Welcome Staff!=========");
         while (true) {
             printMainMenu();
             String staffInput = staffScanner.nextLine();

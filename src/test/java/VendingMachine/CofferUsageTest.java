@@ -52,7 +52,7 @@ public class CofferUsageTest {
         VendingMachineConfig vendingConfig = ConfigReader.readFoodNCashConfigs("src/main/resources/config.json");
         VendingMachine vendingMachine = new VendingMachine(vendingConfig);
 
-        System.out.println("===========Welcome to vending machine!===========");
+       // System.out.println("===========Welcome to vending machine!===========");
 //        CustomerInterface ci = CustomerInterface.testConstructor(vendingMachine);
 //        boolean purchasing = true;
 //        Scanner purchase_sc = new Scanner(System.in);

@@ -29,14 +29,14 @@ public class CustomerInterface implements CommandLineInterface {
         this.vd = vendingMachine;
         this.customer = new CustomerImpl();
         this.cart = customer.getCart();
-        commandLine();
     }
 
-    public void commandLine(){
-        System.out.println("===========Welcome to vending machine!================\n");
+    public void run(){
+        System.out.println("===========Welcome to vending machine!================");
         printAllFood();
         Scanner sc = new Scanner(System.in);
-        while(true){
+        boolean shopping = true;
+        while(shopping){
             printMainMenu();
             String input = sc.next();
             switch (input){
@@ -48,12 +48,13 @@ public class CustomerInterface implements CommandLineInterface {
                     break;
                 case "3":
                     System.out.println("Thank you!");
-                    System.exit(0);
+                    shopping=false;
                     break;
                 default:
                     notifier(input);
             }
         }
+        sc.close();
     }
 
     public void purchaseInterface(){
@@ -173,14 +174,14 @@ public class CustomerInterface implements CommandLineInterface {
         System.out.println("Enter your staff id:");
         String id = scanner_st.next();
         if (StaffInterface.StaffIDCheck(id)) {
-            new StaffInterface(vd);
+            new StaffInterface(vd).run();
         } else {
             System.out.println("invalid staff id");
         }
     }
 
     public void printAllFood(){
-        System.out.println(vd.foodToString());
+        System.out.print(vd.foodToString());
     }
 
     public void printAllCash(){

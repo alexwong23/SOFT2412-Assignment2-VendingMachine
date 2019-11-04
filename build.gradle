@@ -45,3 +45,10 @@ application {
 run {
     standardInput = System.in
 }
+test {
+    testLogging {
+        exceptionFormat = 'full'
+        events = ["passed", "failed", "skipped"]
+        showStandardStreams = true
+    }
+}

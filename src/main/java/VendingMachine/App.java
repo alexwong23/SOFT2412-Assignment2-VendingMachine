@@ -13,6 +13,7 @@ public class App {
         //Only keep the three lines below
         VendingMachineConfig vendingConfig = ConfigReader.readFoodNCashConfigs("src/main/resources/config.json");
         VendingMachine vendingMachine = new VendingMachine(vendingConfig);
-        new CustomerInterface(vendingMachine);
+        CustomerInterface commandline =  new CustomerInterface(vendingMachine);
+        commandline.run();
     }
 }
