@@ -40,6 +40,7 @@ public class ChocolateTest {
         assertEquals(choco.getName(),clone.getName());
         assertEquals(choco.getPrice(),clone.getPrice(),0.1);
         assertEquals(choco.getType(),clone.getType());
+        assertNotNull(clone);
     }
 
     @Test

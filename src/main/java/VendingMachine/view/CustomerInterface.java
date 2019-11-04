@@ -102,17 +102,15 @@ public class CustomerInterface implements CommandLineInterface {
         switch (option){
             case "1":
                 boolean deleting = true;
-                Scanner deleting_sc = new Scanner(System.in);
-
                 while(deleting){
                     System.out.println(cart.toString());    //print shoppingcart
 
                     System.out.println("Enter ID:");
-                    String idString = deleting_sc.next();
+                    String idString = cart_sc.next();
                     notifier(idString);
 
                     System.out.println("Enter Quantity:");
-                    String quaString = deleting_sc.next();
+                    String quaString = cart_sc.next();
                     notifier(quaString);
 
                     try {
@@ -130,7 +128,7 @@ public class CustomerInterface implements CommandLineInterface {
                     }
 
                     System.out.println("Continue Deleting? (Y|N)");
-                    String answer = deleting_sc.next().toUpperCase();
+                    String answer = cart_sc.next().toUpperCase();
 
                     notifier(answer);
 
@@ -141,9 +139,8 @@ public class CustomerInterface implements CommandLineInterface {
                 break;
             case "2":
                 printCurrencyList();
-                Scanner currency_sc = new Scanner(System.in);
 
-                String selection = currency_sc.next().replace(" ","").toUpperCase();  //delete any white space
+                String selection = cart_sc.next().replace(" ","").toUpperCase();  //delete any white space
 
                 notifier(selection);
 
@@ -311,5 +308,10 @@ public class CustomerInterface implements CommandLineInterface {
         if(secret.toUpperCase().equals(staff)){
             staffInterface();
         }
+    }
+
+    // for testing
+    public ShoppingCart getShoppingCart(){
+        return this.cart;
     }
 }
