@@ -40,6 +40,7 @@ public class ChipsTest {
         assertEquals(chips.getName(),clone.getName());
         assertEquals(chips.getPrice(),clone.getPrice(),0.1);
         assertEquals(chips.getType(),clone.getType());
+        assertNotNull(clone);
     }
 
     @Test
