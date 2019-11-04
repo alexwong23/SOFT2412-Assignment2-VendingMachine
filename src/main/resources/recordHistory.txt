@@ -5,3 +5,6 @@ Date                Item           Quantity  Type
 03-11-2019 20:28:15 Jelly Beans    3         PURCHASE  
 03-11-2019 20:29:03 Orange Juice   1         CANCELLATION
 03-11-2019 20:29:23 Orange Juice   1         PURCHASE  
+04-11-2019 19:54:49 Jelly Beans    4         10.0      PURCHASE  
+04-11-2019 19:55:56 Mars bar       3         5.0       CANCELLATION
+04-11-2019 19:56:26 Mars bar       1         5.0       PURCHASE  

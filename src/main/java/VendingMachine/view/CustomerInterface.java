@@ -123,6 +123,8 @@ public class CustomerInterface implements CommandLineInterface {
                         InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
                         target2.addQuantity(qua);
 
+                        this.vd.getRecords().addCancellationRecord("Cancelled by Customer", target.clone(qua));
+
                     }catch (Exception e){
                         System.out.println("Invalid ID or Quantity");
                     }
@@ -228,11 +230,10 @@ public class CustomerInterface implements CommandLineInterface {
             int qua = 0;
 
             if(id>0){
+                System.out.println("Enter Quantity:");
                 String quaString = payment_sc.next();
 
                 notifier(quaString);    //leave this line behind quaString
-
-                System.out.println("Enter Quantity:");
                 try {
                     qua = Integer.parseInt(quaString);
                 } catch (Exception e) {
