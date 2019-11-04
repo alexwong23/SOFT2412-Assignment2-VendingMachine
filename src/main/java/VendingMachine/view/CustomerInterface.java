@@ -36,7 +36,8 @@ public class CustomerInterface implements CommandLineInterface {
         System.out.println("===========Welcome to vending machine!================");
         printAllFood();
         Scanner sc = new Scanner(System.in);
-        while(true){
+        boolean shopping = true;
+        while(shopping){
             printMainMenu();
             String input = sc.next();
             switch (input){
@@ -48,7 +49,7 @@ public class CustomerInterface implements CommandLineInterface {
                     break;
                 case "3":
                     System.out.println("Thank you!");
-                    System.exit(0);
+                    shopping=false;
                     break;
                 default:
                     notifier(input);

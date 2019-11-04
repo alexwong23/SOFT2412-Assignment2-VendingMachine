@@ -1,3 +1,4 @@
+
 package VendingMachine.view;
 
 import VendingMachine.config.VendingMachineConfig;
@@ -55,21 +56,43 @@ public class CustomerInterfaceTest {
         assertEquals(s,getOutput());
     }
 
-//    @Test
-//    public void run1(){
-//        ci.run();
-//
-//        String s="";
-//        s+="===========Welcome to vending machine!================\n";
-//        s+=vd.foodToString();
-//        s+="Options:\n";
-//        s+="1. Purchase\n";
-//        s+="2. Shopping Cart\n";
-//        s+="3. Quit\n";
-//        s+="Enter your options:\n";
-//
-//        assertEquals(s,getOutput());
-//    }
+    @Test
+    public void run1(){
+        //test quit
+        setInput("3");
+
+        String s="";
+
+        s+="===========Welcome to vending machine!================\n";
+        s+=vd.foodToString();
+        s+="Options:\n";
+        s+="1. Purchase\n";
+        s+="2. Shopping Cart\n";
+        s+="3. Quit\n";
+        s+="Enter your options:\n";
+
+        s+="Thank you!\n";
+
+        ci.run();
+
+        assertEquals(s,getOutput());
+    }
+
+    @Test
+    public void run2(){
+        //test quit
+        //setInput("1");
+
+        ci.run();
+
+        assertEquals("",getOutput());
+    }
+
+    @Test
+    public void purchaseInterface(){
+        setInput("1");
+        ci.purchaseInterface();
+    }
 
     @Test
     public void printCurrencyList(){
