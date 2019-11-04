@@ -78,7 +78,7 @@ public class CurrencyConverter {
     }
 
     /**
-     * Method to verify user inputted currency is valid (i.e. that it exists in the JSON config file)
+     * Method to verify user inputted currency is valid (i.e. that it exist in the JSON config file)
      * @param curr
      * @return true if is valid, false otherwise.
      */
@@ -103,6 +103,7 @@ public class CurrencyConverter {
     public void setRate(String type, double rate){
 
         JSONParser jsonParser = new JSONParser();
+
 
         JSONObject settingsJSON = null;
 
