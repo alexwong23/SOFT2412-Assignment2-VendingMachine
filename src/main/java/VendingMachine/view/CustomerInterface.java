@@ -124,6 +124,8 @@ public class CustomerInterface implements CommandLineInterface {
                         InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
                         target2.addQuantity(qua);
 
+                        this.vd.getRecords().addCancellationRecord("Cancelled by Customer", target.clone(qua));
+
                     }catch (Exception e){
                         System.out.println("Invalid ID or Quantity");
                     }
@@ -149,6 +151,9 @@ public class CustomerInterface implements CommandLineInterface {
 
                 Payment payment = new Payment(customer, amountDue, selection);
                 if(paymentInterface(payment)) {
+                    for(InventoryItem item: cart.getCart()){
+                        this.vd.getRecords().addPurchaseRecord("Purchased by Customer", item);
+                    }
                     cart.resetCart();
                     payment.returnChange(true);
                     System.out.println("Thank you for your purchase, come back again!");
@@ -223,6 +228,7 @@ public class CustomerInterface implements CommandLineInterface {
                 break;
             }
             int qua = 0;
+
             if(id>0){
                 System.out.println("Enter Quantity:");
 
@@ -230,16 +236,13 @@ public class CustomerInterface implements CommandLineInterface {
 
                 notifier(quaString);    //leave this line behind quaString
 
-
-
                 try {
                     qua = Integer.parseInt(quaString);
                 } catch (Exception e) {
                     System.out.println("did not enter an amount. Please choose again, or checkout.");
                 }
             }
-//            int qua = Integer.parseInt(payment_sc.next());
-            if(qua>0){
+            if(qua > 0){
                 CofferDenomination target = vd.getCoffer().getDenominationByCashId(id);
                 payment.makePayment(target, qua);
             }
@@ -257,40 +260,11 @@ public class CustomerInterface implements CommandLineInterface {
                         break;
                     }
                 }else{
-
                     System.out.println("Your money will now be ejected");
                     vd.getCoffer().payOut(payment.getAmountPaid());
                     payment.setAmountPaid(0);
                 }
             }
-//            System.out.println("Please enter the number of fifty dollar notes that are to be entered.");
-//            temp = scan.nextLine();
-//            try {
-//                payment.getPaid().fifty = Integer.parseInt(temp);
-//            } catch (Exception e) {
-////                e.printStackTrace();
-//            }
-//            System.out.println("Please enter the number of hundred dollar notes that are to be entered.");
-//            temp = scan.nextLine();
-//            try {
-//                payment.getPaid().hundred = Integer.parseInt(temp);
-//            } catch (Exception e) {
-////                e.printStackTrace();
-//            }
-//            moneyGiven = payment.getTotal();
-//            if(moneyGiven>=payment.getPaymentAmount()){ // see if the money given is equla to or more than the amoutn that has to be paid
-//                //do change calculations
-//                double vdMoney = vd.totalMoney();
-//                if(vdMoney==moneyGiven){
-//                    successful_purchase=true;
-//                }else if(vdMoney>moneyGiven){
-//
-//                    successful_purchase = true;
-//                }else{
-//                    successful_purchase = false;
-//                }
-//            }
-//            System.out.println("Amount being paid is : " + moneyGiven + "." + " Amount expected is " + payment.getPaymentAmount());
         }
         return success;
     }

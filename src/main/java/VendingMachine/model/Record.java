@@ -1,5 +1,6 @@
 package VendingMachine.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Record {
@@ -32,6 +33,12 @@ public class Record {
     }
 
     public String getDisplayString() {
-        return String.format("%-10s%-20s%-10s%-10s", this.date, this.description, this.item, this.transactionType);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        return String.format("%-20s%-15s%-10s%-10s%-10s",
+                formatter.format(this.date),
+                this.item.getFood().getName(),
+                this.item.getQuantity(),
+                this.item.getFood().getPrice(),
+                this.transactionType.toString());
     }
 }
