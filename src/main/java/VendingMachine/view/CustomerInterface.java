@@ -33,7 +33,7 @@ public class CustomerInterface implements CommandLineInterface {
     }
 
     public void run(){
-        System.out.println("===========Welcome to vending machine!================\n");
+        System.out.println("===========Welcome to vending machine!================");
         printAllFood();
         Scanner sc = new Scanner(System.in);
         while(true){
@@ -168,14 +168,14 @@ public class CustomerInterface implements CommandLineInterface {
         System.out.println("Enter your staff id:");
         String id = scanner_st.next();
         if (StaffInterface.StaffIDCheck(id)) {
-            new StaffInterface(vd);
+            new StaffInterface(vd).run();
         } else {
             System.out.println("invalid staff id");
         }
     }
 
     public void printAllFood(){
-        System.out.println(vd.foodToString());
+        System.out.print(vd.foodToString());
     }
 
     public void printAllCash(){
