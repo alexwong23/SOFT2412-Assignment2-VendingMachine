@@ -26,6 +26,7 @@ public class Records {
         this.records.add(record);
         writeToTextFile(record);
     }
+
     public void writeToTextFile(Record record) {
         try(FileWriter fw = new FileWriter("src/main/resources/recordHistory.txt", true);
             BufferedWriter bw = new BufferedWriter(fw);
