@@ -88,6 +88,7 @@ public class StaffInterface implements CommandLineInterface {
                     break;
                 }
                 case "6": {
+                    System.out.println("======All Records======\n");
                     System.out.println(vd.recordsToString());
                     break;
                 }

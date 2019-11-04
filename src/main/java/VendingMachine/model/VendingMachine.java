@@ -11,7 +11,6 @@ public class VendingMachine {
 
     public VendingMachine(VendingMachineConfig config) {
         inventory = new Inventory(config.getFoodConfigs());
-
         coffer = new Coffer(config.getCashConfigs());
         records = new Records();
     }
@@ -56,13 +55,12 @@ public class VendingMachine {
 
     // FOR STAFF ONLY
     public String recordsToString(){
-        String s = String.format("%-10s%-20s%-10s%-10s\n", "Date","Description","Item","Type");
-        s += "------------------------------------------------------\n";
-
+        String s = String.format("%-20s%-15s%-10s%-10s%-10s\n", "Date","Item","Quantity","Cost","Type");
+        s += "----------------------------------------------------------------\n";
         for (Record record : records.getRecords()) {
             s += String.format("%s\n", record.getDisplayString());
         }
-        s += "======================================================\n";
+        s += "================================================================\n";
 
         return s;
     }
