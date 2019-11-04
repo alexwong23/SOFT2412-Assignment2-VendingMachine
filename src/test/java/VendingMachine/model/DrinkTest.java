@@ -40,6 +40,7 @@ public class DrinkTest {
         assertEquals(drink.getName(),clone.getName());
         assertEquals(drink.getPrice(),clone.getPrice(),0.1);
         assertEquals(drink.getType(),clone.getType());
+        assertNotNull(clone);
     }
 
     @Test

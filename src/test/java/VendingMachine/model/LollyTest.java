@@ -40,6 +40,7 @@ public class LollyTest {
         assertEquals(lolly.getName(),clone.getName());
         assertEquals(lolly.getPrice(),clone.getPrice(),0.1);
         assertEquals(lolly.getType(),clone.getType());
+        assertNotNull(clone);
     }
 
     @Test
