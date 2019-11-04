@@ -6,13 +6,21 @@ import VendingMachine.CurrencyConverter;
 import VendingMachine.User.Customer;
 import VendingMachine.User.CustomerImpl;
 import VendingMachine.model.*;
+import org.apache.commons.lang3.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class CustomerInterface implements CommandLineInterface {
+
+    //The two variable below are responsible for secrete channel for staff
+    private String secret="";
+    private String staff="STAFF";   //user input the string can get in staff interface
+
+
     private Records record;
+
     private VendingMachine vd;
     private ShoppingCart cart;
     private Customer customer;
@@ -44,44 +52,8 @@ public class CustomerInterface implements CommandLineInterface {
                     System.out.println("Thank you!");
                     System.exit(0);
                     break;
-            }
-        }
-    }
-
-    public void purchaseLoop(boolean purchasing, Scanner purchase_sc){
-        while(purchasing) {
-            printAllFood();
-            int id = -1;
-            int qua = -1;
-            try {
-                System.out.println("Enter ID:");
-                id = Integer.parseInt(purchase_sc.next());
-                if(id<1||id>7){
-                    System.out.println("No ID found.");
-                    id = -1;
-                }
-
-            } catch (Exception e) {
-                System.out.println("did not enter an ID. Please choose again, or stop shopping.");
-            }
-            if(id!=-1){
-                try {
-                    System.out.println("Enter Quantity:");
-                    qua = Integer.parseInt(purchase_sc.next());
-
-                } catch (Exception e) {
-                    System.out.println("did not enter an amount. Please choose again or stop shopping.");
-                }
-            }
-            if(qua>-1 &&id>-1){
-                InventoryItem target = vd.getInventory().getInventoryItemByFoodId(id);
-                cart.addToCart(target, qua);
-
-            }
-            System.out.println("Continue Shopping? (Y|N)");
-            String answer = purchase_sc.next().toUpperCase();
-            if(answer.equals("N")){
-                purchasing=false;
+                default:
+                    notifier(input);
             }
         }
     }
@@ -89,8 +61,36 @@ public class CustomerInterface implements CommandLineInterface {
     public void purchaseInterface(){
         boolean purchasing = true;
         Scanner purchase_sc = new Scanner(System.in);
-        purchaseLoop(purchasing, purchase_sc);
+        while(purchasing) {
+            printAllFood();
 
+            System.out.println("Enter ID:");
+            String idString =purchase_sc.next();
+            notifier(idString);
+
+            System.out.println("Enter Quantity:");
+            String quaString = purchase_sc.next();
+            notifier(quaString);
+
+            try {
+                int id = Integer.parseInt(idString);
+                int qua = Integer.parseInt(quaString);
+                InventoryItem target = vd.getInventory().getInventoryItemByFoodId(id);
+                cart.addToCart(target, qua);
+            }catch(Exception e){
+                System.out.println("Invalid ID or Quantity");
+            }
+
+            System.out.println("Continue Shopping? (Y|N)");
+
+            String answer = purchase_sc.next().toUpperCase();
+
+            notifier(answer);
+
+            if(answer.equals("N")){
+                purchasing=false;
+            }
+        }
     }
 
     public void shoppingCartInterface(){
@@ -103,47 +103,37 @@ public class CustomerInterface implements CommandLineInterface {
             case "1":
                 boolean deleting = true;
                 Scanner deleting_sc = new Scanner(System.in);
-//                purchaseLoop(deleting, deleting_sc);
+
                 while(deleting){
-                    System.out.println(cart.toString());
-                    int qua = -1;
-                    int id = -1;
-                    try {
-                        System.out.println("Enter ID:");
-                        id = Integer.parseInt(deleting_sc.next());
-                        if(id<1||id>7){
-                            System.out.println("No ID found.");
-                            id = -1;
-                        }
+                    System.out.println(cart.toString());    //print shoppingcart
 
-                    } catch (Exception e) {
-                        System.out.println("did not enter an ID. Please choose again, or stop shopping.");
-                    }
+                    System.out.println("Enter ID:");
+                    String idString = deleting_sc.next();
+                    notifier(idString);
+
+                    System.out.println("Enter Quantity:");
+                    String quaString = deleting_sc.next();
+                    notifier(quaString);
 
                     try {
+                        int id = Integer.parseInt(idString);
+                        int qua = Integer.parseInt(quaString);
 
-                        System.out.println("Enter Quantity:");
-                        qua = Integer.parseInt(deleting_sc.next());
-                        if(qua>7){
-                            System.out.println("too much.");
-                            qua = -1;
-                        }else if(qua <1){
-                            System.out.println("too few");
-                            qua = -1;
-                        }
-                    } catch (Exception e) {
-                        System.out.println("did not enter an quantity. Please choose again, or stop shopping.");
-                    }
-                    if(qua!=-1 & id!=-1){
                         InventoryItem target = cart.getInventoryItemByFoodId(id);
                         cart.removeFromCart(target, qua);
 
                         InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
                         target2.addQuantity(qua);
+
+                    }catch (Exception e){
+                        System.out.println("Invalid ID or Quantity");
                     }
 
                     System.out.println("Continue Deleting? (Y|N)");
                     String answer = deleting_sc.next().toUpperCase();
+
+                    notifier(answer);
+
                     if(answer.equals("N")){
                         deleting = false;
                     }
@@ -152,26 +142,37 @@ public class CustomerInterface implements CommandLineInterface {
             case "2":
                 printCurrencyList();
                 Scanner currency_sc = new Scanner(System.in);
-                try{
-                    String selection = currency_sc.next().replace(" ","").toUpperCase();  //delete any white space
-                    double amountDue = converter.convertCurrency("USD",selection,cart.getTotalPrice());
 
-                    Payment payment = new Payment(customer, amountDue, selection);
-                    if(paymentInterface(payment)) {
-                        cart.resetCart();
-                        payment.returnChange(true);
-                        System.out.println("Thank you for your purchase, come back again!");
-                        break;
-                    } else {
-                        payment.returnChange(false);
-                        System.out.println("Your change has been returned.");
-                        break;
-                    }
-                }catch(Exception e){
-                    System.out.println("invalid currency");
+                String selection = currency_sc.next().replace(" ","").toUpperCase();  //delete any white space
+
+                notifier(selection);
+
+                double amountDue = converter.convertCurrency("USD",selection,cart.getTotalPrice());
+
+                Payment payment = new Payment(customer, amountDue, selection);
+                if(paymentInterface(payment)) {
+                    cart.resetCart();
+                    payment.returnChange(true);
+                    System.out.println("Thank you for your purchase, come back again!");
+                    break;
+                } else {
+                    payment.returnChange(false);
+                    System.out.println("Your change has been returned.");
                     break;
                 }
+            default:
+                notifier(option);
+        }
+    }
 
+    public void staffInterface(){
+        Scanner scanner_st = new Scanner(System.in);
+        System.out.println("Enter your staff id:");
+        String id = scanner_st.next();
+        if (StaffInterface.StaffIDCheck(id)) {
+            new StaffInterface(vd);
+        } else {
+            System.out.println("invalid staff id");
         }
     }
 
@@ -201,64 +202,6 @@ public class CustomerInterface implements CommandLineInterface {
         System.out.println("Enter your selection: ");
     }
 
-//    public void conversation(Payment payment) {
-//        payment.setPaid(new Money());
-//        Scanner scan = new Scanner(System.in);
-//        System.out.println("How is this being paid?");
-//        double moneyGiven = 0;
-//        String temp;
-//        boolean successful_purchase = false;
-//        while (successful_purchase) {
-//            System.out.println("Please enter the number of 10 cent coins that are to be entered.");
-//            temp = scan.nextLine();
-//            try {
-//                payment.getPaid().tenCents = Integer.parseInt(temp);
-//            } catch (Exception e) {
-////                e.printStackTrace();
-//            }
-//            System.out.println("Please enter the number of 20 cent coins that are to be entered.");
-//            temp = scan.nextLine();
-//            try {
-//                payment.getPaid().twentyCents = Integer.parseInt(temp);
-//            } catch (Exception e) {
-////                e.printStackTrace();
-//            }
-//            System.out.println("Please enter the number of 50 cent coins that are to be entered.");
-//            temp = scan.nextLine();
-//            try {
-//                payment.getPaid().fiftyCents = Integer.parseInt(temp);
-//            } catch (Exception e) {
-////                e.printStackTrace();
-//            }
-//            System.out.println("Please enter the number of 1 dollar coins that are to be entered.");
-//            temp = scan.nextLine();
-//            try {
-//                payment.getPaid().one = Integer.parseInt(temp);
-//            } catch (Exception e) {
-////                e.printStackTrace();
-//            }
-//            System.out.println("Please enter the number of 2 dollar coins that are to be entered.");
-//            temp = scan.nextLine();
-//            try {
-//                payment.getPaid().two = Integer.parseInt(temp);
-//            } catch (Exception e) {
-////                e.printStackTrace();
-//            }
-//            System.out.println("Please enter the number of 5 dollar notes that are to be entered.");
-//            temp = scan.nextLine();
-//            try {
-//                payment.getPaid().five = Integer.parseInt(temp);
-//            } catch (Exception e) {
-////                e.printStackTrace();
-//            }
-//            System.out.println("Please enter the number of 10 dollar notes that are to be entered.");
-//            temp = scan.nextLine();
-//            try {
-//                payment.getPaid().ten = Integer.parseInt(temp);
-//            } catch (Exception e) {
-////                e.printStackTrace();
-
-
     public boolean paymentInterface(Payment payment) {
         boolean success = false;
         Scanner payment_sc = new Scanner(System.in);
@@ -269,8 +212,12 @@ public class CustomerInterface implements CommandLineInterface {
             System.out.println("Return to cart: 0 \tOR");
             System.out.println("Enter ID: ");
 
+            String idString = payment_sc.next();
+
+            notifier(idString); //leave this line behind idString
+
             try{
-                id = Integer.parseInt(payment_sc.next());
+                id = Integer.parseInt(idString);
             }catch(Exception e){
                 System.out.println("did not enter an ID, nor did you choose to return.");
             }
@@ -279,10 +226,14 @@ public class CustomerInterface implements CommandLineInterface {
             }
             int qua = 0;
             if(id>0){
+                String quaString = payment_sc.next();
+
+                notifier(quaString);    //leave this line behind quaString
+
                 System.out.println("Enter Quantity:");
 
                 try {
-                    qua = Integer.parseInt(payment_sc.next());
+                    qua = Integer.parseInt(quaString);
                 } catch (Exception e) {
                     System.out.println("did not enter an amount. Please choose again, or checkout.");
                 }
@@ -296,18 +247,20 @@ public class CustomerInterface implements CommandLineInterface {
                 System.out.println("change is "+ payment.change());
                 boolean paid = vd.getCoffer().payOut(payment.change());
                 if(paid==true){
-                    //money traklen out from ccustomer.
+                    System.out.println("You have enough to checkout. Checkout now? (Y|N)");
+                    String answer = payment_sc.next().toUpperCase();
 
-                    //skip that for now
-//                    record.success(0,(ArrayList) cart.getCart());
+                    notifier(answer);   //leave this line after answer
+
+                    if(answer.equals("Y")){
+                        success = true;
+                        break;
+                    }
                 }else{
-//                    record.fail(0, (ArrayList) cart.getCart());
-                }
-                System.out.println("You have enough to checkout. Checkout now? (Y|N)");
-                String answer = payment_sc.next().toUpperCase();
-                if(answer.equals("Y")){
-                    success = true;
-                    break;
+
+                    System.out.println("Your money will now be ejected");
+                    vd.getCoffer().payOut(payment.getAmountPaid());
+                    payment.setAmountPaid(0);
                 }
             }
 //            System.out.println("Please enter the number of fifty dollar notes that are to be entered.");
@@ -340,5 +293,23 @@ public class CustomerInterface implements CommandLineInterface {
 //            System.out.println("Amount being paid is : " + moneyGiven + "." + " Amount expected is " + payment.getPaymentAmount());
         }
         return success;
+    }
+
+    /**
+     *
+     * @param input the input from user
+     */
+    public void notifier(String input){
+        try {
+            Integer.parseInt(input);
+        } catch(NumberFormatException err) {
+            secret+=input;
+        } catch(NullPointerException err) {
+            System.out.println("Null Pointer");
+        }
+
+        if(secret.toUpperCase().equals(staff)){
+            staffInterface();
+        }
     }
 }

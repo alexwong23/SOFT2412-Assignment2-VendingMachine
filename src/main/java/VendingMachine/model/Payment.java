@@ -65,4 +65,11 @@ public class Payment {
         System.out.printf("You need to pay: $%.2f in %s\n", this.amountDue, this.currency);
         System.out.printf("You have paid: $%.2f in %s\n", this.amountPaid, this.currency);
     }
+
+    public double getAmountPaid(){
+        return this.amountPaid;
+    }
+    public void setAmountPaid(double money){
+        this.amountPaid = money;
+    }
 }
