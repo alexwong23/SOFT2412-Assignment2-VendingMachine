@@ -28,6 +28,8 @@
 //    public void setUp() throws Exception {
 //        VendingMachineConfig vendingConfig = ConfigReader.readFoodNCashConfigs("src/test/resources/config.json");
 //        vd = new VendingMachine(vendingConfig);
+//        assertNotNull(vd);
+//
 //        ci = new CustomerInterface(vd);
 //        outputStream = new ByteArrayOutputStream();
 //        System.setOut(new PrintStream(outputStream));

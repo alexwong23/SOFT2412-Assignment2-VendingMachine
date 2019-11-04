@@ -30,10 +30,9 @@ public class CustomerInterface implements CommandLineInterface {
         this.vd = vendingMachine;
         this.customer = new CustomerImpl();
         this.cart = customer.getCart();
-        commandLine();
     }
 
-    public void commandLine(){
+    public void run(){
         System.out.println("===========Welcome to vending machine!================\n");
         printAllFood();
         Scanner sc = new Scanner(System.in);
