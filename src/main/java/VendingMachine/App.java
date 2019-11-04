@@ -15,7 +15,7 @@ public class App {
 
 
     public static void main(String[] args) {
-        VendingMachineConfig vendingConfig = ConfigReader.readFoodNCashConfigs("src/main/resources/config.json");
+        VendingMachineConfig vendingConfig = ConfigReader.readFoodNCashConfigs("src/main/resources/configForTest.json");
         VendingMachine vendingMachine = new VendingMachine(vendingConfig);
 
         System.out.println("===========Welcome to vending machine!===========");

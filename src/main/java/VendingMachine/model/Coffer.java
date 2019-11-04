@@ -40,6 +40,7 @@ public class Coffer {
         return null;
     }
 
+
     public boolean payOut(double moneyToBePaid){
 //        System.out.println("The amount of money that the vendingg machine has at the beginnign is  :");
 //        System.out.println(this.getCofferDenominations().get(0).getQuantity());
@@ -72,13 +73,15 @@ public class Coffer {
         }
         // now I will have done the best I could for takiing out the money that is to be paid.
         if(cumulative!=0){
-            System.out.println(cumulative+"is left unpaid");
+            double message = cumulative/100;
+            System.out.println(message+"is left unpaid");
             System.out.println("Cannot pay you back.");
+
             return false;
         }else{
             for(int i = this.cofferDenominations.size()-1; i>=0; i--){
                 if(amountGiven.get(i).quantity!=0){
-                    System.out.println(amountGiven.get(i).quantity+" "+  cofferDenominations.get(i).quantity+" dollar note/coin was sent out");
+                    System.out.println(amountGiven.get(i).quantity+" "+  cofferDenominations.get(i).getCash().getValue()+" dollar note/coin was sent out");
                 }
                 cofferDenominations.get(i).reduceQuantity(amountGiven.get(i).quantity);
             }

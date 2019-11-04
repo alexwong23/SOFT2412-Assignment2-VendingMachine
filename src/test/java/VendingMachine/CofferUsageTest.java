@@ -66,7 +66,7 @@ public class CofferUsageTest {
     }
     @Test
     public void testCofferChange(){
-        VendingMachineConfig vendingConfig = ConfigReader.readFoodNCashConfigs("src/main/resources/config.json");
+        VendingMachineConfig vendingConfig = ConfigReader.readFoodNCashConfigs("src/test/resources/configForTest.json");
         VendingMachine vendingMachine = new VendingMachine(vendingConfig);
         Coffer coffer = vendingMachine.getCoffer();
 

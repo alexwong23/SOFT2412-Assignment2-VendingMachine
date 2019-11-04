@@ -124,6 +124,7 @@ public class CustomerInterface implements CommandLineInterface {
 
                         InventoryItem target2 = vd.getInventory().getInventoryItemByFoodId(id);
                         target2.addQuantity(qua);
+
                     }catch (Exception e){
                         System.out.println("Invalid ID or Quantity");
                     }
@@ -246,24 +247,21 @@ public class CustomerInterface implements CommandLineInterface {
                 System.out.println("change is "+ payment.change());
                 boolean paid = vd.getCoffer().payOut(payment.change());
                 if(paid==true){
-                    //money traklen out from ccustomer.
-
-                    //skip that for now
-//                    record.success(0,(ArrayList) cart.getCart());
+                    System.out.println("You have enough to checkout. Checkout now? (Y|N)");
+                    String answer = payment_sc.next().toUpperCase();
+                    if(answer.equals("Y")){
+                        success = true;
+                        break;
+                    }
                 }else{
-//                    record.fail(0, (ArrayList) cart.getCart());
-                }
-                System.out.println("You have enough to checkout. Checkout now? (Y|N)");
-                String answer = payment_sc.next().toUpperCase();
 
-                notifier(answer);   //leave this line behind answer
-
-                if(answer.equals("Y")){
-                    success = true;
-                    break;
+                    System.out.println("Your money will now be ejected");
+                    vd.getCoffer().payOut(payment.getAmountPaid());
+                    payment.setAmountPaid(0);
                 }
+
             }
-        }
+       }
         return success;
     }
 
