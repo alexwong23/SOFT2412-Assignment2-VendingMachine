@@ -18,7 +18,6 @@ public class CustomerInterface implements CommandLineInterface {
     private String secret="";
     private String staff="STAFF";   //user input the string can get in staff interface
 
-
     private Records record;
 
     private VendingMachine vd;

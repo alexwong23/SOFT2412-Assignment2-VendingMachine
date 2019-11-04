@@ -6,45 +6,19 @@ package VendingMachine;
 import VendingMachine.config.VendingMachineConfig;
 import VendingMachine.model.VendingMachine;
 import VendingMachine.view.CustomerInterface;
-import VendingMachine.view.StaffInterface;
 
-import java.util.Scanner;
+
+
 
 public class App {
 
 
 
     public static void main(String[] args) {
+        //Only keep the three lines below
         VendingMachineConfig vendingConfig = ConfigReader.readFoodNCashConfigs("src/main/resources/config.json");
         VendingMachine vendingMachine = new VendingMachine(vendingConfig);
+        new CustomerInterface(vendingMachine);
 
-        System.out.println("===========Welcome to vending machine!===========");
-        Scanner userScanner = new Scanner(System.in);
-        while(true) {
-            System.out.println("Options:");
-            System.out.println("\t1. Customer");
-            System.out.println("\t2. Staff");
-            System.out.println("Choose an option:");
-            String userInput = userScanner.nextLine();
-            switch (userInput) {
-                case "1": {
-                    new CustomerInterface(vendingMachine);
-                    break;
-                }
-                case "2": {
-                    Scanner staffScanner = new Scanner(System.in);
-                    System.out.println("Enter Staff ID: ");
-                    String staffIdInput = staffScanner.next();
-                    if(StaffInterface.StaffIDCheck(staffIdInput)) {
-                        new StaffInterface(vendingMachine);
-                    } else {
-                        System.out.println("Invalid Staff ID.");
-                    }
-                    break;
-                }
-            }
-        }
-
-        //System.out.println(ConfigReader.readRateConfigs("src/test/resources/config.json").getClass().getCanonicalName());
     }
 }
