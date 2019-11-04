@@ -55,6 +55,7 @@ public class CustomerInterface implements CommandLineInterface {
                     notifier(input);
             }
         }
+        sc.close();
     }
 
     public void purchaseInterface(){

@@ -13,6 +13,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.*;
 
@@ -58,11 +59,12 @@ public class CustomerInterfaceTest {
 
     @Test
     public void run1(){
-        //test quit
-        setInput("3");
+        //scenario: just quit
+        setInput("3\n");
+
+        ci.run();
 
         String s="";
-
         s+="===========Welcome to vending machine!================\n";
         s+=vd.foodToString();
         s+="Options:\n";
@@ -73,25 +75,43 @@ public class CustomerInterfaceTest {
 
         s+="Thank you!\n";
 
-        ci.run();
-
         assertEquals(s,getOutput());
     }
 
     @Test
     public void run2(){
-        //test quit
-        //setInput("1");
+        //scenario: add item into shopping cart, but did not make a purchase
+        setInput("1\n");
+        setInput("1\n");
+        setInput("1\n");
+        setInput("N\n");
+        setInput("3\n");
 
         ci.run();
 
-        assertEquals("",getOutput());
-    }
+        String s="";
+        s+="===========Welcome to vending machine!================\n";
+        s+=vd.foodToString();
+        s+="Options:\n";
+        s+="1. Purchase\n";
+        s+="2. Shopping Cart\n";
+        s+="3. Quit\n";
+        s+="Enter your options:\n";
+        s+=vd.foodToString();
+        s+="Enter ID:\n";
+        s+="Enter Quantity:\n";
+        s+="Add successful.\n";
+        s+="Continue Shopping? (Y|N)\n";
+        s+="Options:\n";
+        s+="1. Purchase\n";
+        s+="2. Shopping Cart\n";
+        s+="3. Quit\n";
+        s+="Enter your options:\n";
+        s+="Thank you!\n";
 
-    @Test
-    public void purchaseInterface(){
-        setInput("1");
-        ci.purchaseInterface();
+        String result = getOutput();
+        System.out.println(result);
+        assertEquals(s,result);
     }
 
     @Test
