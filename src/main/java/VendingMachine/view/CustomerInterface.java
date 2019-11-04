@@ -169,7 +169,6 @@ public class CustomerInterface implements CommandLineInterface {
                     }
                 }catch(Exception e){
                     System.out.println("invalid currency");
-                    e.printStackTrace();
                     break;
                 }
 
@@ -297,20 +296,49 @@ public class CustomerInterface implements CommandLineInterface {
                 System.out.println("change is "+ payment.change());
                 boolean paid = vd.getCoffer().payOut(payment.change());
                 if(paid==true){
-                    System.out.println("You have enough to checkout. Checkout now? (Y|N)");
-                    String answer = payment_sc.next().toUpperCase();
-                    if(answer.equals("Y")){
-                        success = true;
-                        break;
-                    }
-                }else{
-                    System.out.println("Your money will now be ejected");
-                    vd.getCoffer().payOut(payment.getAmountPaid());
-                    payment.setAmountPaid(0);
-                }
+                    //money traklen out from ccustomer.
 
+                    //skip that for now
+//                    record.success(0,(ArrayList) cart.getCart());
+                }else{
+//                    record.fail(0, (ArrayList) cart.getCart());
+                }
+                System.out.println("You have enough to checkout. Checkout now? (Y|N)");
+                String answer = payment_sc.next().toUpperCase();
+                if(answer.equals("Y")){
+                    success = true;
+                    break;
+                }
             }
-       }
+//            System.out.println("Please enter the number of fifty dollar notes that are to be entered.");
+//            temp = scan.nextLine();
+//            try {
+//                payment.getPaid().fifty = Integer.parseInt(temp);
+//            } catch (Exception e) {
+////                e.printStackTrace();
+//            }
+//            System.out.println("Please enter the number of hundred dollar notes that are to be entered.");
+//            temp = scan.nextLine();
+//            try {
+//                payment.getPaid().hundred = Integer.parseInt(temp);
+//            } catch (Exception e) {
+////                e.printStackTrace();
+//            }
+//            moneyGiven = payment.getTotal();
+//            if(moneyGiven>=payment.getPaymentAmount()){ // see if the money given is equla to or more than the amoutn that has to be paid
+//                //do change calculations
+//                double vdMoney = vd.totalMoney();
+//                if(vdMoney==moneyGiven){
+//                    successful_purchase=true;
+//                }else if(vdMoney>moneyGiven){
+//
+//                    successful_purchase = true;
+//                }else{
+//                    successful_purchase = false;
+//                }
+//            }
+//            System.out.println("Amount being paid is : " + moneyGiven + "." + " Amount expected is " + payment.getPaymentAmount());
+        }
         return success;
     }
 }
