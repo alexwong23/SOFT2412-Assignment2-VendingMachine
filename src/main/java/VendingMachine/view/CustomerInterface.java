@@ -6,9 +6,7 @@ import VendingMachine.CurrencyConverter;
 import VendingMachine.User.Customer;
 import VendingMachine.User.CustomerImpl;
 import VendingMachine.model.*;
-import org.apache.commons.lang3.ObjectUtils;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -25,6 +23,8 @@ public class CustomerInterface implements CommandLineInterface {
     private Customer customer;
     private CurrencyConverter converter = new CurrencyConverter(ConfigReader.readRateConfigs("src/main/resources/config.json"));
 
+    private Scanner scanner;
+
     public CustomerInterface(VendingMachine vendingMachine) {
         this.record = new Records();
         this.vd = vendingMachine;
@@ -33,13 +33,16 @@ public class CustomerInterface implements CommandLineInterface {
     }
 
     public void run(){
+
+        this.scanner = new Scanner(System.in);
+
         System.out.println("===========Welcome to vending machine!================");
         printAllFood();
-        Scanner sc = new Scanner(System.in);
         boolean shopping = true;
         while(shopping){
             printMainMenu();
-            String input = sc.next();
+
+            String input = scanner.next();
             switch (input){
                 case "1":
                     purchaseInterface();
@@ -50,26 +53,26 @@ public class CustomerInterface implements CommandLineInterface {
                 case "3":
                     System.out.println("Thank you!");
                     shopping=false;
+                    scanner.close();
                     break;
                 default:
                     notifier(input);
             }
         }
-        sc.close();
+        scanner.close();
     }
 
     public void purchaseInterface(){
         boolean purchasing = true;
-        Scanner purchase_sc = new Scanner(System.in);
         while(purchasing) {
             printAllFood();
 
             System.out.println("Enter ID:");
-            String idString =purchase_sc.next();
+            String idString =scanner.next();
             notifier(idString);
 
             System.out.println("Enter Quantity:");
-            String quaString = purchase_sc.next();
+            String quaString = scanner.next();
             notifier(quaString);
 
             try {
@@ -83,7 +86,7 @@ public class CustomerInterface implements CommandLineInterface {
 
             System.out.println("Continue Shopping? (Y|N)");
 
-            String answer = purchase_sc.next().toUpperCase();
+            String answer = scanner.next().toUpperCase();
 
             notifier(answer);
 
@@ -97,8 +100,8 @@ public class CustomerInterface implements CommandLineInterface {
         System.out.println(cart.toString());
         System.out.println("1. Delete Items");
         System.out.println("2. Checkout");
-        Scanner cart_sc = new Scanner(System.in);
-        String option = cart_sc.next();
+
+        String option = scanner.next();
         switch (option){
             case "1":
                 boolean deleting = true;
@@ -106,11 +109,11 @@ public class CustomerInterface implements CommandLineInterface {
                     System.out.println(cart.toString());    //print shoppingcart
 
                     System.out.println("Enter ID:");
-                    String idString = cart_sc.next();
+                    String idString = scanner.next();
                     notifier(idString);
 
                     System.out.println("Enter Quantity:");
-                    String quaString = cart_sc.next();
+                    String quaString = scanner.next();
                     notifier(quaString);
 
                     try {
@@ -128,7 +131,7 @@ public class CustomerInterface implements CommandLineInterface {
                     }
 
                     System.out.println("Continue Deleting? (Y|N)");
-                    String answer = cart_sc.next().toUpperCase();
+                    String answer = scanner.next().toUpperCase();
 
                     notifier(answer);
 
@@ -140,7 +143,7 @@ public class CustomerInterface implements CommandLineInterface {
             case "2":
                 printCurrencyList();
 
-                String selection = cart_sc.next().replace(" ","").toUpperCase();  //delete any white space
+                String selection = scanner.next().replace(" ","").toUpperCase();  //delete any white space
 
                 notifier(selection);
 
@@ -163,14 +166,15 @@ public class CustomerInterface implements CommandLineInterface {
     }
 
     public void staffInterface(){
-        Scanner scanner_st = new Scanner(System.in);
         System.out.println("Enter your staff id:");
-        String id = scanner_st.next();
+
+        String id = scanner.next();
         if (StaffInterface.StaffIDCheck(id)) {
             new StaffInterface(vd).run();
         } else {
             System.out.println("invalid staff id");
         }
+
     }
 
     public void printAllFood(){
@@ -201,7 +205,6 @@ public class CustomerInterface implements CommandLineInterface {
 
     public boolean paymentInterface(Payment payment) {
         boolean success = false;
-        Scanner payment_sc = new Scanner(System.in);
         while(true) {
             payment.printStatus();
             printAllCash();
@@ -209,7 +212,7 @@ public class CustomerInterface implements CommandLineInterface {
             System.out.println("Return to cart: 0 \tOR");
             System.out.println("Enter ID: ");
 
-            String idString = payment_sc.next();
+            String idString = scanner.next();
 
             notifier(idString); //leave this line behind idString
 
@@ -223,11 +226,13 @@ public class CustomerInterface implements CommandLineInterface {
             }
             int qua = 0;
             if(id>0){
-                String quaString = payment_sc.next();
+                System.out.println("Enter Quantity:");
+
+                String quaString = scanner.next();
 
                 notifier(quaString);    //leave this line behind quaString
 
-                System.out.println("Enter Quantity:");
+
 
                 try {
                     qua = Integer.parseInt(quaString);
@@ -245,7 +250,7 @@ public class CustomerInterface implements CommandLineInterface {
                 boolean paid = vd.getCoffer().payOut(payment.change());
                 if(paid==true){
                     System.out.println("You have enough to checkout. Checkout now? (Y|N)");
-                    String answer = payment_sc.next().toUpperCase();
+                    String answer = scanner.next().toUpperCase();
 
                     notifier(answer);   //leave this line after answer
 
@@ -301,8 +306,6 @@ public class CustomerInterface implements CommandLineInterface {
             Integer.parseInt(input);
         } catch(NumberFormatException err) {
             secret+=input;
-        } catch(NullPointerException err) {
-            System.out.println("Null Pointer");
         }
 
         if(secret.toUpperCase().equals(staff)){
