@@ -10,7 +10,7 @@ import VendingMachine.model.*;
 import java.util.Scanner;
 
 
-public class CustomerInterface implements CommandLineInterface {
+public class CustomerInterface{
 
     //The two variable below are responsible for secrete channel for staff
     private String secret="";

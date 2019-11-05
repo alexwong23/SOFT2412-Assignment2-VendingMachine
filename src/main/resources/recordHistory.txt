@@ -66,3 +66,7 @@ Date                Item           Quantity  Type
 05-11-2019 17:35:09 Pepsi          3         5.0       PURCHASE  
 05-11-2019 17:35:24 Pepsi          3         5.0       PURCHASE  
 05-11-2019 17:37:06 Pepsi          3         5.0       PURCHASE  
+05-11-2019 18:04:00 Pepsi          2         5.0       CANCELLATION
+05-11-2019 18:04:00 Coke           1         3.0       PURCHASE  
+05-11-2019 18:04:00 Chips          1         4.0       CANCELLATION
+05-11-2019 18:04:00 Pepsi          3         5.0       PURCHASE  
