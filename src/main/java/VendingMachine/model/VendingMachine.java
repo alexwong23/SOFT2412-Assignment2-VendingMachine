@@ -41,17 +41,17 @@ public class VendingMachine {
     }
 
     // FOR STAFF ONLY
-    public String staffCashToString(){
-        String s = String.format("%-5s%-20s%-10s%-10s%-10s\n", "ID","Items","Type","Value","Quantity");
-        s += "------------------------------------------------------\n";
-
-        for (CofferDenomination denomination : coffer.getCofferDenominations()) {
-            s += String.format("%s\n", denomination.getStaffDisplayString());
-        }
-        s += "======================================================\n";
-
-        return s;
-    }
+//    public String staffCashToString(){
+//        String s = String.format("%-5s%-20s%-10s%-10s%-10s\n", "ID","Items","Type","Value","Quantity");
+//        s += "------------------------------------------------------\n";
+//
+//        for (CofferDenomination denomination : coffer.getCofferDenominations()) {
+//            s += String.format("%s\n", denomination.getStaffDisplayString());
+//        }
+//        s += "======================================================\n";
+//
+//        return s;
+//    }
 
     // FOR STAFF ONLY
     public String recordsToString(){

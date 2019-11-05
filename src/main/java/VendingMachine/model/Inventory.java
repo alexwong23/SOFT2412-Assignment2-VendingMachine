@@ -44,37 +44,37 @@ public class Inventory {
         item.setQuantity(MAX_QUANTITY);
         return 0;
     }
+//
+//    public int addFoodToInventory(int foodId, int quantity) {
+//        InventoryItem item = getInventoryItemByFoodId(foodId);
+//        if (item == null) {
+//            /* This error code indicates the item was not found */
+//            return -1;
+//        }
+//
+//        int newTotal = item.getQuantity() + quantity;
+//        /* If there are already MAX_QUANTITY items */
+//        if (newTotal > MAX_QUANTITY) {
+//            return -2;
+//        }
+//        item.setQuantity(newTotal);
+//        return 0;
+//    }
 
-    public int addFoodToInventory(int foodId, int quantity) {
-        InventoryItem item = getInventoryItemByFoodId(foodId);
-        if (item == null) {
-            /* This error code indicates the item was not found */
-            return -1;
-        }
-
-        int newTotal = item.getQuantity() + quantity;
-        /* If there are already MAX_QUANTITY items */
-        if (newTotal > MAX_QUANTITY) {
-            return -2;
-        }
-        item.setQuantity(newTotal);
-        return 0;
-    }
-
-    public int removeFoodFromInventory(int foodId, int quantity) {
-
-        InventoryItem item = getInventoryItemByFoodId(foodId);
-        if (item == null) {
-            /* This error code indicates the item was not found */
-            return -1;
-        }
-        /* If the quantity required exceeds the stock level, return error  */
-        if (quantity > item.getQuantity()) {
-            return -2;
-        }
-        item.setQuantity(item.getQuantity() - quantity);
-        return 0;
-    }
+//    public int removeFoodFromInventory(int foodId, int quantity) {
+//
+//        InventoryItem item = getInventoryItemByFoodId(foodId);
+//        if (item == null) {
+//            /* This error code indicates the item was not found */
+//            return -1;
+//        }
+//        /* If the quantity required exceeds the stock level, return error  */
+//        if (quantity > item.getQuantity()) {
+//            return -2;
+//        }
+//        item.setQuantity(item.getQuantity() - quantity);
+//        return 0;
+//    }
 
     public InventoryItem getInventoryItemByFoodId(int foodId) {
         for (InventoryItem item : inventoryItems) {

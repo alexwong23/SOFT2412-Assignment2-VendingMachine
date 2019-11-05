@@ -76,13 +76,13 @@ public class ShoppingCart{
         }
     }
 
-    public int getTotalQuantity() {
-        int totalQuantity = 0;
-        for(int i = 0; i < cart.size(); i++){
-            totalQuantity += cart.get(i).getQuantity();
-        }
-        return totalQuantity;
-    }
+//    public int getTotalQuantity() {
+//        int totalQuantity = 0;
+//        for(int i = 0; i < cart.size(); i++){
+//            totalQuantity += cart.get(i).getQuantity();
+//        }
+//        return totalQuantity;
+//    }
 
     public double getTotalPrice() {
         double totalPrice=0;
