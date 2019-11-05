@@ -56,19 +56,19 @@ public class StaffInterfaceTest {
     }
 
 
-    @Test
-    public void truePrintMainMenu(){
-        si.printMainMenu();
-        assertEquals("Staff Options:\n"
-                + "\t1. Refill All Items\n"
-                + "\t2. Refill Single Items\n"
-                + "\t3. List All Items\n"
-                + "\t4. Refill Cash\n"
-                + "\t5. List Cash\n"
-                + "\t6. List Records\n"
-                + "\t7. Quit\n"
-                + "Choose an option:\n", getOutput());
-    }
+//    @Test
+//    public void truePrintMainMenu(){
+//        si.printMainMenu();
+//        assertEquals("Staff Options:\n"
+//                + "\t1. Refill All Items\n"
+//                + "\t2. Refill Single Items\n"
+//                + "\t3. List All Items\n"
+//                + "\t4. Refill Cash\n"
+//                + "\t5. List Cash\n"
+//                + "\t6. List Records\n"
+//                + "\t7. Quit\n"
+//                + "Choose an option:\n", getOutput());
+//    }
 
 
 //    @Test
