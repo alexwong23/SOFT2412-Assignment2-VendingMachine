@@ -376,10 +376,10 @@ public class CustomerInterfaceTest {
 
         String s="";
         s+="How would you like to pay?\n";
-        s+="USD\n";
         s+="AUD\n";
-        s+="CNY\n";
-        s+="JPY\n";
+        s+="USD\n";
+        s+="NZD\n";
+        s+="SGD\n";
         s+="CAD\n";
         s+="Enter your selection: \n";
 

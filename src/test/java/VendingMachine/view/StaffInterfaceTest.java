@@ -71,7 +71,6 @@ public class StaffInterfaceTest {
                 + "Choose an option:\n", getOutput());
     }
 
-
 //    @Test
 //    public void trueStaffIDCheck(){
 //        String someString = "1234\n";

@@ -1,13 +1,17 @@
-Date                Item           Quantity  Type      
+Date                Item           Quantity  Type
 ----------------------------------------------------------------
 03-11-2019 20:27:41 Coke           1         CANCELLATION
-03-11-2019 20:28:15 Coke           1         PURCHASE  
-03-11-2019 20:28:15 Jelly Beans    3         PURCHASE  
+03-11-2019 20:28:15 Coke           1         PURCHASE
+03-11-2019 20:28:15 Jelly Beans    3         PURCHASE
 03-11-2019 20:29:03 Orange Juice   1         CANCELLATION
-03-11-2019 20:29:23 Orange Juice   1         PURCHASE  
-04-11-2019 19:54:49 Jelly Beans    4         10.0      PURCHASE  
+03-11-2019 20:29:23 Orange Juice   1         PURCHASE
+04-11-2019 19:54:49 Jelly Beans    4         10.0      PURCHASE
 04-11-2019 19:55:56 Mars bar       3         5.0       CANCELLATION
-04-11-2019 19:56:26 Mars bar       1         5.0       PURCHASE  
-205-11-2019 10:38:43 Pepsi          10        5.0       PURCHASE  
-05-11-2019 11:46:03 Pepsi          2         5.0       CANCELLATION
-05-11-2019 12:06:20 Pepsi          2         5.0       CANCELLATION
+04-11-2019 19:56:26 Mars bar       1         5.0       PURCHASE
+05-11-2019 10:38:43 Pepsi          10        5.0       PURCHASE
+05-11-2019 11:37:42 Pepsi          2         5.0       CANCELLATION
+05-11-2019 11:39:33 Pepsi          2         5.0       CANCELLATION
+05-11-2019 11:43:12 Pepsi          2         5.0       CANCELLATION
+05-11-2019 11:44:44 Pepsi          2         5.0       CANCELLATION
+05-11-2019 11:45:21 Pepsi          2         5.0       CANCELLATION
+05-11-2019 11:46:27 Pepsi          2         5.0       CANCELLATION

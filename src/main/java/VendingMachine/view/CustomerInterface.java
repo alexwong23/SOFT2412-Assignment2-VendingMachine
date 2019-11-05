@@ -247,7 +247,7 @@ public class CustomerInterface implements CommandLineInterface {
                 payment.makePayment(target, qua);
             }
             if(payment.change() >= 0) {
-                System.out.println("change is "+ payment.change());
+                System.out.println("change is "+ ((double)((int)(100*payment.change())))/100);
                 boolean paid = vd.getCoffer().payOut(payment.change());
                 if(paid==true){
                     System.out.println("You have enough to checkout. Checkout now? (Y|N)");

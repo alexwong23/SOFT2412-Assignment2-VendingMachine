@@ -42,7 +42,7 @@ public class Coffer {
 
     public boolean payOut(double moneyToBePaid){
 
-        double cumulative = moneyToBePaid*100 - (moneyToBePaid*100)%10; // in cents
+        double cumulative = (int)(moneyToBePaid*100 - (moneyToBePaid*100)%10); // in cents
         ArrayList<CofferDenomination> amountGiven = new ArrayList<CofferDenomination>();
         for(int i = 0; i < cofferDenominations.size();i++){
             amountGiven.add(this.cofferDenominations.get(i).clone(0));
@@ -59,7 +59,7 @@ public class Coffer {
                 }
         }
         if(cumulative!=0){
-            System.out.println(cumulative+"is left unpaid");
+            System.out.println( (cumulative) +"is left unpaid");
             System.out.println("Cannot pay you back.");
             return false;
         }else{
