@@ -26,9 +26,11 @@ public class StaffInterfaceTest {
 
     @Before
     public void setUp() throws Exception {
+        VendingMachineConfig vendingConfig = ConfigReader.readFoodNCashConfigs("src/test/resources/config.json");
+        vd = new VendingMachine(vendingConfig);
+        si = new StaffInterface(vd);
         outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
-        VendingMachineConfig vendingConfig = ConfigReader.readFoodNCashConfigs("src/test/resources/config.json");
     }
     private String getOutput() { // return OutputStream as a String
         System.out.flush();
