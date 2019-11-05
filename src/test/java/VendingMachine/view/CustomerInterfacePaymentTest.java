@@ -259,7 +259,7 @@ public class CustomerInterfacePaymentTest {
                 "Enter ID: \n" +
                 "Enter Quantity:\n" +
                 "Cash inserted successfully.\n" +
-                "change is 0.0\n" +
+                "change is 0.00\n" +
                 "You have enough to checkout. Checkout now? (Y|N)\n" +
                 "Change of $0.00 in AUD received.\n" +
                 "Thank you for your purchase, come back again!\n" +
@@ -522,7 +522,7 @@ public class CustomerInterfacePaymentTest {
                 "Enter ID: \n" +
                 "Enter Quantity:\n" +
                 "Cash inserted successfully.\n" +
-                "change is 100.0\n" +
+                "change is 100.00\n" +
                 "1 100.0 dollar note/coin was sent out\n" +
                 "You have enough to checkout. Checkout now? (Y|N)\n" +
                 "Change of $100.00 in AUD received.\n" +
@@ -681,7 +681,7 @@ public class CustomerInterfacePaymentTest {
                 "SGD\n" +
                 "CAD\n" +
                 "Enter your selection: \n" +
-                "You need to pay: $10.34 in USD\n" +
+                "You need to pay: $10.30 in USD\n" +
                 "You have paid: $0.00 in USD\n" +
                 "ID   Items               Type      \n" +
                 "------------------------------------------------------\n" +
@@ -701,7 +701,7 @@ public class CustomerInterfacePaymentTest {
                 "Enter ID: \n" +
                 "Enter Quantity:\n" +
                 "Cash inserted successfully.\n" +
-                "change is 389.6\n" +
+                "change is 389.60\n" +
                 "3 100.0 dollar note/coin was sent out\n" +
                 "1 50.0 dollar note/coin was sent out\n" +
                 "1 20.0 dollar note/coin was sent out\n" +
@@ -711,7 +711,7 @@ public class CustomerInterfacePaymentTest {
                 "1 0.5 dollar note/coin was sent out\n" +
                 "1 0.1 dollar note/coin was sent out\n" +
                 "You have enough to checkout. Checkout now? (Y|N)\n" +
-                "Change of $389.66 in USD received.\n" +
+                "Change of $389.60 in USD received.\n" +
                 "Thank you for your purchase, come back again!\n" +
                 "Options:\n" +
                 "1. Purchase\n" +
