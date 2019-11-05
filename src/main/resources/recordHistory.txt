@@ -235,3 +235,33 @@ Date                Item           Quantity  Type
 05-11-2019 18:46:48 Coke           1         3.0       PURCHASE  
 05-11-2019 18:46:48 Chips          1         4.0       CANCELLATION
 05-11-2019 18:46:49 Pepsi          2         5.0       CANCELLATION
+05-11-2019 18:51:00 Pepsi          10        5.0       PURCHASE  
+05-11-2019 18:51:00 Sprite         10        5.0       PURCHASE  
+05-11-2019 18:51:00 Coke           10        5.0       PURCHASE  
+05-11-2019 18:51:00 Orange Juice   10        5.0       PURCHASE  
+05-11-2019 18:51:00 Red Rock Deli  10        5.0       PURCHASE  
+05-11-2019 18:51:00 Mars bar       10        5.0       PURCHASE  
+05-11-2019 18:51:01 Pepsi          3         5.0       PURCHASE  
+05-11-2019 18:51:01 Pepsi          3         5.0       PURCHASE  
+05-11-2019 18:51:01 Pepsi          3         5.0       PURCHASE  
+05-11-2019 18:51:01 Pepsi          2         5.0       CANCELLATION
+05-11-2019 18:52:42 Pepsi          10        5.0       PURCHASE  
+05-11-2019 18:52:42 Sprite         10        5.0       PURCHASE  
+05-11-2019 18:52:42 Coke           10        5.0       PURCHASE  
+05-11-2019 18:52:42 Orange Juice   10        5.0       PURCHASE  
+05-11-2019 18:52:42 Red Rock Deli  10        5.0       PURCHASE  
+05-11-2019 18:52:42 Mars bar       10        5.0       PURCHASE  
+05-11-2019 18:52:42 Pepsi          3         5.0       PURCHASE  
+05-11-2019 18:52:42 Pepsi          3         5.0       PURCHASE  
+05-11-2019 18:52:42 Pepsi          3         5.0       PURCHASE  
+05-11-2019 18:52:42 Pepsi          2         5.0       CANCELLATION
+05-11-2019 18:53:25 Pepsi          10        5.0       PURCHASE  
+05-11-2019 18:53:25 Sprite         10        5.0       PURCHASE  
+05-11-2019 18:53:25 Coke           10        5.0       PURCHASE  
+05-11-2019 18:53:25 Orange Juice   10        5.0       PURCHASE  
+05-11-2019 18:53:25 Red Rock Deli  10        5.0       PURCHASE  
+05-11-2019 18:53:25 Mars bar       10        5.0       PURCHASE  
+05-11-2019 18:53:25 Pepsi          3         5.0       PURCHASE  
+05-11-2019 18:53:25 Pepsi          3         5.0       PURCHASE  
+05-11-2019 18:53:25 Pepsi          3         5.0       PURCHASE  
+05-11-2019 18:53:25 Pepsi          2         5.0       CANCELLATION
