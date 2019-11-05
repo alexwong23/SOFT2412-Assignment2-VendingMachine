@@ -41,7 +41,6 @@ public class CustomerInterface implements CommandLineInterface {
         boolean shopping = true;
         while(shopping){
             printMainMenu();
-
             String input = scanner.next();
             switch (input){
                 case "1":
@@ -59,7 +58,6 @@ public class CustomerInterface implements CommandLineInterface {
                     notifier(input);
             }
         }
-        scanner.close();
     }
 
     public void purchaseInterface(){
@@ -149,7 +147,7 @@ public class CustomerInterface implements CommandLineInterface {
 
                 notifier(selection);
 
-                double amountDue = converter.convertCurrency("USD",selection,cart.getTotalPrice());
+                double amountDue = converter.convertCurrency("AUD",selection,cart.getTotalPrice());
 
                 Payment payment = new Payment(customer, amountDue, selection);
                 if(paymentInterface(payment)) {
@@ -200,10 +198,10 @@ public class CustomerInterface implements CommandLineInterface {
 
     public void printCurrencyList(){
         System.out.println("How would you like to pay?");
-        System.out.println("USD");
         System.out.println("AUD");
-        System.out.println("CNY");
-        System.out.println("JPY");
+        System.out.println("USD");
+        System.out.println("NZD");
+        System.out.println("SGD");
         System.out.println("CAD");
         System.out.println("Enter your selection: ");
     }

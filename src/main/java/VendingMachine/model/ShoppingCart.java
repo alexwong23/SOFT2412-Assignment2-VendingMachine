@@ -56,7 +56,7 @@ public class ShoppingCart{
         }
     }
 
-    /**
+    /** ;
      * Remove a Food item from the Cart.
      * @param e, Adds the actual food item selected
      */
