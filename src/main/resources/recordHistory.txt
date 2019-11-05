@@ -9,3 +9,5 @@ Date                Item           Quantity  Type
 04-11-2019 19:55:56 Mars bar       3         5.0       CANCELLATION
 04-11-2019 19:56:26 Mars bar       1         5.0       PURCHASE  
 205-11-2019 10:38:43 Pepsi          10        5.0       PURCHASE  
+05-11-2019 11:46:03 Pepsi          2         5.0       CANCELLATION
+05-11-2019 12:06:20 Pepsi          2         5.0       CANCELLATION

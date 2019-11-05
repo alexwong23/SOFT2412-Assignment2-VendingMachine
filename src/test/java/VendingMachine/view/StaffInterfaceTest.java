@@ -57,13 +57,12 @@ public class StaffInterfaceTest {
         assertEquals(true, si.StaffIDCheck("1234"));
     }
 
-
     @Test
     public void truePrintMainMenu(){
         si.printMainMenu();
         assertEquals("Staff Options:\n"
                 + "\t1. Refill All Items\n"
-                + "\t2. Refill Single Items\n"
+                + "\t2. Refill Single Item\n"
                 + "\t3. List All Items\n"
                 + "\t4. Refill Cash\n"
                 + "\t5. List Cash\n"
