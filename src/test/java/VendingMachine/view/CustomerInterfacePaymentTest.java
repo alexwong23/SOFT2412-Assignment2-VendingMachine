@@ -614,25 +614,25 @@ public class CustomerInterfacePaymentTest {
     }
 
     @Test
-    public void PurchaseToPaymentUSD() {
-        String in = "";
-        in += "1\n"; //enter buying menu
-        in += "1\n"; // buy first item
-        in += "3\n";
-        in += "n\n";
-        in += "2\n";      //Get into Shopping cart interface
-        in += "2\n";
-        in += "USD\n"; // choose USD
-        in += "10\n";
-        in += "4\n";
-        in += "y\n";
-        in += "3\n"; //exit
-        setInput(in);
+        public void PurchaseToPaymentUSD() {
+            String in = "";
+            in += "1\n"; //enter buying menu
+            in += "1\n"; // buy first item
+            in += "3\n";
+            in += "n\n";
+            in += "2\n";      //Get into Shopping cart interface
+            in += "2\n";
+            in += "USD\n"; // choose USD
+            in += "10\n";
+            in += "4\n";
+            in += "y\n";
+            in += "3\n"; //exit
+            setInput(in);
 
-        ci.run();
+            ci.run();
 
-        String out = "";
-        out += "===========Welcome to vending machine!================\n" +
+            String out = "";
+            out += "===========Welcome to vending machine!================\n" +
                 "ID   Items               Type      Price     Quantity  \n" +
                 "------------------------------------------------------\n" +
                 "1    Pepsi               DRINK     5.0       10        \n" +
@@ -722,6 +722,175 @@ public class CustomerInterfacePaymentTest {
 
         assertEquals(out, getOutput());
     }
+
+
+    @Test
+    public void PurchaseIDTooHigh() {
+        String in = "";
+        in += "1\n"; //enter buying menu
+        in += "20\n"; // buy first item
+        in += "3\n";
+        in += "n\n";
+        in += "3\n"; //exit
+        setInput(in);
+
+        ci.run();
+
+        String out = "";
+        out+= "===========Welcome to vending machine!================\n" +
+                "ID   Items               Type      Price     Quantity  \n" +
+                "------------------------------------------------------\n" +
+                "1    Pepsi               DRINK     5.0       10        \n" +
+                "2    Sprite              DRINK     5.0       10        \n" +
+                "3    Coke                DRINK     5.0       10        \n" +
+                "4    Orange Juice        DRINK     5.0       10        \n" +
+                "5    Red Rock Deli       CHIPS     5.0       10        \n" +
+                "6    Mars bar            CHOCOLATE 5.0       10        \n" +
+                "7    Jelly Beans         LOLLY     10.0      5         \n" +
+                "======================================================\n" +
+                "Options:\n" +
+                "1. Purchase\n" +
+                "2. Shopping Cart\n" +
+                "3. Quit\n" +
+                "Enter your options:\n" +
+                "ID   Items               Type      Price     Quantity  \n" +
+                "------------------------------------------------------\n" +
+                "1    Pepsi               DRINK     5.0       10        \n" +
+                "2    Sprite              DRINK     5.0       10        \n" +
+                "3    Coke                DRINK     5.0       10        \n" +
+                "4    Orange Juice        DRINK     5.0       10        \n" +
+                "5    Red Rock Deli       CHIPS     5.0       10        \n" +
+                "6    Mars bar            CHOCOLATE 5.0       10        \n" +
+                "7    Jelly Beans         LOLLY     10.0      5         \n" +
+                "======================================================\n" +
+                "Enter ID:\n" +
+                "Enter Quantity:\n" +
+                "Sorry, invalid ID provided.\n" +
+                "Continue Shopping? (Y|N)\n" +
+                "Options:\n" +
+                "1. Purchase\n" +
+                "2. Shopping Cart\n" +
+                "3. Quit\n" +
+                "Enter your options:\n" +
+                "Thank you!\n";
+
+        assertEquals(out, getOutput());
+
+    }
+
+    @Test
+    public void PurchaseIDTooLow() {
+        String in = "";
+        in += "1\n"; //enter buying menu
+        in += "0\n"; // buy first item
+        in += "3\n";
+        in += "n\n";
+        in += "3\n"; //exit
+        setInput(in);
+
+        ci.run();
+
+        String out = "";
+        out+= "===========Welcome to vending machine!================\n" +
+                "ID   Items               Type      Price     Quantity  \n" +
+                "------------------------------------------------------\n" +
+                "1    Pepsi               DRINK     5.0       10        \n" +
+                "2    Sprite              DRINK     5.0       10        \n" +
+                "3    Coke                DRINK     5.0       10        \n" +
+                "4    Orange Juice        DRINK     5.0       10        \n" +
+                "5    Red Rock Deli       CHIPS     5.0       10        \n" +
+                "6    Mars bar            CHOCOLATE 5.0       10        \n" +
+                "7    Jelly Beans         LOLLY     10.0      5         \n" +
+                "======================================================\n" +
+                "Options:\n" +
+                "1. Purchase\n" +
+                "2. Shopping Cart\n" +
+                "3. Quit\n" +
+                "Enter your options:\n" +
+                "ID   Items               Type      Price     Quantity  \n" +
+                "------------------------------------------------------\n" +
+                "1    Pepsi               DRINK     5.0       10        \n" +
+                "2    Sprite              DRINK     5.0       10        \n" +
+                "3    Coke                DRINK     5.0       10        \n" +
+                "4    Orange Juice        DRINK     5.0       10        \n" +
+                "5    Red Rock Deli       CHIPS     5.0       10        \n" +
+                "6    Mars bar            CHOCOLATE 5.0       10        \n" +
+                "7    Jelly Beans         LOLLY     10.0      5         \n" +
+                "======================================================\n" +
+                "Enter ID:\n" +
+                "Enter Quantity:\n" +
+                "Sorry, invalid ID provided.\n" +
+                "Continue Shopping? (Y|N)\n" +
+                "Options:\n" +
+                "1. Purchase\n" +
+                "2. Shopping Cart\n" +
+                "3. Quit\n" +
+                "Enter your options:\n" +
+                "Thank you!\n";
+
+        assertEquals(out, getOutput());
+
+    }
+
+
+    @Test
+    public void PurchaseQuantityTooLow() {
+        String in = "";
+        in += "1\n"; //enter buying menu
+        in += "1\n"; // buy first item
+        in += "0\n";
+        in += "n\n";
+        in += "3\n"; //exit
+        setInput(in);
+
+        ci.run();
+
+        String out = "";
+        out += "===========Welcome to vending machine!================\n" +
+                "ID   Items               Type      Price     Quantity  \n" +
+                "------------------------------------------------------\n" +
+                "1    Pepsi               DRINK     5.0       10        \n" +
+                "2    Sprite              DRINK     5.0       10        \n" +
+                "3    Coke                DRINK     5.0       10        \n" +
+                "4    Orange Juice        DRINK     5.0       10        \n" +
+                "5    Red Rock Deli       CHIPS     5.0       10        \n" +
+                "6    Mars bar            CHOCOLATE 5.0       10        \n" +
+                "7    Jelly Beans         LOLLY     10.0      5         \n" +
+                "======================================================\n" +
+                "Options:\n" +
+                "1. Purchase\n" +
+                "2. Shopping Cart\n" +
+                "3. Quit\n" +
+                "Enter your options:\n" +
+                "ID   Items               Type      Price     Quantity  \n" +
+                "------------------------------------------------------\n" +
+                "1    Pepsi               DRINK     5.0       10        \n" +
+                "2    Sprite              DRINK     5.0       10        \n" +
+                "3    Coke                DRINK     5.0       10        \n" +
+                "4    Orange Juice        DRINK     5.0       10        \n" +
+                "5    Red Rock Deli       CHIPS     5.0       10        \n" +
+                "6    Mars bar            CHOCOLATE 5.0       10        \n" +
+                "7    Jelly Beans         LOLLY     10.0      5         \n" +
+                "======================================================\n" +
+                "Enter ID:\n" +
+                "Enter Quantity:\n" +
+                "Sorry, invalid quantity provided.\n" +
+                "Continue Shopping? (Y|N)\n" +
+                "Options:\n" +
+                "1. Purchase\n" +
+                "2. Shopping Cart\n" +
+                "3. Quit\n" +
+                "Enter your options:\n" +
+                "Thank you!\n";
+
+        assertEquals(out, getOutput());
+    }
+
+
+
+
+
+
  private String getOutput() { // return OutputStream as a String
         System.out.flush();
         return outputStream.toString();
