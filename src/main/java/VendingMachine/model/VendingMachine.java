@@ -3,11 +3,11 @@ package VendingMachine.model;
 import VendingMachine.config.VendingMachineConfig;
 
 
-/* Vending machine for customers to interact with. Staff directly interact with Inventory. */
+/* Vending machine for customers to interact with. A Staff directly interact with Inventory. */
 public class VendingMachine {
-    Inventory inventory;
-    Coffer coffer;
-    Records records;
+    private Inventory inventory;
+    private Coffer coffer;
+    private Records records;
 
     public VendingMachine(VendingMachineConfig config) {
         inventory = new Inventory(config.getFoodConfigs());

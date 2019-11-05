@@ -2,8 +2,8 @@ package VendingMachine.model;
 
 public class InventoryItem {
 
-    Food food;
-    int quantity;
+   private Food food;
+   private int quantity;
 
     public InventoryItem(Food food, int quantity) {
         this.quantity = quantity;

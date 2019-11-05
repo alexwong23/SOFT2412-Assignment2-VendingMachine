@@ -2,9 +2,9 @@ package VendingMachine.model;
 
 public class Chips implements Food {
 
-    String name;
-    double price;
-    int id;
+    private String name;
+    private double price;
+    private int id;
 
     public Chips(int id, String name, double price) {
         this.id = id;

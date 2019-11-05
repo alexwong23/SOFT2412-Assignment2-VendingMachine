@@ -2,9 +2,9 @@ package VendingMachine.model;
 
 public class Lolly implements Food {
 
-    String name;
-    double price;
-    int id;
+   private String name;
+   private double price;
+   private int id;
 
     public Lolly(int id, String name, double price) {
         this.id = id;

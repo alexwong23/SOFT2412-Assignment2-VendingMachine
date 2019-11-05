@@ -14,7 +14,7 @@ public class CustomerInterface implements CommandLineInterface {
 
     //The two variable below are responsible for secrete channel for staff
     private String secret="";
-    private String staff="STAFF";   //user input the string can get in staff interface
+    private String staff = "STAFF";   //user input the string can get in staff interface
 
     private Records record;
 

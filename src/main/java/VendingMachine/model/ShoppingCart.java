@@ -86,8 +86,8 @@ public class ShoppingCart{
 
     public double getTotalPrice() {
         double totalPrice=0;
-        for(int i = 0; i < cart.size(); i++){
-            totalPrice += cart.get(i).getFood().getPrice() * cart.get(i).getQuantity();
+        for (InventoryItem inventoryItem : cart) {
+            totalPrice += inventoryItem.getFood().getPrice() * inventoryItem.getQuantity();
         }
         return totalPrice;
     }

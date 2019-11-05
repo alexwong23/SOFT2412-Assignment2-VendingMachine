@@ -2,9 +2,9 @@ package VendingMachine.model;
 
 public class Note implements Cash {
 
-    String name;
-    double value;
-    int id;
+   private String name;
+   private double value;
+    private int id;
 
     public Note(int id, String name, double value) {
         this.id = id;

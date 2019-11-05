@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class VendingMachineConfigTest {
-    VendingMachineConfig vmc;
+    private VendingMachineConfig vmc;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         vmc = ConfigReader.readFoodNCashConfigs("src/test/resources/config.json");
     }
 
