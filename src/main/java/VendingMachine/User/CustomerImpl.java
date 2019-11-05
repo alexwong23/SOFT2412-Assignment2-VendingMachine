@@ -19,16 +19,6 @@ public class CustomerImpl implements Customer{
         return cart;
     }
 
-//    /**
-//     *It creates a payment
-//     * @param paymentAmount how much customer pay for the vending machine
-//     * @return the payment
-//     */
-//    @Override
-//    public Payment getPayment(double paymentAmount) {
-//        return new Payment(this, paymentAmount);
-//    }
-
     /**
      *For customer class, it will return CUSTOMER
      * @return user's type
