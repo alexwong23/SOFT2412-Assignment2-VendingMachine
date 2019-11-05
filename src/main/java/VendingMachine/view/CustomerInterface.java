@@ -147,7 +147,7 @@ public class CustomerInterface implements CommandLineInterface {
 
                 notifier(selection);
 
-                double amountDue = converter.convertCurrency("USD",selection,cart.getTotalPrice());
+                double amountDue = converter.convertCurrency("AUD",selection,cart.getTotalPrice());
 
                 Payment payment = new Payment(customer, amountDue, selection);
                 if(paymentInterface(payment)) {
