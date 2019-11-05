@@ -100,21 +100,18 @@ public class StaffInterface implements CommandLineInterface {
                 }
                 case "7": {
                     System.out.println("Staff Quit!");
-                    staffQuit=false;
                     scanner.close();
+                    System.exit(0);
                     break;
-//                    scanner.close();
-//                    staffQuit = false;
-//                    exitProgram();
-//                    break;
+                }
+                case "8080": {
+                    System.out.println("Staff Quit!");
+                    scanner.close();
+                    staffQuit = false;
+                    break;
                 }
             }
         }
-    }
-
-    public void exitProgram() {
-        System.out.println("Staff has Quit!");
-        System.exit(0);
     }
 
     public void printMainMenu(){

@@ -13,7 +13,6 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -83,20 +82,141 @@ public class StaffInterfaceTest {
         assertEquals(options, getOutput());
     }
 
-//    @Test()
-//    public void trueRefillStaff(){
-//        setInput("1\n");
-//        Date date = new Date();
-//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-//        String expectedString = "=========Welcome Staff!=========\n"
-//                + options
-//                + vd.foodToString()
-//                + "All Inventory Restocked @ "
-//                + formatter.format(date) + "\n"
-//                + options;
-//        si.run();
-//        assertEquals(expectedString, getOutput());
-//    }
+    @Test()
+    public void falseStaffQuit(){
+        setInput("808\n8080");
+        String s = "=========Welcome Staff!=========\n"
+                + options
+                + options
+                + "Staff Quit!\n";
+        si.run();
+        assertEquals(s, getOutput());
+    }
+
+    @Test()
+    public void trueStaffQuit(){
+        setInput("8080\n");
+        String s = "=========Welcome Staff!=========\n"
+                + options
+                + "Staff Quit!\n";
+        si.run();
+        assertEquals(s, getOutput());
+    }
+
+    @Test()
+    public void trueStaffFoodRefill(){
+        setInput("1\n8080\n");
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String expectedString = "=========Welcome Staff!=========\n"
+                + options
+                + vd.foodToString() + "\n"
+                + "All Inventory Restocked @ "
+                + formatter.format(date) + "\n"
+                + options
+                + "Staff Quit!\n";
+        si.run();
+        assertEquals(expectedString, getOutput());
+    }
+
+    @Test()
+    public void falseStaffFoodSingleRefill(){
+        setInput("2\n6\n8080\n");
+        String expectedString = "=========Welcome Staff!=========\n"
+                + options
+                + vd.foodToString() + "\n"
+                + "Enter ID:\n"
+                + "Item has maximum quantity.\n"
+                + options
+                + "Staff Quit!\n";
+        si.run();
+        assertEquals(expectedString, getOutput());
+    }
+
+    @Test()
+    public void falseStaffFoodSingleRefill2(){
+        setInput("2\n11\n8080\n");
+        String expectedString = "=========Welcome Staff!=========\n"
+                + options
+                + vd.foodToString() + "\n"
+                + "Enter ID:\n"
+                + "Item could not be found.\n"
+                + options
+                + "Staff Quit!\n";
+        si.run();
+        assertEquals(expectedString, getOutput());
+    }
+
+    @Test()
+    public void falseStaffFoodSingleRefill3(){
+        setInput("2\na\n8080\n");
+        String expectedString = "=========Welcome Staff!=========\n"
+                + options
+                + vd.foodToString() + "\n"
+                + "Enter ID:\n"
+                + "Invalid ID\n"
+                + options
+                + "Staff Quit!\n";
+        si.run();
+        assertEquals(expectedString, getOutput());
+    }
+
+    @Test()
+    public void trueStaffFoodSingleRefill(){
+        setInput("2\n7\n8080\n");
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String expectedString = "=========Welcome Staff!=========\n"
+                + options
+                + vd.foodToString() + "\n"
+                + "Enter ID:\n"
+                + "Single Inventory Restocked @ "
+                + formatter.format(date) + "\n"
+                + options
+                + "Staff Quit!\n";
+        si.run();
+        assertEquals(expectedString, getOutput());
+    }
+
+    @Test()
+    public void trueStaffPrintFood(){
+        setInput("3\n8080\n");
+        String s = "=========Welcome Staff!=========\n"
+                + options
+                + vd.foodToString() + "\n"
+                + options
+                + "Staff Quit!\n";
+        si.run();
+        assertEquals(s, getOutput());
+    }
+
+    @Test()
+    public void trueStaffCashRefill(){
+        setInput("4\n8080\n");
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String expectedString = "=========Welcome Staff!=========\n"
+                + options
+                + vd.cashToString() + "\n"
+                + "Cash Refilled @ "
+                + formatter.format(date) + "\n"
+                + options
+                + "Staff Quit!\n";
+        si.run();
+        assertEquals(expectedString, getOutput());
+    }
+
+    @Test()
+    public void trueStaffPrintCash(){
+        setInput("5\n8080\n");
+        String s = "=========Welcome Staff!=========\n"
+                + options
+                + vd.cashToString() + "\n"
+                + options
+                + "Staff Quit!\n";
+        si.run();
+        assertEquals(s, getOutput());
+    }
 }
 
 
