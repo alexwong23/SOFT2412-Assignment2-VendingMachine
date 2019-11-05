@@ -622,11 +622,11 @@ public class CustomerInterfacePaymentTest {
         in += "n\n";
         in += "2\n";      //Get into Shopping cart interface
         in += "2\n";
-        in += "USD\n";
+        in += "USD\n"; // choose USD
         in += "10\n";
         in += "4\n";
         in += "y\n";
-        in += "3\n";
+        in += "3\n"; //exit
         setInput(in);
 
         ci.run();
@@ -722,15 +722,7 @@ public class CustomerInterfacePaymentTest {
 
         assertEquals(out, getOutput());
     }
-
-
-
-
-
-
-
-
-    private String getOutput() { // return OutputStream as a String
+ private String getOutput() { // return OutputStream as a String
         System.out.flush();
         return outputStream.toString();
     }

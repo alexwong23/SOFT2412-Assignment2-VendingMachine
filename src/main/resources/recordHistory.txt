@@ -80,3 +80,4 @@ Date                Item           Quantity  Type
 05-11-2019 18:29:48 Mars bar       10        5.0       PURCHASE  
 05-11-2019 18:30:03 Pepsi          3         5.0       PURCHASE  
 05-11-2019 18:30:43 Pepsi          3         5.0       PURCHASE  
+05-11-2019 18:37:00 Pepsi          3         5.0       PURCHASE  
