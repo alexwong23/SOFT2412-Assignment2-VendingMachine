@@ -32,7 +32,6 @@ public class RecordsTest {
 
         /* Create a new Chip */
         InventoryItem chips = new InventoryItem(new Drink(2, "Chips", 4), 1);
-
         /* Cancel chip order */
         testRecords.addCancellationRecord("Cancelling Chips", chips);
 
