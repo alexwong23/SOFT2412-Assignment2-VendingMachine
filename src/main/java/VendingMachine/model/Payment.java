@@ -2,8 +2,11 @@ package VendingMachine.model;
 
 import VendingMachine.User.Customer;
 
+import java.text.DecimalFormat;
+
 public class Payment {
 
+    final DecimalFormat df = new DecimalFormat("0.00");
     private Customer customer;
     private double amountDue;
     private double amountPaid;
@@ -54,15 +57,15 @@ public class Payment {
     // just do the algorithm here
     public void returnChange(boolean paymentSuccessful){
         if(paymentSuccessful) {
-            System.out.printf("Change of $%.2f in %s received.\n", change(), this.currency);
+            System.out.printf("Change of $%s in %s received.\n", df.format(((double)((int)(100 * change() - (change()*100)%10)))/100), this.currency);
         } else {
-            System.out.printf("Change of $%.2f in %s received.\n", this.amountPaid, this.currency);
+            System.out.printf("Change of $%s in %s received.\n", df.format(((double)((int)(100 * this.amountPaid - (this.amountPaid*100)%10)))/100), this.currency);
         }
         resetPayment();
     }
 
     public void printStatus(){
-        System.out.printf("You need to pay: $%.2f in %s\n", this.amountDue, this.currency);
+        System.out.printf("You need to pay: $%s in %s\n", df.format(((double)((int)(100 * this.amountDue - (this.amountDue*100)%10)))/100), this.currency);
         System.out.printf("You have paid: $%.2f in %s\n", this.amountPaid, this.currency);
     }
 

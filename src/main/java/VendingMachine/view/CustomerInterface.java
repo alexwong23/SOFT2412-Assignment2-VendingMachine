@@ -7,11 +7,13 @@ import VendingMachine.User.Customer;
 import VendingMachine.User.CustomerImpl;
 import VendingMachine.model.*;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 
 public class CustomerInterface implements CommandLineInterface {
 
+    final DecimalFormat df = new DecimalFormat("0.00");
     //The two variable below are responsible for secrete channel for staff
     private String secret="";
     private String staff = "STAFF";   //user input the string can get in staff interface
@@ -247,7 +249,7 @@ public class CustomerInterface implements CommandLineInterface {
                 payment.makePayment(target, qua);
             }
             if(payment.change() >= 0) {
-                System.out.println("change is "+ ((double)((int)(100*payment.change())))/100);
+                System.out.println("change is "+ df.format(((double)((int)(100 * payment.change() - (payment.change()*100)%10)))/100));
                 boolean paid = vd.getCoffer().payOut(payment.change());
                 if(paid==true){
                     System.out.println("You have enough to checkout. Checkout now? (Y|N)");

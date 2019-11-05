@@ -131,7 +131,7 @@ public class CustomerInterfacePaymentTest {
                 "Enter ID: \n" +
                 "Enter Quantity:\n" +
                 "Cash inserted successfully.\n" +
-                "change is 85.0\n" +
+                "change is 85.00\n" +
                 "1 50.0 dollar note/coin was sent out\n" +
                 "1 20.0 dollar note/coin was sent out\n" +
                 "1 10.0 dollar note/coin was sent out\n" +
