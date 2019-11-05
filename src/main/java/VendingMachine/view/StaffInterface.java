@@ -1,6 +1,5 @@
 package VendingMachine.view;
 
-import VendingMachine.model.InventoryItem;
 import VendingMachine.model.VendingMachine;
 
 import java.text.SimpleDateFormat;
@@ -9,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class StaffInterface implements CommandLineInterface {
+public class StaffInterface {
 	private VendingMachine vd;
     private static String[] staffIdArray = staffIdArray = new String[]{"1234", "2345"};
     private static List<String> staffIdList = staffIdList = Arrays.asList(staffIdArray);
