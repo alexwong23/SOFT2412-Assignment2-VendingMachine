@@ -1,5 +1,6 @@
 package VendingMachine.view;
 
+import VendingMachine.model.InventoryItem;
 import VendingMachine.model.VendingMachine;
 
 import java.text.SimpleDateFormat;
@@ -13,10 +14,10 @@ public class StaffInterface implements CommandLineInterface {
     private static String[] staffIdArray = staffIdArray = new String[]{"1234", "2345"};
     private static List<String> staffIdList = staffIdList = Arrays.asList(staffIdArray);
 
+    private Scanner scanner;
+
     public StaffInterface(VendingMachine vendingMachine) {
     	this.vd = vendingMachine;
-        System.out.println("=========Welcome Staff!=========");
-        commandLine();
     }
 
     public static boolean StaffIDCheck(String staffId) {
@@ -26,47 +27,52 @@ public class StaffInterface implements CommandLineInterface {
         return false;
     }
 
-    public void commandLine() {
-        Scanner staffScanner = new Scanner(System.in);
-
-        while (true) {
+    public void run() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("=========Welcome Staff!=========");
+        boolean staffQuit = true;
+        while (staffQuit) {
             printMainMenu();
-            String staffInput = staffScanner.nextLine();
+            String staffInput = scanner.next();
             switch (staffInput) {
                 case "1": {
                     System.out.println(vd.foodToString());
                     if (vd.getInventory().restockAllInventory() == 0) {
                         Date date = new Date();
                         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-                        System.out.println("Success: All Inventory Restocked @ " + formatter.format(date));
+                        System.out.println("All Inventory Restocked @ " + formatter.format(date));
                     } else {
-                        System.out.println("Error: Restock All Inventory Failed.");
+                        System.out.println("Restock All Inventory Failed.");
                     }
                     break;
                 }
                 case "2": {
                     System.out.println(vd.foodToString());
-                    Scanner foodScanner = new Scanner(System.in);
-                    System.out.println("Enter Food ID: ");
-                    int id = Integer.parseInt(foodScanner.next());
-                    int restockStatus = vd.getInventory().restockSingleInventory(id);
-                    switch (restockStatus) {
-                        case 0: {
-                            Date date = new Date();
-                            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-                            System.out.println("Success: Single Inventory Restocked @ " + formatter.format(date));
-                            break;
+                    System.out.println("Enter ID:");
+                    String idString = scanner.next();
+                    try {
+                        int id = Integer.parseInt(idString);
+                        int restockStatus = vd.getInventory().restockSingleInventory(id);
+                        switch (restockStatus) {
+                            case 0: {
+                                Date date = new Date();
+                                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                                System.out.println("Single Inventory Restocked @ " + formatter.format(date));
+                                break;
+                            }
+                            case -2: {
+                                System.out.println("Item has maximum quantity.");
+                                break;
+                            }
+                            default: {
+                                System.out.println("Item could not be found.");
+                                break;
+                            }
                         }
-                        case -2: {
-                            System.out.println("Error: Item has maximum quantity.");
-                            break;
-                        }
-                        default: {
-                            System.out.println("Error: Item could not be found.");
-                            break;
-                        }
+                    }catch (Exception e){
+                        System.out.println("Invalid ID");
                     }
-                    foodScanner.close();
+                    break;
                 }
                 case "3": {
                     System.out.println(vd.foodToString());
@@ -88,12 +94,20 @@ public class StaffInterface implements CommandLineInterface {
                     break;
                 }
                 case "6": {
+                    System.out.println("======All Records======\n");
                     System.out.println(vd.recordsToString());
                     break;
                 }
                 case "7": {
-                    System.out.println("Staff has Quit!");
+                    System.out.println("Staff Quit!");
+                    scanner.close();
                     System.exit(0);
+                    break;
+                }
+                case "8080": {
+                    System.out.println("Staff Quit!");
+                    scanner.close();
+                    staffQuit = false;
                     break;
                 }
             }

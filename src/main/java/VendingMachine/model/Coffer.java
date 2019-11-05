@@ -30,7 +30,7 @@ public class Coffer {
         }
         return 0;
     }
-    
+
     public CofferDenomination getDenominationByCashId(int cashId) {
         for (CofferDenomination denomination : cofferDenominations) {
             if (denomination.getCash().getId() == cashId) {
@@ -40,4 +40,38 @@ public class Coffer {
         return null;
     }
 
+    public boolean payOut(double moneyToBePaid){
+
+        double cumulative = (int)(moneyToBePaid*100 - (moneyToBePaid*100)%10); // in cents
+        ArrayList<CofferDenomination> amountGiven = new ArrayList<CofferDenomination>();
+        for(int i = 0; i < cofferDenominations.size();i++){
+            amountGiven.add(this.cofferDenominations.get(i).clone(0));
+        }
+        // amountGiven is set up with 0 as all of itsvalues. Increase this later on.
+        for(int i = this.cofferDenominations.size()-1; i>=0; i--){
+                int amount = (int) (cumulative/Math.round(amountGiven.get(i).cash.getValue()*100));
+                if(amount<=cofferDenominations.get(i).quantity){
+                    amountGiven.get(i).addQuantity(amount);
+                    cumulative-=amount*100*amountGiven.get(i).cash.getValue();
+                }else{
+                    amountGiven.get(i).addQuantity(cofferDenominations.get(i).quantity);
+                    cumulative-=cofferDenominations.get(i).quantity*100*amountGiven.get(i).cash.getValue();
+                }
+        }
+        if(cumulative!=0){
+            System.out.println( (cumulative) +"is left unpaid");
+            System.out.println("Cannot pay you back.");
+            return false;
+        }else{
+            for(int i = this.cofferDenominations.size()-1; i>=0; i--){
+                if(amountGiven.get(i).quantity!=0){
+                    System.out.println(amountGiven.get(i).quantity+" "+  cofferDenominations.get(i).getCash().getValue()+" dollar note/coin was sent out");
+                }
+                cofferDenominations.get(i).reduceQuantity(amountGiven.get(i).quantity);
+            }
+
+            return true;
+        }
+
+    }
 }

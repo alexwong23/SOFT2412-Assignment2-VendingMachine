@@ -56,7 +56,7 @@ public class ShoppingCart{
         }
     }
 
-    /**
+    /** ;
      * Remove a Food item from the Cart.
      * @param e, Adds the actual food item selected
      */
@@ -76,18 +76,18 @@ public class ShoppingCart{
         }
     }
 
-    public int getTotalQuantity() {
-        int totalQuantity = 0;
-        for(int i = 0; i < cart.size(); i++){
-            totalQuantity += cart.get(i).getQuantity();
-        }
-        return totalQuantity;
-    }
+//    public int getTotalQuantity() {
+//        int totalQuantity = 0;
+//        for(int i = 0; i < cart.size(); i++){
+//            totalQuantity += cart.get(i).getQuantity();
+//        }
+//        return totalQuantity;
+//    }
 
     public double getTotalPrice() {
         double totalPrice=0;
         for(int i = 0; i < cart.size(); i++){
-          totalPrice += cart.get(i).getFood().getPrice() * cart.get(i).getQuantity();
+            totalPrice += cart.get(i).getFood().getPrice() * cart.get(i).getQuantity();
         }
         return totalPrice;
     }

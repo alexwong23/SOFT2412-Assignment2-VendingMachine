@@ -51,6 +51,7 @@ public class Payment {
     }
 
     // return change greedily!!! INCOMPLETE
+    // just do the algorithm here
     public void returnChange(boolean paymentSuccessful){
         if(paymentSuccessful) {
             System.out.printf("Change of $%.2f in %s received.\n", change(), this.currency);
@@ -63,5 +64,12 @@ public class Payment {
     public void printStatus(){
         System.out.printf("You need to pay: $%.2f in %s\n", this.amountDue, this.currency);
         System.out.printf("You have paid: $%.2f in %s\n", this.amountPaid, this.currency);
+    }
+
+    public double getAmountPaid(){
+        return this.amountPaid;
+    }
+    public void setAmountPaid(double money){
+        this.amountPaid = money;
     }
 }
