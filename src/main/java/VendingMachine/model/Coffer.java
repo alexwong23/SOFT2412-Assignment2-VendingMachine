@@ -42,7 +42,7 @@ public class Coffer {
 
     public boolean payOut(double moneyToBePaid){
 
-        double cumulative = moneyToBePaid*100; // in cents
+        double cumulative = moneyToBePaid*100 - (moneyToBePaid*100)%10; // in cents
         ArrayList<CofferDenomination> amountGiven = new ArrayList<CofferDenomination>();
         for(int i = 0; i < cofferDenominations.size();i++){
             amountGiven.add(this.cofferDenominations.get(i).clone(0));
