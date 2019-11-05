@@ -145,7 +145,7 @@ public class CustomerInterfacePaymentTest {
                 "3. Quit\n" +
                 "Enter your options:\n" +
                 "Thank you!\n";
-//        assertEquals(out, getOutput());
+        assertEquals(out, getOutput());
     }
 
     @Test
@@ -270,7 +270,7 @@ public class CustomerInterfacePaymentTest {
                 "Enter your options:\n" +
                 "Thank you!\n";
 
-//        assertEquals(out, getOutput());
+        assertEquals(out, getOutput());
 
 
     }
@@ -537,7 +537,7 @@ public class CustomerInterfacePaymentTest {
 
 
 
-//        assertEquals(out, getOutput());
+        assertEquals(out, getOutput());
     }
 
     @Test
@@ -626,15 +626,101 @@ public class CustomerInterfacePaymentTest {
         in += "10\n";
         in += "4\n";
         in += "y\n";
-        in += "3\n";in += "3\n";
-
+        in += "3\n";
         setInput(in);
 
         ci.run();
 
         String out = "";
+        out += "===========Welcome to vending machine!================\n" +
+                "ID   Items               Type      Price     Quantity  \n" +
+                "------------------------------------------------------\n" +
+                "1    Pepsi               DRINK     5.0       10        \n" +
+                "2    Sprite              DRINK     5.0       10        \n" +
+                "3    Coke                DRINK     5.0       10        \n" +
+                "4    Orange Juice        DRINK     5.0       10        \n" +
+                "5    Red Rock Deli       CHIPS     5.0       10        \n" +
+                "6    Mars bar            CHOCOLATE 5.0       10        \n" +
+                "7    Jelly Beans         LOLLY     10.0      5         \n" +
+                "======================================================\n" +
+                "Options:\n" +
+                "1. Purchase\n" +
+                "2. Shopping Cart\n" +
+                "3. Quit\n" +
+                "Enter your options:\n" +
+                "ID   Items               Type      Price     Quantity  \n" +
+                "------------------------------------------------------\n" +
+                "1    Pepsi               DRINK     5.0       10        \n" +
+                "2    Sprite              DRINK     5.0       10        \n" +
+                "3    Coke                DRINK     5.0       10        \n" +
+                "4    Orange Juice        DRINK     5.0       10        \n" +
+                "5    Red Rock Deli       CHIPS     5.0       10        \n" +
+                "6    Mars bar            CHOCOLATE 5.0       10        \n" +
+                "7    Jelly Beans         LOLLY     10.0      5         \n" +
+                "======================================================\n" +
+                "Enter ID:\n" +
+                "Enter Quantity:\n" +
+                "Add successful.\n" +
+                "Continue Shopping? (Y|N)\n" +
+                "Options:\n" +
+                "1. Purchase\n" +
+                "2. Shopping Cart\n" +
+                "3. Quit\n" +
+                "Enter your options:\n" +
+                "------------------Shopping Cart------------------\n" +
+                "ID   Items               Type      Price     Quantity  \n" +
+                "1    Pepsi               DRINK     5.0       3         \n" +
+                "Total Price: $ 15.0\n" +
+                "\n" +
+                "1. Delete Items\n" +
+                "2. Checkout\n" +
+                "How would you like to pay?\n" +
+                "AUD\n" +
+                "USD\n" +
+                "NZD\n" +
+                "SGD\n" +
+                "CAD\n" +
+                "Enter your selection: \n" +
+                "You need to pay: $10.34 in USD\n" +
+                "You have paid: $0.00 in USD\n" +
+                "ID   Items               Type      \n" +
+                "------------------------------------------------------\n" +
+                "1    10c                 COIN      0.1       10        \n" +
+                "2    20c                 COIN      0.2       10        \n" +
+                "3    50c                 COIN      0.5       10        \n" +
+                "4    $1                  COIN      1.0       10        \n" +
+                "5    $2                  COIN      2.0       10        \n" +
+                "6    $5                  NOTE      5.0       10        \n" +
+                "7    $10                 NOTE      10.0      10        \n" +
+                "8    $20                 NOTE      20.0      5         \n" +
+                "9    $50                 NOTE      50.0      2         \n" +
+                "10   $100                NOTE      100.0     1         \n" +
+                "======================================================\n" +
+                "\n" +
+                "Return to cart: 0 \tOR\n" +
+                "Enter ID: \n" +
+                "Enter Quantity:\n" +
+                "Cash inserted successfully.\n" +
+                "change is 389.6\n" +
+                "3 100.0 dollar note/coin was sent out\n" +
+                "1 50.0 dollar note/coin was sent out\n" +
+                "1 20.0 dollar note/coin was sent out\n" +
+                "1 10.0 dollar note/coin was sent out\n" +
+                "1 5.0 dollar note/coin was sent out\n" +
+                "2 2.0 dollar note/coin was sent out\n" +
+                "1 0.5 dollar note/coin was sent out\n" +
+                "1 0.1 dollar note/coin was sent out\n" +
+                "You have enough to checkout. Checkout now? (Y|N)\n" +
+                "Change of $389.66 in USD received.\n" +
+                "Thank you for your purchase, come back again!\n" +
+                "Options:\n" +
+                "1. Purchase\n" +
+                "2. Shopping Cart\n" +
+                "3. Quit\n" +
+                "Enter your options:\n" +
+                "Thank you!\n";
 
-//        assertEquals(out, getOutput());
+        assertEquals(out, getOutput());
     }
 
 
