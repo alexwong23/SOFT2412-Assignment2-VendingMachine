@@ -15,3 +15,13 @@ Date                Item           Quantity  Type
 05-11-2019 11:44:44 Pepsi          2         5.0       CANCELLATION
 05-11-2019 11:45:21 Pepsi          2         5.0       CANCELLATION
 05-11-2019 11:46:27 Pepsi          2         5.0       CANCELLATION
+05-11-2019 13:57:57 Pepsi          2         5.0       CANCELLATION
+05-11-2019 14:01:35 Pepsi          2         5.0       CANCELLATION
+05-11-2019 14:07:38 Pepsi          2         5.0       CANCELLATION
+05-11-2019 14:09:15 Pepsi          2         5.0       CANCELLATION
+05-11-2019 14:15:53 Pepsi          2         5.0       CANCELLATION
+05-11-2019 14:20:27 Pepsi          2         5.0       CANCELLATION
+05-11-2019 14:24:14 Pepsi          2         5.0       CANCELLATION
+05-11-2019 14:24:19 Pepsi          2         5.0       CANCELLATION
+05-11-2019 14:27:08 Pepsi          2         5.0       CANCELLATION
+05-11-2019 14:33:47 Pepsi          2         5.0       CANCELLATION

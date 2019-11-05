@@ -30,7 +30,8 @@ public class StaffInterface implements CommandLineInterface {
     public void run() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("=========Welcome Staff!=========");
-        while (true) {
+        boolean staffQuit = true;
+        while (staffQuit) {
             printMainMenu();
             String staffInput = scanner.next();
             switch (staffInput) {
@@ -98,12 +99,22 @@ public class StaffInterface implements CommandLineInterface {
                     break;
                 }
                 case "7": {
-                    System.out.println("Staff has Quit!");
+                    System.out.println("Staff Quit!");
+                    staffQuit=false;
                     scanner.close();
-                    System.exit(0);
+                    break;
+//                    scanner.close();
+//                    staffQuit = false;
+//                    exitProgram();
+//                    break;
                 }
             }
         }
+    }
+
+    public void exitProgram() {
+        System.out.println("Staff has Quit!");
+        System.exit(0);
     }
 
     public void printMainMenu(){

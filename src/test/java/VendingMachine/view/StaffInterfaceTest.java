@@ -11,8 +11,12 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class StaffInterfaceTest {
 
@@ -23,6 +27,16 @@ public class StaffInterfaceTest {
     private final PrintStream systemOut = System.out;
     private ByteArrayInputStream inputStream;
     private ByteArrayOutputStream outputStream;
+
+    String options = "Staff Options:\n"
+            + "\t1. Refill All Items\n"
+            + "\t2. Refill Single Item\n"
+            + "\t3. List All Items\n"
+            + "\t4. Refill Cash\n"
+            + "\t5. List Cash\n"
+            + "\t6. List Records\n"
+            + "\t7. Quit\n"
+            + "Choose an option:\n";
 
     @Before
     public void setUp() throws Exception {
@@ -58,31 +72,30 @@ public class StaffInterfaceTest {
     }
 
     @Test
-    public void truePrintMainMenu(){
+    public void falsePrintMainMenu(){
         si.printMainMenu();
-        assertEquals("Staff Options:\n"
-                + "\t1. Refill All Items\n"
-                + "\t2. Refill Single Item\n"
-                + "\t3. List All Items\n"
-                + "\t4. Refill Cash\n"
-                + "\t5. List Cash\n"
-                + "\t6. List Records\n"
-                + "\t7. Quit\n"
-                + "Choose an option:\n", getOutput());
+        assertNotEquals("Choose an option:\n", getOutput());
     }
 
-//    @Test
-//    public void trueStaffIDCheck(){
-//        String someString = "1234\n";
-//        setInput(someString);
-//        si.StaffIDCheck("1234");
-//        String s="";
-//        s+="===========Welcome to vending machine!===========\n";
-//        s+="Options:\n";
-//        s+="1. Customer\n";
-//        s+="2. Staff\n";
-//        s+="Choose an option:\n";
-//        assertEquals(s,getOutput());
+    @Test
+    public void truePrintMainMenu(){
+        si.printMainMenu();
+        assertEquals(options, getOutput());
+    }
+
+//    @Test()
+//    public void trueRefillStaff(){
+//        setInput("1\n");
+//        Date date = new Date();
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+//        String expectedString = "=========Welcome Staff!=========\n"
+//                + options
+//                + vd.foodToString()
+//                + "All Inventory Restocked @ "
+//                + formatter.format(date) + "\n"
+//                + options;
+//        si.run();
+//        assertEquals(expectedString, getOutput());
 //    }
 }
 
