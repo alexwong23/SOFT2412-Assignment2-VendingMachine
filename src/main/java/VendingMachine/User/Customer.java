@@ -4,5 +4,4 @@ package VendingMachine.User;
 
 public interface Customer extends User{
     ShoppingCart getCart();
-//    Payment makePayment(double paymentAmount);
 }

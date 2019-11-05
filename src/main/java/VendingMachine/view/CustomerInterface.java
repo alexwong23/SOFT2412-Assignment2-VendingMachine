@@ -11,7 +11,7 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 
-public class CustomerInterface implements CommandLineInterface {
+public class CustomerInterface{
 
     final DecimalFormat df = new DecimalFormat("0.00");
     //The two variable below are responsible for secrete channel for staff

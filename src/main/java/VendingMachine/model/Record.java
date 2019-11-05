@@ -20,9 +20,10 @@ public class Record {
         return description;
     }
 
-    public Date getDate() {
-        return date;
-    }
+    // Unused Getter - commented out
+    //public Date getDate() {
+    //    return date;
+    //}
 
     public InventoryItem getItem() {
         return item;
