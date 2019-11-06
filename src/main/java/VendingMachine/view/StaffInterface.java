@@ -20,10 +20,7 @@ public class StaffInterface {
     }
 
     public static boolean StaffIDCheck(String staffId) {
-        if(staffIdList.contains(staffId)) {
-            return true;
-        }
-        return false;
+        return staffIdList.contains(staffId);
     }
 
     public void run() {
