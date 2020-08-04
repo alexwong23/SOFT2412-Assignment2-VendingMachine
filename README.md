@@ -28,8 +28,8 @@ Challenges & Learning Points
       - User Stories
       - Daily Scrum Meeting
       - Burndown Chart
-   - Sprint Review
-   - Sprint Retrospective
+   5. Sprint Review
+   6. Sprint Retrospective
 
 2. Development Tools & Practices
    - Gradle
@@ -47,7 +47,7 @@ Files
    - Contains the description and requirements of this assignment
 
 2. 'Assignment2 - Report'.pdf
-  - 40 page report of a Sprint cycle
+   - 40 page report of a Sprint cycle
 
 3. build.gradle
    - Defines the build configurations for all modules in the project
